@@ -5,7 +5,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   // Accept onOpenModal prop
   const textContainerRef = useRef(null);
   const mainText =
-    "We help entrepreneurs, small businesses, and creators turn bold ideas into meaningful digital products. We specialize in elegant, user-friendly websites, custom mobile and web apps, and AI-powered tools and automation. Whether you're starting fresh or scaling fast, we build digital experiences that feel as inspired as your mission.";
+    "wwwwwwwWe help entrepreneurs, small businesses, and creators turn bold ideas into meaningful digital products. We specialize in elegant, user-friendly websites, custom mobile and web apps, and AI-powered tools and automation. Whether you're starting fresh or scaling fast, we build digital experiences that feel as inspired as your mission.";
   const [highlightedChars, setHighlightedChars] = useState(0);
   const darkColor = "rgb(31, 41, 55)";
   const lightColor = "rgb(209, 213, 219)";
@@ -41,8 +41,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
                   style={{
                     color: index < highlightedChars ? darkColor : lightColor,
                     transition: "color 0.1s linear",
-                  }}
-                >
+                  }}>
                   {char}
                 </span>
               ))}
