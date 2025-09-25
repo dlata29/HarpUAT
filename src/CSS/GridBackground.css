@@ -1,0 +1,32 @@
+.grid-background-container {
+  position: relative;
+  width: 100%;
+  isolation: isolate; /* Creates a new stacking context */
+  z-index: 2; /* Lifts this container above the sticky hero (z-index: 1) */
+  background-color: #ffffff; /* Ensures a solid background for content to scroll over the hero */
+}
+
+.static-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, #f1f1f1 1px, transparent 1px), linear-gradient(to bottom, #f1f1f1 1px, transparent 1px);
+}
+
+.trail-box {
+  pointer-events: none;
+  position: absolute;
+  border: 1px solid #2596be;
+  animation: fade-out 1500ms forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

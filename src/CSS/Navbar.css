@@ -1,0 +1,87 @@
+/* Styles for the wrapper to handle visibility and positioning */
+.navbar-wrapper {
+  position: fixed; /* Keeps it fixed at the top */
+  top: 1rem;
+  left: 50%;
+  transform: translate(-50%, -150%); /* Start hidden above the screen */
+  z-index: 50;
+  width: 100%;
+  max-width: 900px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.navbar-wrapper.visible {
+  transform: translate(-50%, 0); /* Slide into view */
+}
+
+/* Main navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This creates the space between left, center, right */
+  padding: 0.75rem 1.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Left side (Logo) */
+.navbar-left .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Center links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #111827;
+}
+
+/* Right side (Buttons) */
+.navbar-right {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #1f2937;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #07569b;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Add this to the end of your Navbar.css file */
+
+.logo-img {
+  width: 28px; /* Sets the width of the logo */
+  height: 28px; /* Sets the height of the logo */
+}
