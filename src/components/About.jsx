@@ -12,10 +12,14 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
 
   const handleAboutScroll = () => {
     if (textContainerRef.current) {
-      const { top, height } = textContainerRef.current.getBoundingClientRect();
+      const { top, bottom, height } = textContainerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+
       let progress = (windowHeight - top) / (windowHeight + height);
+
+      progress = (windowHeight - top) / windowHeight;
       progress = Math.max(0, Math.min(1, progress));
+
       const charCount = Math.floor(progress * mainText.length);
       setHighlightedChars(charCount);
     }
