@@ -5,7 +5,7 @@ import "../CSS/GridBackground.css";
 const GridBackground = ({ children }) => {
   const [trails, setTrails] = useState([]);
   const gridRef = useRef(null);
-  const GRID_SIZE = 20; // Controls the size of the grid cells
+  const GRID_SIZE = 30; // Controls the size of the grid cells
 
   const handleMouseMove = useCallback((e) => {
     if (!gridRef.current) return;
@@ -42,7 +42,11 @@ const GridBackground = ({ children }) => {
 
       {/* Render trail elements */}
       {trails.map((trail) => (
-        <div key={trail.id} className="trail-box" style={{ left: trail.x, top: trail.y, width: GRID_SIZE, height: GRID_SIZE }} />
+        <div
+          key={trail.id}
+          className="trail-box"
+          style={{ left: trail.x, top: trail.y, width: GRID_SIZE, height: GRID_SIZE }}
+        />
       ))}
 
       {/* The rest of your page content */}

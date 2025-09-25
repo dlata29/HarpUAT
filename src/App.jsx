@@ -9,7 +9,7 @@ import AppDevelopment from "./components/AppDevelopment";
 import AISolutions from "./components/AISolutions";
 import Footer from "./components/Footer";
 import CallbackFormModal from "./components/CallbackFormModal";
-import GridBackground from "./components/GridBackground"; // 1. Import the new component
+import GridBackground from "./components/GridBackground";
 
 export default function App() {
   const [isNavbarVisible, setNavbarVisible] = useState(false);
@@ -32,44 +32,41 @@ export default function App() {
           setNavbarVisible(false);
         }
       },
-      {
-        threshold: 0.5,
-      }
+      { threshold: 0.5 }
     );
 
     const currentRef = contentSectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    if (currentRef) observer.observe(currentRef);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 
   return (
     <Router>
+      {/* Navbar & Modal are outside Routes so they show on every page */}
       <Navbar isVisible={isNavbarVisible} />
       <CallbackFormModal isOpen={isModalOpen} onClose={closeModal} />
 
-      {/* The Hero section remains outside the grid */}
       <Routes>
+        {/* Homepage */}
         <Route
           path="/"
           element={
             <>
               <Hero onVideoEnd={handleVideoEnd} />
-              {/* 2. Wrap the rest of the page content */}
+              <div style={{ marginTop: "4rem" }}></div>
+              <About ref={contentSectionRef} onOpenModal={openModal} />
               <GridBackground>
-                <About ref={contentSectionRef} onOpenModal={openModal} />
                 <Products />
                 <Footer onOpenModal={openModal} />
               </GridBackground>
             </>
           }
         />
+
+        {/* Product pages */}
         <Route path="/products/web-development" element={<WebDevelopment />} />
         <Route path="/products/app-development" element={<AppDevelopment />} />
         <Route path="/products/ai-solutions" element={<AISolutions />} />

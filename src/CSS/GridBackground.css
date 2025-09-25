@@ -11,8 +11,9 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-size: 30px 30px;
-  background-image: linear-gradient(to right, #f1f1f1 1px, transparent 1px), linear-gradient(to bottom, #f1f1f1 1px, transparent 1px);
+  background-size: 35px 35px;
+  background-image: linear-gradient(to right, #f1f1f1 1px, transparent 1px),
+    linear-gradient(to bottom, #f1f1f1 1px, transparent 1px);
 }
 
 .trail-box {

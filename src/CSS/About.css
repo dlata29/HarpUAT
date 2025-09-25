@@ -1,18 +1,19 @@
 .about-section {
-  padding: 4rem 2rem;
-  background-color: transparent; /* Changed from #f9fafb */
+  padding: 4rem 1rem; /* more breathing space */
+  background-color: #fff; /* light gray background */
   position: relative;
   z-index: 4;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .about-container {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 3rem;
   background-color: transparent;
@@ -20,7 +21,7 @@
 }
 
 .about-text-column {
-  flex: 1;
+  flex: 2;
   min-width: 600px;
 }
 
@@ -59,11 +60,14 @@
 }
 
 .about-description p {
-  font-size: 1.25rem; /* Larger font for the effect */
-  color: #4b5563;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  font-weight: bold;
+  font-size: 1.8rem; /* readable size for most screens */
+  color: #4b5563; /* soft dark gray */
+  line-height: 1.75; /* more vertical breathing space */
+  margin-bottom: 1.5rem; /* separates paragraph from button */
+  font-weight: 500; /* medium weight, not too bold */
+  text-align: left; /* keeps left alignment */
+  word-spacing: normal; /* natural spacing */
+  letter-spacing: 0.02rem; /* subtle letter spacing for clarity */
 }
 
 .about-contact-button {
