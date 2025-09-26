@@ -1,7 +1,7 @@
 /* src/CSS/Footer.css */
 
 .footer-section {
-  background-color: transparent; /* Changed from #f9fafb */
+  background-color: #ffffff; /* Changed from #f9fafb */
   padding: 6rem 2rem;
   border-top: 1px solid #e5e7eb;
 }

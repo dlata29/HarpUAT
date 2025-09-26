@@ -1,7 +1,5 @@
 .hero-section {
-  position: sticky; /* This makes the element stick */
-  top: 0; /* Sticks to the top of the viewport */
-  z-index: 1; /* Ensures it's behind the scrolling content */
+  position: relative;
   height: 110vh;
   width: 100%;
   overflow: hidden;
@@ -14,7 +12,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* keep video in background */
 }
 
 .hero-overlay.left-align {

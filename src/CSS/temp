@@ -1,115 +1,95 @@
-/* src/CSS/Products.css */
-
-.services-section {
-  padding: 6rem 1rem;
-  position: relative;
-  z-index: 10;
-  background-color: transparent;
-}
-
-.services-container {
-  max-width: 80rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
-}
-
-@media (min-width: 768px) {
-  .services-container {
-    grid-template-columns: repeat(2, 1fr);
-    /* ADDED: This is critical. It stops the shorter image column
-       from stretching to the full height of the taller text column. */
-    align-items: flex-start;
-  }
-}
-
-.services-text-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8rem;
-  /* ADDED: Gives the last text item enough space to scroll up
-     before the sticky container is released. */
-  padding-bottom: 30vh;
-}
-
-.service-item {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.service-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 1.5rem;
-}
-
-.service-title span {
-  background-color: white;
-  padding: 0 0.5rem;
-}
-
-.service-description {
-  font-size: 1.125rem;
-  color: #4b5563;
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
-
-.service-points {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.service-point {
-  display: flex;
-  align-items: flex-start;
-  color: #374151;
-}
-
-.point-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #1f2937;
-  margin-right: 0.75rem;
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-}
-
-/* --- Right side: Key Changes Below --- */
-.services-image-container {
-  position: sticky;
-  /* CHANGED: This positions the sticky element nicely in the viewport.
-     Adjust the value (e.g., 15vh, 25vh) to move it up or down. */
-  top: 20vh;
-
-  /* REMOVED: height, display, align-items, justify-content, padding-top.
-     These were forcing the container to be too large and causing the de-sync. */
-}
-
-.sticky-image-wrapper {
-  position: relative;
+.hero-section {
+  position: sticky; /* This makes the element stick */
+  top: 0; /* Sticks to the top of the viewport */
+  z-index: 1; /* Ensures it's behind the scrolling content */
+  height: 100vh;
   width: 100%;
-  max-width: 28rem;
-  aspect-ratio: 1 / 1;
-  border-radius: 1rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
 
-.service-image {
+.hero-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease-out;
+  z-index: -1; /* keep video in background */
+}
+
+.hero-overlay.left-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* align everything to the left */
+  justify-content: flex-start; /* top-align */
+  padding: 2rem 4rem; /* add padding from top/left */
+}
+
+/* Navbar inside left-aligned overlay */
+.hero-overlay.left-align .fade-in {
+  margin-bottom: 2rem; /* space between navbar and hero text */
+}
+
+/* Hero text */
+.hero-content {
+  flex: 1; /* take remaining space below navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Aligns content to the left */
+  color: white;
+  text-align: left; /* Aligns text to the left */
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.hero-content.visible {
+  opacity: 1;
+}
+
+.hero-content h1 {
+  font-size: 9rem; /* Increased font size */
+  margin-bottom: 0.5rem;
+  white-space: nowrap; /* Ensures text stays on one line */
+}
+
+.hero-content p {
+  font-size: 1.24rem; /* Increased font size */
+  white-space: nowrap; /* Ensures the text stays on one line */
+}
+
+.hero-content span {
+  font-size: 4rem; /* Increased font size */
+  white-space: nowrap; /* Ensures the text stays on one line */
+}
+
+.gradient-text {
+  /* Create a linear gradient from purple to pink */
+  background-image: linear-gradient(90deg, #2578be, #2596be);
+
+  /* Clip the background to the text */
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  background-clip: text;
+
+  /* Make the text color transparent to reveal the gradient */
+  color: transparent;
+}
+
+/* Common fade effect */
+.fade-in,
+.hero-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible,
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
 }

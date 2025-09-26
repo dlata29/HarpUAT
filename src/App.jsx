@@ -60,8 +60,8 @@ export default function App() {
               <About ref={contentSectionRef} onOpenModal={openModal} />
               <GridBackground>
                 <Products />
-                <Footer onOpenModal={openModal} />
               </GridBackground>
+              <Footer onOpenModal={openModal} />
             </>
           }
         />
