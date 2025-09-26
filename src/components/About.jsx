@@ -80,7 +80,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
                   key={index}
                   style={{
                     color: index < highlightedChars ? darkColor : lightColor,
-                    transition: "color 0.5s linear",
+                    transition: "color 0.2s linear",
                   }}>
                   {char}
                 </span>
