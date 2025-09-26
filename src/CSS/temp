@@ -4,7 +4,7 @@
   padding: 6rem 1rem;
   position: relative;
   z-index: 10;
-  background-color: transparent; /* Changed from #ffffff */
+  background-color: transparent;
 }
 
 .services-container {
@@ -18,6 +18,9 @@
 @media (min-width: 768px) {
   .services-container {
     grid-template-columns: repeat(2, 1fr);
+    /* ADDED: This is critical. It stops the shorter image column
+       from stretching to the full height of the taller text column. */
+    align-items: flex-start;
   }
 }
 
@@ -25,6 +28,9 @@
   display: flex;
   flex-direction: column;
   gap: 8rem;
+  /* ADDED: Gives the last text item enough space to scroll up
+     before the sticky container is released. */
+  padding-bottom: 30vh;
 }
 
 .service-item {
@@ -77,14 +83,15 @@
   margin-top: 0.25rem;
 }
 
-/* Right side: Sticky Image Container */
+/* --- Right side: Key Changes Below --- */
 .services-image-container {
   position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* CHANGED: This positions the sticky element nicely in the viewport.
+     Adjust the value (e.g., 15vh, 25vh) to move it up or down. */
+  top: 20vh;
+
+  /* REMOVED: height, display, align-items, justify-content, padding-top.
+     These were forcing the container to be too large and causing the de-sync. */
 }
 
 .sticky-image-wrapper {

@@ -4,7 +4,7 @@
   padding: 6rem 1rem;
   position: relative;
   z-index: 10;
-  background-color: transparent; /* Changed from #ffffff */
+  background-color: transparent;
 }
 
 .services-container {
@@ -18,6 +18,9 @@
 @media (min-width: 768px) {
   .services-container {
     grid-template-columns: repeat(2, 1fr);
+    /* ADDED: This is critical. It stops the shorter image column
+       from stretching to the full height of the taller text column. */
+    align-items: flex-start;
   }
 }
 
@@ -25,6 +28,9 @@
   display: flex;
   flex-direction: column;
   gap: 8rem;
+  /* ADDED: Gives the last text item enough space to scroll up
+     before the sticky container is released. */
+  padding-bottom: 30vh;
 }
 
 .service-item {
@@ -77,15 +83,15 @@
   margin-top: 0.25rem;
 }
 
-/* Right side: Sticky Image Container */
+/* --- Right side: Key Changes Below --- */
 .services-image-container {
   position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: flex-start; /* change from center to flex-start */
-  justify-content: center;
-  padding-top: 10vh; /* adjust this for fine-tuning */
+  /* CHANGED: This positions the sticky element nicely in the viewport.
+     Adjust the value (e.g., 15vh, 25vh) to move it up or down. */
+  top: 20vh;
+
+  /* REMOVED: height, display, align-items, justify-content, padding-top.
+     These were forcing the container to be too large and causing the de-sync. */
 }
 
 .sticky-image-wrapper {
@@ -106,4 +112,44 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease-out;
+}
+
+/* Add this to your main CSS file, or a specific file for this section */
+
+.integrated-message-section {
+  /* This container helps center the text and apply padding */
+  max-width: 900px; /* Adjust as needed, but this width looks good for the example */
+  margin: 80px auto; /* Top/bottom margin, auto for horizontal centering */
+  padding: 0 20px; /* Some padding on the sides for smaller screens */
+  box-sizing: border-box; /* Include padding in element's total width */
+}
+
+.integrated-message-text {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #333333;
+  text-align: right; /* keeps paragraph right-aligned */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: 0;
+
+  /* New properties for first-line offset */
+  text-indent: 50%; /* Starts first line roughly from middle */
+}
+
+/* Optional: For very small screens, you might want to adjust font size and alignment */
+@media (max-width: 768px) {
+  .integrated-message-text {
+    font-size: 1.8rem; /* Slightly smaller on mobile */
+    text-align: left; /* Maybe left-align on mobile for easier reading */
+    max-width: 100%; /* Use full width on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .integrated-message-text {
+    font-size: 1.5rem; /* Even smaller for tiny screens */
+  }
 }
