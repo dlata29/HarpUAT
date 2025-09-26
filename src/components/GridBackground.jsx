@@ -49,6 +49,8 @@ const GridBackground = ({ children }) => {
         />
       ))}
 
+      {/* Section Label (above first heading) */}
+
       {/* The rest of your page content */}
       {children}
     </div>
