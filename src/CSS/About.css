@@ -35,10 +35,27 @@
 
 .about-image-column img {
   width: 100%;
-  max-width: 300px; /* You can adjust this to control the max image size */
+  max-width: 320px;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
+  transform: scale(0.8); /* start smaller */
+  transition: transform 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.zoom-image {
+  animation: zoomIn 2s ease-in-out forwards;
 }
 
 .about-tag {

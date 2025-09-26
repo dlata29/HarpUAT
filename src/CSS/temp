@@ -1,142 +1,67 @@
-/* General Product Page */
-.product-page {
-  font-family: "Inter", sans-serif;
-  color: #111;
-  position: relative;
-}
+import React, { useRef, useState, useEffect } from "react";
+import "../CSS/About.css";
 
-/* Hero Section */
-.product-hero {
-  position: relative;
-  height: 60vh; /* reduced height */
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 0 40% 40% / 0 0 10% 10%;
-}
+const About = React.forwardRef(({ onOpenModal }, ref) => {
+  // Accept onOpenModal prop
+  const textContainerRef = useRef(null);
+  const mainText =
+    "We help entrepreneurs, small businesses, and creators turn bold ideas into meaningful digital products. We specialize in elegant, user-friendly websites, custom mobile and web apps, and AI-powered tools and automation. Whether you're starting fresh or scaling fast, we build digital experiences that feel as inspired as your mission.";
+  const [highlightedChars, setHighlightedChars] = useState(0);
+  const darkColor = "rgb(31, 41, 55)";
+  const lightColor = "rgb(209, 213, 219)";
 
-/* Background Video */
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
+  const handleAboutScroll = () => {
+    if (textContainerRef.current) {
+      const { top, bottom, height } = textContainerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-/* Hero Overlay */
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center; /* hero text centered */
-  padding-top: 2rem;
-  z-index: 5;
-}
+      let progress = (windowHeight - top) / (windowHeight + height);
 
-/* Navbar only on left for product pages */
-.product-page .navbar-fade {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  transform: none;
-  flex-direction: column;
-  align-items: flex-start;
-  z-index: 20;
-}
+      progress = (windowHeight - top) / windowHeight;
+      progress = Math.max(0, Math.min(1, progress));
 
-/* Fade-in animation */
-.fade-in {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
+      const charCount = Math.floor(progress * mainText.length);
+      setHighlightedChars(charCount);
+    }
+  };
 
-.fade-in.visible {
-  opacity: 1;
-}
+  useEffect(() => {
+    window.addEventListener("scroll", handleAboutScroll);
+    handleAboutScroll();
+    return () => window.removeEventListener("scroll", handleAboutScroll);
+  }, []);
 
-.hero-content {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
+  return (
+    <section className="about-section" ref={ref}>
+      <div className="about-container">
+        <div className="about-image-column">
+          <img src="public/HarpAboutUS.png" alt="Harp and Code Team" />
+        </div>
+        <div className="about-text-column" ref={textContainerRef}>
+          <span className="about-tag">About Harp & Code</span>
+          <h1 className="about-headline">We partner with visionaries</h1>
+          <div className="about-description">
+            <p>
+              {mainText.split("").map((char, index) => (
+                <span
+                  key={index}
+                  style={{
+                    color: index < highlightedChars ? darkColor : lightColor,
+                    transition: "color 0.1s linear",
+                  }}>
+                  {char}
+                </span>
+              ))}
+            </p>
+          </div>
+          {/* Add onClick handler to the button */}
+          <button className="about-contact-button" onClick={onOpenModal}>
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+});
 
-.hero-content.visible {
-  opacity: 1;
-}
-
-/* Web Dev Hero Gradient */
-.web-dev {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-}
-
-.app-dev {
-  /* Dark charcoal gradient */
-  background: linear-gradient(135deg, #1c1c1c, #2f2f2f, #4a4a4a);
-}
-
-.ai-solutions {
-  /* Dark charcoal gradient */
-  background: linear-gradient(135deg, #1c1c1c, #2f2f2f, #4a4a4a);
-}
-/* Gradient animation */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Product Services Section */
-.product-services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 1rem;
-
-  position: relative; /* allow z-index */
-  z-index: 10; /* appear above hero */
-  margin-top: -60px; /* pull up over hero */
-}
-
-/* Service Card */
-.service-card {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Adjust hero content spacing if shorter hero */
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
+export default About;

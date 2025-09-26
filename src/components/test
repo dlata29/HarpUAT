@@ -1,55 +1,67 @@
-import React, { useState, useEffect } from "react";
-import "../css/ProductPage.css";
-import Navbar from "./Navbar";
+import React, { useRef, useState, useEffect } from "react";
+import "../CSS/About.css";
 
-export default function WebDevelopment() {
-  const [showNav, setShowNav] = useState(false);
-  const [showContent, setShowContent] = useState(false);
+const About = React.forwardRef(({ onOpenModal }, ref) => {
+  // Accept onOpenModal prop
+  const textContainerRef = useRef(null);
+  const mainText =
+    "We help entrepreneurs, small businesses, and creators turn bold ideas into meaningful digital products. We specialize in elegant, user-friendly websites, custom mobile and web apps, and AI-powered tools and automation. Whether you're starting fresh or scaling fast, we build digital experiences that feel as inspired as your mission.";
+  const [highlightedChars, setHighlightedChars] = useState(0);
+  const darkColor = "rgb(31, 41, 55)";
+  const lightColor = "rgb(209, 213, 219)";
 
-  const services = [
-    "Custom Websites → Responsive, SEO-friendly sites tailored for your brand.",
-    "E-commerce Platforms → Scalable online stores with secure payment integrations.",
-    "WordPress & CMS Solutions → Easy-to-manage content platforms for blogs, portfolios, and enterprises.",
-  ];
+  const handleAboutScroll = () => {
+    if (textContainerRef.current) {
+      const { top, bottom, height } = textContainerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      let progress = (windowHeight - top) / (windowHeight + height);
+
+      progress = (windowHeight - top) / windowHeight;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const charCount = Math.floor(progress * mainText.length);
+      setHighlightedChars(charCount);
+    }
+  };
 
   useEffect(() => {
-    const navTimer = setTimeout(() => setShowNav(true), 1000);
-    const contentTimer = setTimeout(() => setShowContent(true), 2000);
-    return () => {
-      clearTimeout(navTimer);
-      clearTimeout(contentTimer);
-    };
+    window.addEventListener("scroll", handleAboutScroll);
+    handleAboutScroll();
+    return () => window.removeEventListener("scroll", handleAboutScroll);
   }, []);
 
   return (
-    <div className="product-page">
-      {/* Hero Section */}
-      <section className="product-hero web-dev">
-        {/* Optional Background Video */}
-
-        {/* Overlay */}
-        <div className="hero-overlay">
-          {/* Navbar fade-in */}
-          <div className={`fade-in ${showNav ? "visible" : "hidden"}`}>
-            <Navbar />
-          </div>
-
-          {/* Hero Content fade-in */}
-          <div className={`hero-content ${showContent ? "visible" : "hidden"}`}>
-            <h1>Web Development Services</h1>
-            <p>Build modern, responsive, and high-performing websites for your brand.</p>
-          </div>
+    <section className="about-section" ref={ref}>
+      <div className="about-container">
+        <div className="about-image-column">
+          <img src="../" alt="Harp and Code Team" />
         </div>
-      </section>
-
-      {/* Services Section (floating above hero) */}
-      <section className="product-services overlay-services">
-        {services.map((service, idx) => (
-          <div key={idx} className="service-card">
-            <p>{service}</p>
+        <div className="about-text-column" ref={textContainerRef}>
+          <span className="about-tag">About Harp & Code</span>
+          <h1 className="about-headline">We partner with visionaries</h1>
+          <div className="about-description">
+            <p>
+              {mainText.split("").map((char, index) => (
+                <span
+                  key={index}
+                  style={{
+                    color: index < highlightedChars ? darkColor : lightColor,
+                    transition: "color 0.1s linear",
+                  }}>
+                  {char}
+                </span>
+              ))}
+            </p>
           </div>
-        ))}
-      </section>
-    </div>
+          {/* Add onClick handler to the button */}
+          <button className="about-contact-button" onClick={onOpenModal}>
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </section>
   );
-}
+});
+
+export default About;
