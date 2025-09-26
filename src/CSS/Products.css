@@ -83,8 +83,9 @@
   top: 0;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* change from center to flex-start */
   justify-content: center;
+  padding-top: 10vh; /* adjust this for fine-tuning */
 }
 
 .sticky-image-wrapper {

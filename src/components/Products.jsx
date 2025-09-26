@@ -50,30 +50,37 @@ const Products = React.forwardRef((props, ref) => {
     },
   ];
 
-  const [progressValues, setProgressValues] = useState(Array(servicesData.length).fill(0));
+  // refs to each text section
   const serviceSectionsRef = useRef([]);
+  // active index = the section whose center is closest to viewport center
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const handleServicesScroll = () => {
-      const newProgressValues = servicesData.map((_, index) => {
-        const section = serviceSectionsRef.current[index];
-        if (!section) return 0;
+    const handleScroll = () => {
+      const centerY = window.innerHeight / 2;
+      let bestIndex = 0;
+      let bestDistance = Infinity;
 
-        const { top } = section.getBoundingClientRect();
-        const animationStartPoint = window.innerHeight * 0.75;
-        const animationEndPoint = window.innerHeight * 0.25;
-        const animationZoneHeight = animationStartPoint - animationEndPoint;
-        const distanceFromStart = animationStartPoint - top;
-        const progress = distanceFromStart / animationZoneHeight;
-
-        return Math.max(0, Math.min(1, progress));
+      serviceSectionsRef.current.forEach((section, idx) => {
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        const sectionCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(sectionCenter - centerY);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = idx;
+        }
       });
-      setProgressValues(newProgressValues);
+
+      setActiveIndex((prev) => {
+        if (prev !== bestIndex) return bestIndex;
+        return prev;
+      });
     };
 
-    window.addEventListener("scroll", handleServicesScroll);
-    handleServicesScroll();
-    return () => window.removeEventListener("scroll", handleServicesScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // initial calc
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [servicesData.length]);
 
   return (
@@ -82,9 +89,9 @@ const Products = React.forwardRef((props, ref) => {
         <span className="label-text">OUR SERVICES</span>
         <span className="label-line"></span>
       </div>
-      <div className="services-container">
-        {/* Left side: Scrolling Text Content */}
 
+      <div className="services-container">
+        {/* Left: Text */}
         <div className="services-text-content">
           {servicesData.map((service, index) => (
             <div
@@ -118,12 +125,15 @@ const Products = React.forwardRef((props, ref) => {
           ))}
         </div>
 
-        {/* Right side: Sticky Images with Parallax */}
+        {/* Right: Sticky images */}
         <div className="services-image-container">
           <div className="sticky-image-wrapper">
             {servicesData.map((service, index) => {
-              const progress = progressValues[index] || 0;
-              const translateY = index === 0 ? "0%" : `${100 - progress * 100}%`;
+              const isActive = index === activeIndex;
+
+              // inactive images move slightly up or down so transition looks natural
+              const translateY = isActive ? "0%" : index < activeIndex ? "-30%" : "30%";
+              const z = isActive ? servicesData.length + 1 : servicesData.length - index; // ensure active on top
 
               return (
                 <img
@@ -133,7 +143,9 @@ const Products = React.forwardRef((props, ref) => {
                   className="service-image"
                   style={{
                     transform: `translateY(${translateY})`,
-                    zIndex: index,
+                    zIndex: z,
+                    opacity: isActive ? 1 : 0.65,
+                    transition: "transform 0.45s cubic-bezier(0.22,0.9,0.3,1), opacity 0.35s ease",
                   }}
                   onError={(e) => {
                     e.target.onerror = null;
