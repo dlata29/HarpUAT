@@ -1,182 +1,192 @@
-/* src/CSS/Footer.css */
-
+/* General Footer Section Styling */
 .footer-section {
-  background-color: #ffffff; /* Changed from #f9fafb */
-  padding: 6rem 2rem;
-  border-top: 1px solid #e5e7eb;
+  background-color: #f0f0f0; /* Light grey background from image */
+  padding: 4rem 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111;
+  overflow: hidden; /* Added to contain animations */
 }
 
 .footer-container {
-  max-width: 80rem; /* 1280px */
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1.2fr 1fr; /* Left column is slightly larger */
   gap: 4rem;
+  align-items: start;
 }
 
-@media (min-width: 768px) {
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Left Side: Featured Work Card */
+/* --- Left Side: Featured Work Card --- */
 .featured-work-card {
-  position: relative;
   display: block;
-  aspect-ratio: 4 / 3;
-  border-radius: 1rem;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background-color: #a3b18a; /* Muted green from image */
   text-decoration: none;
+  color: white;
 }
 
 .base-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.4s ease;
 }
 
+.featured-work-card:hover .base-image {
+  opacity: 0.1; /* Fade out the image on hover */
+}
+
+/* Static "Featured Work" text */
 .static-text {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Hover Overlay Styles */
+.hover-overlay {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end; /* Aligns content to the bottom */
   padding: 1.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.2);
-  border-bottom-right-radius: 1rem;
-}
-
-/* Hover Effect */
-.hover-overlay {
-  position: absolute;
-  inset: 0;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.4s ease;
 }
 
 .featured-work-card:hover .hover-overlay {
   opacity: 1;
 }
 
-.overlay-background {
-  position: absolute;
-  inset: 0;
-  background-color: #111827;
-  opacity: 0.8;
-}
-
 .hover-content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .hover-title {
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 .hover-cta {
-  margin-top: 0.25rem;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-/* Right Side: Contact Info */
+/* --- Right Side: Contact Info --- */
 .contact-info-column {
-  display: flex;
-  flex-direction: column;
+  padding-top: 1rem;
 }
 
 .footer-headline {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
-  color: #111827;
+  margin: 0 0 1rem 0;
 }
 
 .highlight-text {
-  color: #07569b; /* Your primary blue color */
+  background-color: #ff4d4d; /* Red highlight */
+  color: white;
+  padding: 0 0.5rem;
 }
 
 .footer-tagline {
-  margin-top: 1rem;
-  font-size: 1.125rem;
-  color: #4b5563;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
 }
 
+/* UPDATED: Stack button and link vertically */
 .footer-actions {
-  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  align-items: flex-start; /* Aligns them to the left */
+  gap: 1rem; /* Adds space between the button and link */
+  margin-bottom: 4rem;
 }
 
 .footer-contact-button {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  padding: 0.75rem 1rem;
-  border: 2px solid #1f2937;
-  color: #1f2937;
-  background-color: transparent;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease-in-out;
   cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.2s;
 }
 
 .footer-contact-button:hover {
-  background-color: #1f2937;
-  color: #ffffff;
+  background-color: #444;
 }
 
+/* UPDATED: Made font bolder */
 .footer-link {
-  display: block;
-  color: #374151;
-  margin-top: 1rem;
-  text-decoration: none;
-}
-
-.footer-link:hover {
+  color: #111;
+  font-weight: 600; /* Bolder font */
   text-decoration: underline;
+  font-size: 0.9rem;
 }
 
-/* Bottom Details */
+/* Details Section (Address, Contact, etc.) */
 .footer-details {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid #e5e7eb;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 2rem;
-  font-size: 0.875rem;
+  border-top: 1px solid #ddd;
+  padding: 1rem 0rem;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ADDED: This class will be added by JavaScript to trigger the animation */
+.footer-details.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .details-heading {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #555;
 }
 
-.details-text {
-  margin-top: 0.5rem;
-  color: #374151;
-}
-
+.details-text,
 .details-link {
-  display: block;
-  margin-top: 0.25rem;
-  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #111;
   text-decoration: none;
+  display: block; /* Makes links stack */
 }
 
 .details-link:hover {
   text-decoration: underline;
 }
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* Stack columns */
+  }
+
+  .footer-headline {
+    font-size: 2rem;
+  }
+}
+
+/* REMOVED: Keyframes are no longer needed as we use a transition now */

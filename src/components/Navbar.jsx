@@ -20,18 +20,18 @@ export default function Navbar({ isVisible }) {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/features">Services</NavLink>
+            <NavLink to="/features">About Us</NavLink>
           </li>
           <li>
-            <NavLink to="/pricing">About Us</NavLink>
+            <NavLink to="/pricing">What we offer</NavLink>
           </li>
           <li>
-            <NavLink to="/about">Products</NavLink>
+            <NavLink to="/about">Blogs</NavLink>
           </li>
         </ul>
 
         <div className="navbar-right">
-          <button className="btn-secondary">Join Waitlist</button>
+          {/* <button className="btn-secondary">Join Waitlist</button> */}
           <button className="btn-primary">Contact Us</button>
         </div>
       </nav>
