@@ -40,7 +40,7 @@ export const useScrollAnimation = (ref) => {
 
           // --- THIS IS THE CHANGED LINE ---
           // The animation will now only occur in the top 80% of the viewport.
-          const scrollProgress = (windowHeight * 0.95 - top) / (windowHeight * 0.8);
+          const scrollProgress = (windowHeight * 0.8 - top) / (windowHeight * 0.95);
 
           const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
           setProgress(clampedProgress);
