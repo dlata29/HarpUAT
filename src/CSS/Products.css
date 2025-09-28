@@ -1,26 +1,28 @@
 /* src/CSS/Products.css */
 
 .services-section {
-  padding: 8rem 2rem;
+  /* USE padding only for vertical spacing, just like .about-section */
+  padding-top: 4rem;
+  padding-bottom: 2rem;
   position: relative;
   z-index: 10;
   background-color: transparent;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
 }
 
 .services-container {
-  /* CHANGED: Matched max-width to the .about-container for consistency */
+  /* MATCH max-width to the .about-container */
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 2rem;
+  /* REMOVED horizontal padding to align with the page edges */
+  padding: 0;
 }
 
 @media (min-width: 768px) {
   .services-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Changed back to equal columns */
     align-items: flex-start;
   }
 }
@@ -33,27 +35,24 @@
   font-size: 0.75rem;
   font-weight: 500;
   color: #4b5563;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   grid-column: 1 / -1;
-  justify-self: start;
+  justify-self: start; /* Changed back to 'start' */
 }
 
 .services-text-content {
   display: flex;
   flex-direction: column;
-  /* CHANGED: Reduced the large gap between service items */
-  gap: 4rem;
+  gap: 12rem; /* Increased from 4rem */
   padding-bottom: 30vh;
 }
 
 .service-item {
-  /* REMOVED: min-height and justify-content to eliminate the large vertical gap */
   display: flex;
   flex-direction: column;
 }
 
 .service-title {
-  /* CHANGED: Matched font-size to the .about-headline */
   font-size: 2.5rem;
   font-weight: 700;
   color: #111827;
@@ -63,8 +62,8 @@
 .service-title span {
   background-color: white;
 }
+
 .service-description {
-  /* CHANGED: Matched font-size and line-height to the .about-description */
   font-size: 1.5rem;
   color: #4b5563;
   margin-bottom: 2rem;
@@ -82,7 +81,7 @@
 
 .service-point {
   display: flex;
-  align-items: center; /* Changed from flex-start */
+  align-items: center; /* Vertically centers the icon and text */
   color: #374151;
 }
 
@@ -92,18 +91,21 @@
   color: #1f2937;
   margin-right: 0.75rem;
   flex-shrink: 0;
-  /* REMOVED margin-top: 0.25rem; */
 }
 
 .services-image-container {
   position: sticky;
-  top: 20vh;
+  top: 14vh; /* Raised position */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 10vh);
 }
 
 .sticky-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 28rem;
+  max-width: 32rem; /* Reduced by 20% from 45rem */
   aspect-ratio: 1 / 1;
   border-radius: 1rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -116,6 +118,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* CHANGED back to 'cover' */
   transition: transform 0.3s ease-out;
 }
