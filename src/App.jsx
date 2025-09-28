@@ -10,6 +10,7 @@ import AISolutions from "./components/AISolutions";
 import Footer from "./components/Footer";
 import CallbackFormModal from "./components/CallbackFormModal";
 import GridBackground from "./components/GridBackground";
+import BlogSection from "./components/BlogSection"; // 1. Import the new component
 
 export default function App() {
   const [isNavbarVisible, setNavbarVisible] = useState(false);
@@ -56,11 +57,12 @@ export default function App() {
           element={
             <>
               <Hero onVideoEnd={handleVideoEnd} />
-
               <About ref={contentSectionRef} onOpenModal={openModal} />
               <GridBackground>
                 <Products />
               </GridBackground>
+              {/* 2. Add the BlogSection here, before the Footer */}
+              <BlogSection />
               <Footer onOpenModal={openModal} />
             </>
           }
