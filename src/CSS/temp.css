@@ -1,0 +1,136 @@
+/* General Section Styling */
+.blog-section {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+}
+
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styling */
+.blog-header {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.blog-header .blog-subtitle {
+  display: none;
+}
+
+.blog-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blog-title::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000;
+}
+
+/* Blog Grid Layout */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Individual Blog Card Styling */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: #111827;
+  transition: transform 0.2s ease-in-out;
+  height: 100%;
+}
+
+/* --- UPDATED IMAGE STYLES --- */
+.blog-card-image {
+  width: 100%;
+  /* REMOVED fixed height */
+  /* ADDED aspect-ratio to make all images square */
+  aspect-ratio: 1 / 1; /* (3 / 3 is the same as 1 / 1) */
+  object-fit: cover;
+}
+
+.blog-card-content {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows content to fill space */
+}
+
+.blog-card-meta {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.blog-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+/* Hiding excerpt and read more to match the clean look of the image */
+.blog-card-excerpt,
+.blog-card-readmore {
+  display: none;
+}
+
+/* --- Alternating Card Styles Logic --- */
+/* This rule still handles the color change for every even card */
+.blog-card:nth-child(even) {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+/* REMOVED: The specific height rule for the image inside even cards is no longer needed */
+/* .blog-card:nth-child(even) .blog-card-image { ... } */
+
+.blog-card:nth-child(even) .blog-card-meta {
+  color: #a0a0a0;
+}
+
+/* Footer Button Styling */
+.blog-footer {
+  margin-top: 4rem;
+  text-align: left;
+}
+
+.view-more-button {
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  padding: 0.6rem 1.5rem;
+  border-radius: 9999px; /* Pill shape */
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.view-more-button:hover {
+  background-color: #e0e0e0;
+}

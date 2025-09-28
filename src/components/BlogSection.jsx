@@ -20,7 +20,9 @@ const BlogSection = () => {
         const data = await response.json();
         setPosts(data);
       } catch (err) {
-        setError("Failed to fetch posts. Make sure your WordPress URL is correct and the REST API is accessible.");
+        setError(
+          "Failed to fetch posts. Make sure your WordPress URL is correct and the REST API is accessible."
+        );
         console.error("Error fetching posts:", err);
       } finally {
         setLoading(false);
@@ -63,25 +65,34 @@ const BlogSection = () => {
         <div className="blog-grid">
           {posts.map((post, index) => {
             // Safely get the featured image URL from the embedded data
-            const imageUrl = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "https://placehold.co/600x400/a3b18a/ffffff?text=Blog+Post";
+            const imageUrl =
+              post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+              "https://placehold.co/600x400/a3b18a/ffffff?text=Blog+Post";
             // Get author name
             const authorName = post._embedded?.author?.[0]?.name || "Anonymous";
 
             return (
-              <div key={post.id} className={`blog-card ${index === 3 ? "highlighted" : ""}`}>
+              <div key={post.id} className={`blog-card`}>
                 <img src={imageUrl} alt={post.title.rendered} className="blog-card-image" />
                 <div className="blog-card-content">
                   <p className="blog-card-meta">
                     {formatDate(post.date)} • {authorName}
                   </p>
-                  <h3 className="blog-card-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <h3
+                    className="blog-card-title"
+                    dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                  />
                   <div
                     className="blog-card-excerpt"
                     // Note: Using dangerouslySetInnerHTML is safe here because the content
                     // is coming from your own trusted WordPress CMS.
                     dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                   />
-                  <a href={post.link} target="_blank" rel="noopener noreferrer" className="blog-card-readmore">
+                  <a
+                    href={post.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="blog-card-readmore">
                     Read more &rarr;
                   </a>
                 </div>
