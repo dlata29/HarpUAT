@@ -1,13 +1,17 @@
 .about-section {
-  background-color: white; /* Changed from #f9fafb */
+  background-color: white;
   position: relative;
   z-index: 4;
-  min-height: 100vh;
+  /* REMOVE the line below to stop the section from taking up the full screen height */
+  /* min-height: 100vh; */
   display: flex;
-  align-items: center;
-  margin-top: -11vh; /* Pulls the section up to overlap the hero */
-  border-top-left-radius: 2rem; /* Adjust value as needed for the curve */
-  border-top-right-radius: 2rem; /* Adjust value as needed for the curve */
+  align-items: flex-start; /* ADD this to align content to the top */
+  margin-top: -11vh;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  /* USE padding for precise spacing */
+  padding-top: 8rem; /* Adjust this value to get the desired gap */
+  padding-bottom: 8rem; /* Keeps the section balanced */
 }
 
 .about-container {
@@ -21,7 +25,7 @@
 }
 
 .about-text-column {
-  flex: 2.5;
+  flex: 2;
   min-width: 600px;
 }
 
@@ -72,19 +76,28 @@
 }
 
 .about-contact-button {
-  background-color: #1f2937;
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  /* Reset button styles */
+  background-color: transparent;
   border: none;
+  padding: 0;
+
+  /* Add new link styles */
+  color: #1f2937; /* Dark text */
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
   margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* Adds space between letters */
+
+  /* Custom Underline */
+  padding-bottom: 5px; /* Space between text and underline */
+  border-bottom: 1px solid #1f2937; /* The underline itself */
+  transition: color 0.2s, border-color 0.2s;
 }
 
 .about-contact-button:hover {
-  background-color: #374151;
+  color: #4b5563; /* Text color slightly fades on hover */
+  border-color: #d35400; /* Underline also fades */
 }
 
 @media (max-width: 768px) {

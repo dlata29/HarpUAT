@@ -85,9 +85,11 @@ const Products = React.forwardRef((props, ref) => {
               <ul className="service-points">
                 {service.points.map((point, pIndex) => (
                   <li key={pIndex} className="service-point">
-                    <svg className="point-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                    {/* START: Updated SVG Icon */}
+                    <svg className="point-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 20H8V4h2v2h2v3h2v2h2v2h-2v2h-2v3h-2v2z" fill="#000000"></path>
                     </svg>
+                    {/* END: Updated SVG Icon */}
                     <span>{point}</span>
                   </li>
                 ))}

@@ -12,8 +12,7 @@
   inset: 0;
   z-index: -1;
   background-size: 30px 30px;
-  background-image: linear-gradient(to right, #f1f1f17a 1px, transparent 1px),
-    linear-gradient(to bottom, #f1f1f191 1px, transparent 1px);
+  background-image: linear-gradient(to right, #f1f1f17a 1px, transparent 1px), linear-gradient(to bottom, #f1f1f191 1px, transparent 1px);
 }
 
 .trail-box {
@@ -30,27 +29,4 @@
   to {
     opacity: 0;
   }
-}
-
-/* --- our services heading --- */
-.section-label {
-  display: flex;
-  align-items: center;
-  gap: 1rem; /* space between text and line */
-  margin: 4rem 2rem 2rem; /* spacing around it */
-}
-
-.section-label .label-text {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #d35400; /* orange like in your example */
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.section-label .label-line {
-  height: 1px;
-  background-color: #7a7a7a3b;
-  width: 50%;
 }

@@ -18,12 +18,12 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
 
   // Style for the text column (uses the direct scroll progress)
   const textRevealStyle = {
-    transform: `translateY(${(1 - scrollProgress) * 200}px)`,
+    transform: `translateY(${(1 - scrollProgress) * 100}px)`,
   };
 
   // Style for the image column (uses the delayed image progress)
   const imageRevealStyle = {
-    transform: `translateY(${(1 - imageProgress) * 200}px)`,
+    transform: `translateY(${(1 - imageProgress) * 100}px)`,
   };
 
   // Calculation for the text highlighting effect
@@ -44,7 +44,8 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
                   style={{
                     color: index < highlightedChars ? darkColor : lightColor,
                     transition: "color 0.15s linear",
-                  }}>
+                  }}
+                >
                   {char}
                 </span>
               ))}
