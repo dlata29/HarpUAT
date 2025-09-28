@@ -11,7 +11,7 @@ export default function Navbar({ isVisible }) {
             {/* The SVG is now replaced with your logo image */}
             <img src="/logo.png" alt="Harp & Code Logo" className="logo-img" />
             {/* The company name is updated here */}
-            <span>Harp & Code</span>
+            <span>Harp and Code</span>
           </div>
         </div>
 

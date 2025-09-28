@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -10,39 +10,16 @@ import AISolutions from "./components/AISolutions";
 import Footer from "./components/Footer";
 import CallbackFormModal from "./components/CallbackFormModal";
 import GridBackground from "./components/GridBackground";
-import BlogSection from "./components/BlogSection"; // 1. Import the new component
+import BlogSection from "./components/BlogSection";
 
 export default function App() {
-  const [isNavbarVisible, setNavbarVisible] = useState(false);
+  // The navbar is now visible by default
+  const [isNavbarVisible, setNavbarVisible] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
   const contentSectionRef = useRef(null);
 
-  const handleVideoEnd = () => {
-    setNavbarVisible(true);
-  };
-
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setNavbarVisible(true);
-        } else if (entry.boundingClientRect.top > 0) {
-          setNavbarVisible(false);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    const currentRef = contentSectionRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
 
   return (
     <Router>
@@ -56,12 +33,11 @@ export default function App() {
           path="/"
           element={
             <>
-              <Hero onVideoEnd={handleVideoEnd} />
+              <Hero />
               <About ref={contentSectionRef} onOpenModal={openModal} />
               <GridBackground>
                 <Products />
               </GridBackground>
-              {/* 2. Add the BlogSection here, before the Footer */}
               <BlogSection />
               <Footer onOpenModal={openModal} />
             </>

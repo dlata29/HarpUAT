@@ -21,7 +21,7 @@
   display: block;
   position: relative;
   overflow: hidden;
-  background-color: #a3b18a; /* Muted green from image */
+  background-color: transparent; /* Muted green from image */
   text-decoration: none;
   color: white;
 }
@@ -34,7 +34,7 @@
 }
 
 .featured-work-card:hover .base-image {
-  opacity: 0.1; /* Fade out the image on hover */
+  opacity: 1; /* Fade out the image on hover */
 }
 
 /* Static "Featured Work" text */

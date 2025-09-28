@@ -152,6 +152,7 @@
 }
 
 .blog-footer {
+  display: none;
   margin-top: 4rem;
 }
 
