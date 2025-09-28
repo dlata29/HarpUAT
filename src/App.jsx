@@ -56,7 +56,7 @@ export default function App() {
           element={
             <>
               <Hero onVideoEnd={handleVideoEnd} />
-              <div style={{ marginTop: "4rem" }}></div>
+
               <About ref={contentSectionRef} onOpenModal={openModal} />
               <GridBackground>
                 <Products />

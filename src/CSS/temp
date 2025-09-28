@@ -1,95 +1,111 @@
-.hero-section {
-  position: sticky; /* This makes the element stick */
-  top: 0; /* Sticks to the top of the viewport */
-  z-index: 1; /* Ensures it's behind the scrolling content */
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1; /* keep video in background */
-}
-
-.hero-overlay.left-align {
+.about-section {
+  padding: 4rem 1rem; /* more breathing space */
+  background-color: #fff; /* light gray background */
+  position: relative;
+  z-index: 4;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center; /* align everything to the left */
-  justify-content: flex-start; /* top-align */
-  padding: 2rem 4rem; /* add padding from top/left */
+  align-items: center;
+  border-radius: 20px 20px 0px 0px;
 }
 
-/* Navbar inside left-aligned overlay */
-.hero-overlay.left-align .fade-in {
-  margin-bottom: 2rem; /* space between navbar and hero text */
-}
-
-/* Hero text */
-.hero-content {
-  flex: 1; /* take remaining space below navbar */
+.about-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 3rem;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 3rem;
+  background-color: transparent;
+  align-items: center;
+}
+
+.about-text-column {
+  flex: 2;
+  min-width: 600px;
+}
+
+.about-image-column {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
   justify-content: center;
-  align-items: flex-start; /* Aligns content to the left */
-  color: white;
-  text-align: left; /* Aligns text to the left */
-  opacity: 0;
-  transition: opacity 1s ease-in;
+  align-items: center;
 }
 
-.hero-content.visible {
-  opacity: 1;
+.about-image-column img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  transform: scale(0.8); /* start smaller */
+  transition: transform 0.3s ease-out;
 }
 
-.hero-content h1 {
-  font-size: 9rem; /* Increased font size */
-  margin-bottom: 0.5rem;
-  white-space: nowrap; /* Ensures text stays on one line */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.hero-content p {
-  font-size: 1.24rem; /* Increased font size */
-  white-space: nowrap; /* Ensures the text stays on one line */
+.zoom-image {
+  animation: zoomIn 2s ease-in-out forwards;
 }
 
-.hero-content span {
-  font-size: 4rem; /* Increased font size */
-  white-space: nowrap; /* Ensures the text stays on one line */
+.about-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #f3f4f6;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 1rem;
 }
 
-.gradient-text {
-  /* Create a linear gradient from purple to pink */
-  background-image: linear-gradient(90deg, #2578be, #2596be);
-
-  /* Clip the background to the text */
-  -webkit-background-clip: text; /* For Safari/Chrome */
-  background-clip: text;
-
-  /* Make the text color transparent to reveal the gradient */
-  color: transparent;
+.about-headline {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
 }
 
-/* Common fade effect */
-.fade-in,
-.hero-content {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+.about-description p {
+  font-size: 2rem;
+  color: #4b5563;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  /* font-weight: 500; */
+  text-align: left;
+  word-spacing: normal;
+  letter-spacing: 0.02rem;
 }
 
-.fade-in.visible,
-.hero-content.visible {
-  opacity: 1;
-  transform: translateY(0);
+.about-contact-button {
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1.5rem;
 }
 
-.hidden {
-  opacity: 0;
-  transform: translateY(20px);
+.about-contact-button:hover {
+  background-color: #374151;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column-reverse; /* Stack image on top on mobile */
+    padding: 2rem;
+  }
 }

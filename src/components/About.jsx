@@ -4,6 +4,7 @@ import "../CSS/About.css";
 const About = React.forwardRef(({ onOpenModal }, ref) => {
   const textContainerRef = useRef(null);
   const imageRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   const mainText =
     "We help entrepreneurs, small businesses, and creators turn bold ideas into meaningful digital products. We specialize in elegant, user-friendly websites, custom mobile and web apps, and AI-powered tools and automation. Whether you're starting fresh or scaling fast, we build digital experiences that feel as inspired as your mission.";
@@ -14,47 +15,25 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   const darkColor = "rgb(31, 41, 55)";
   const lightColor = "rgb(209, 213, 219)";
 
-  const handleScroll = () => {
-    if (textContainerRef.current && imageRef.current) {
-      const { top, height } = textContainerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // 🔹 Progress for text highlighting (0 → 1)
-      let textProgress = (windowHeight - top) / (windowHeight + height * 0.5);
-      textProgress = (windowHeight - top) / windowHeight;
-      textProgress = Math.max(0, Math.min(1, textProgress));
-      const charCount = Math.floor(textProgress * mainText.length);
-      setHighlightedChars(charCount);
-
-      // 🔹 Progress for image scaling (0 → 1)
-      let imageProgress = (windowHeight - top) / windowHeight;
-      imageProgress = Math.max(0, Math.min(1, imageProgress));
-
-      // 🔹 Scale image between 0.4 → 1 based on scroll
-      const newScale = 0.5 + imageProgress * 0.6;
-      setScale(newScale);
-    }
-  };
-
-  const handleAboutScroll = () => {
-    if (textContainerRef.current) {
-      const { top, height } = textContainerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      let progress = (windowHeight - top) / (windowHeight + height);
-
-      progress = (windowHeight - top) / windowHeight;
-      progress = Math.max(0, Math.min(1, progress));
-
-      const charCount = Math.floor(progress * mainText.length);
-      setHighlightedChars(charCount);
-    }
-  };
   useEffect(() => {
+    const handleScroll = () => {
+      if (descriptionRef.current) {
+        const rect = descriptionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // how much of the description is visible
+        const progress = Math.min(
+          Math.max((windowHeight - rect.top) / (rect.height + windowHeight), 0),
+          3
+        );
+
+        setHighlightedChars(Math.floor(progress * mainText.length));
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // run on mount
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [mainText.length]);
 
   return (
     <section className="about-section" ref={ref}>
@@ -73,14 +52,13 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
         <div className="about-text-column" ref={textContainerRef}>
           <span className="about-tag">About Harp & Code</span>
           <h1 className="about-headline">We partner with visionaries</h1>
-          <div className="about-description">
+          <div className="about-description" ref={descriptionRef}>
             <p>
               {mainText.split("").map((char, index) => (
                 <span
                   key={index}
                   style={{
-                    color: index < highlightedChars ? darkColor : lightColor,
-                    transition: "color 0.2s linear",
+                    color: index < highlightedChars ? "rgb(31, 41, 55)" : "rgb(209, 213, 219)",
                   }}>
                   {char}
                 </span>

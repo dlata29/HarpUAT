@@ -77,14 +77,14 @@
 }
 
 .about-description p {
-  font-size: 1.8rem; /* readable size for most screens */
-  color: #4b5563; /* soft dark gray */
-  line-height: 1.75; /* more vertical breathing space */
-  margin-bottom: 1.5rem; /* separates paragraph from button */
-  font-weight: 500; /* medium weight, not too bold */
-  text-align: left; /* keeps left alignment */
-  word-spacing: normal; /* natural spacing */
-  letter-spacing: 0.02rem; /* subtle letter spacing for clarity */
+  font-size: 2rem;
+  color: #4b5563;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  /* font-weight: 500; */
+  text-align: left;
+  word-spacing: normal;
+  letter-spacing: 0.02rem;
 }
 
 .about-contact-button {
