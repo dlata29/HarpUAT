@@ -72,13 +72,9 @@ const Products = React.forwardRef((props, ref) => {
 
   return (
     <section className="services-section" ref={ref}>
-      <div className="section-label">
-        <span className="label-text">OUR SERVICES</span>
-        <span className="label-line"></span>
-      </div>
       <div className="services-container">
+        <span className="services-tag">OUR SERVICES</span>
         {/* Left side: Scrolling Text Content */}
-
         <div className="services-text-content">
           {servicesData.map((service, index) => (
             <div key={index} ref={(el) => (serviceSectionsRef.current[index] = el)} className="service-item">

@@ -3,8 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:  'Syne', sans-serif;
-  
+  font-family: "Syne", sans-serif;
 }
 
 body {
@@ -12,5 +11,3 @@ body {
   color: #333;
   line-height: 1.6;
 }
-
-/

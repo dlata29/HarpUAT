@@ -26,6 +26,20 @@
   }
 }
 
+/* --- our services heading --- */
+.services-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #f3f4f6;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 1rem;
+  grid-column: 1 / -1; /* This makes the tag span the full width of the grid */
+  justify-self: start; /* This is the fix */
+}
+
 .services-text-content {
   display: flex;
   flex-direction: column;
