@@ -1,10 +1,109 @@
 .hero-section {
-  position: relative;
-  height: 110vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  height: 100vh;
   width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0 5%;
   overflow: hidden;
 }
 
+/* --- Left Side: Text --- */
+.hero-text-container {
+  flex: 0 1 600px;
+}
+
+.hero-headline {
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-headline .highlight-text {
+  background-image: linear-gradient(90deg, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- CTA Button Styles --- */
+.hero-cta-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.cta-button {
+  display: inline-flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center text and icon */
+  gap: 0.5rem; /* Space between text and icon */
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Primary button style is no longer used but kept for future use */
+.cta-button.primary {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.cta-button.primary:hover {
+  background-color: #d1d5db;
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #4b5563;
+}
+
+.cta-button.secondary:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.cta-icon {
+  transition: transform 0.2s ease;
+}
+
+.cta-button.secondary:hover .cta-icon {
+  transform: translate(3px, -3px); /* Animate icon on hover */
+}
+
+/* --- Right Side: Visual Element --- */
+.hero-visual-container {
+  position: relative;
+  flex-shrink: 0;
+  width: 420px;
+  aspect-ratio: 9 / 16;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  animation: float-animation 6s ease-in-out infinite;
+}
+
+@keyframes float-animation {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.hero-image,
 .hero-video {
   position: absolute;
   top: 0;
@@ -12,81 +111,39 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.4s ease-in-out;
 }
 
-.hero-overlay.left-align {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* align everything to the left */
-  justify-content: flex-start; /* top-align */
-  padding: 2rem 4rem; /* add padding from top/left */
-}
-
-/* Navbar inside left-aligned overlay */
-.hero-overlay.left-align .fade-in {
-  margin-bottom: 2rem; /* space between navbar and hero text */
-}
-
-/* Hero text */
-.hero-content {
-  flex: 1; /* take remaining space below navbar */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; /* Aligns content to the left */
-  color: white;
-  text-align: left; /* Aligns text to the left */
+.hero-visual-container .hero-video {
   opacity: 0;
-  transition: opacity 1s ease-in;
 }
 
-.hero-content.visible {
+.hero-visual-container:hover .hero-video {
   opacity: 1;
 }
 
-.hero-content h1 {
-  font-size: 9rem; /* Increased font size */
-  margin-bottom: 0.5rem;
-  white-space: nowrap; /* Ensures text stays on one line */
-}
+/* --- Responsive styles for smaller screens --- */
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 3.5rem;
+    padding: 0 2rem;
+  }
 
-.hero-content p {
-  font-size: 1.24rem; /* Increased font size */
-  white-space: nowrap; /* Ensures the text stays on one line */
-}
+  .hero-text-container {
+    flex-basis: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.hero-content span {
-  font-size: 4rem; /* Increased font size */
-  white-space: nowrap; /* Ensures the text stays on one line */
-}
+  .hero-headline {
+    font-size: 3.5rem;
+  }
 
-.gradient-text {
-  /* Create a linear gradient from purple to pink */
-  background-image: linear-gradient(90deg, #2578be, #2596be);
-
-  /* Clip the background to the text */
-  -webkit-background-clip: text; /* For Safari/Chrome */
-  background-clip: text;
-
-  /* Make the text color transparent to reveal the gradient */
-  color: transparent;
-}
-
-/* Common fade effect */
-.fade-in,
-.hero-content {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.fade-in.visible,
-.hero-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hidden {
-  opacity: 0;
-  transform: translateY(20px);
+  .hero-visual-container {
+    width: 280px;
+  }
 }

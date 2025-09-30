@@ -9,17 +9,13 @@ export default function Footer({ onOpenModal }) {
         {/* Left Side: Featured Work */}
         <a href="#" target="_blank" rel="noopener noreferrer" className="featured-work-card group">
           {/* Base Image */}
-          <img
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
-            alt="Featured Project"
-            className="base-image"
-          />
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" alt="Featured Project" className="base-image" />
 
           {/* Hover Overlay */}
           <div className="hover-overlay">
             <div className="overlay-background"></div>
             <div className="hover-content">
-              <p className="hover-title">Web Development Project</p>
+              <p className="hover-title">UN Pension App</p>
               <p className="hover-cta">View Project &rarr;</p>
             </div>
           </div>
@@ -35,9 +31,7 @@ export default function Footer({ onOpenModal }) {
           <h2 className="footer-headline">
             Let's create something <span className="highlight-text">special</span>
           </h2>
-          <p className="footer-tagline">
-            If you've got a project in mind, get in touch and let's get started!
-          </p>
+          <p className="footer-tagline">If you've got a project in mind, get in touch and let's get started!</p>
           <div className="footer-actions">
             {/* Add onClick handler to the button */}
             <button className="footer-contact-button" onClick={onOpenModal}>
