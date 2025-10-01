@@ -4,7 +4,7 @@ import { useScrollAnimation } from "../hooks/useScrollAnimation"; // Import the 
 
 const About = React.forwardRef(({ onOpenModal }, ref) => {
   const mainText =
-    "We help entrepreneurs, small businesses, and creators turn bold ideas into meaningful digital products. We specialize in elegant, user-friendly websites, custom mobile and web apps, and AI-powered tools and automation. Whether you're starting fresh or scaling fast, we build digital experiences that feel as inspired as your mission.";
+    "Founded by a former UN staff member behind OneRetire, we turn complex challenges into simple, practical solutions. From web apps and custom software to AI tools, we help organizations and entrepreneurs make technology work for them. Combining real-world insight with technical expertise, we build tools that are reliable, useful, and impactful.";
 
   // All the complex logic is now handled by the hook!
   const scrollProgress = useScrollAnimation(ref);
