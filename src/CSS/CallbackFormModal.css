@@ -7,19 +7,27 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  overflow-y: auto; /* scroll if modal taller than viewport */
 }
 
+/* Modal container */
 .modal-content {
   position: relative;
   background-color: #ffffff;
   width: 100%;
   max-width: 56rem; /* 896px */
+  max-height: 90vh; /* Limit height */
   padding: 2rem 3rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
+/* Grid layout */
 .modal-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -32,13 +40,16 @@
   }
 }
 
+/* Title */
 .modal-title {
-  font-size: 3rem; /* 48px */
+  font-size: 3rem;
   font-family: serif;
   margin-bottom: 2rem;
   color: #111827;
+  text-align: center;
 }
 
+/* Form */
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -76,6 +87,7 @@
   box-shadow: 0 0 0 2px rgba(31, 41, 55, 0.2);
 }
 
+/* Right side / contact links */
 .modal-right {
   display: flex;
   flex-direction: column;
@@ -99,10 +111,7 @@
   color: #07569b;
 }
 
-.message-form {
-  flex-grow: 1;
-}
-
+/* Submit button */
 .submit-container {
   text-align: right;
 }
@@ -123,12 +132,13 @@
   color: #ffffff;
 }
 
+/* Close button */
 .close-button {
   position: absolute;
-  bottom: -3rem; /* Position below the modal */
+  bottom: -3rem;
   left: 50%;
   transform: translateX(-50%);
-  color: #ffffff;
+  color: #111827;
   font-weight: 600;
   text-decoration: underline;
   background: none;
@@ -138,9 +148,10 @@
 }
 
 .close-button:hover {
-  color: #d1d5db;
+  color: #4b5563;
 }
 
+/* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -149,5 +160,50 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* ==================== MOBILE / TABLET ==================== */
+@media (max-width: 1024px) {
+  .modal-content {
+    max-width: 90%;
+    padding: 1.5rem 2rem;
+  }
+
+  .modal-title {
+    font-size: 2rem;
+  }
+
+  .contact-links,
+  .submit-container {
+    text-align: center;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 0.6rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    max-width: 95%;
+    max-height: 85vh;
+    padding: 1rem 1.2rem;
+    border-radius: 0.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .submit-button {
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+  }
+
+  .close-button {
+    bottom: -2rem;
+    font-size: 1rem;
   }
 }
