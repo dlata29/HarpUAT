@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../CSS/Navbar.css";
 
-export default function Navbar({ isVisible }) {
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50); // Change after 50px scroll
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className={`navbar-wrapper ${isVisible ? "visible" : ""}`}>
+    <div className={`navbar-wrapper ${scrolled ? "scrolled" : ""}`}>
       <nav className="navbar">
         <div className="navbar-left">
           <div className="logo">
-            {/* The SVG is now replaced with your logo image */}
-            <img src="/logo.png" alt="Harp & Code Logo" className="logo-img" />
-            {/* The company name is updated here */}
-            <span>Harp and Code</span>
+            <span>harpandcode.io</span>
           </div>
         </div>
 
@@ -20,19 +28,19 @@ export default function Navbar({ isVisible }) {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/features">About Us</NavLink>
+            <NavLink to="/documentation">Know about us</NavLink>
           </li>
           <li>
-            <NavLink to="/pricing">What we offer</NavLink>
+            <NavLink to="/customers">Services we offer</NavLink>
           </li>
           <li>
-            <NavLink to="/about">Blogs</NavLink>
+            <NavLink to="/blog">Blogs</NavLink>
           </li>
         </ul>
 
         <div className="navbar-right">
-          {/* <button className="btn-secondary">Join Waitlist</button> */}
-          <button className="btn-primary">Contact Us</button>
+          <button className="btn-secondary">Contact us</button>
+          <button className="btn-primary">Book a call</button>
         </div>
       </nav>
     </div>

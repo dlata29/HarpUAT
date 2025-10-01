@@ -30,7 +30,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   const highlightedChars = Math.floor(scrollProgress * mainText.length);
 
   return (
-    <section className="about-section" ref={ref}>
+    <section id="about" className="about-section" ref={ref}>
       <div className="about-container">
         {/* Apply the textRevealStyle here */}
         <div className="about-text-column" style={textRevealStyle}>
@@ -44,8 +44,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
                   style={{
                     color: index < highlightedChars ? darkColor : lightColor,
                     transition: "color 0.15s linear",
-                  }}
-                >
+                  }}>
                   {char}
                 </span>
               ))}

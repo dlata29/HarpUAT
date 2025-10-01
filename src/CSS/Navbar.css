@@ -1,87 +1,106 @@
-/* Styles for the wrapper to handle visibility and positioning */
+/* Wrapper */
 .navbar-wrapper {
-  position: fixed; /* Keeps it fixed at the top */
-  top: 1rem;
-  left: 50%;
-  transform: translate(-50%, -150%); /* Start hidden above the screen */
-  z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 900px;
-  transition: transform 0.5s ease-in-out;
+  z-index: 50;
+  background: transparent;
+  padding: 0.4rem 2rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar-wrapper.visible {
-  transform: translate(-50%, 0); /* Slide into view */
+/* When scrolled */
+.navbar-wrapper.scrolled {
+  /* background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
 }
 
-/* Main navbar styles */
+/* Navbar container */
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* This creates the space between left, center, right */
-  padding: 0.75rem 1.5rem;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Left side (Logo) */
-.navbar-left .logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: #111827;
+/* Logo */
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white; /* default for transparent navbar */
+  transition: color 0.3s ease;
 }
 
-/* Center links */
+.navbar-wrapper.scrolled .logo {
+  color: #111; /* dark when scrolled */
+}
+
+/* Nav links */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-links a {
-  color: #4b5563;
+  color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: color 0.3s ease, opacity 0.2s;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #111827;
+  opacity: 0.8;
+
+  font-weight: 600;
 }
 
-/* Right side (Buttons) */
+.navbar-wrapper.scrolled .nav-links a {
+  color: #111;
+}
+
+/* Right side buttons */
 .navbar-right {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
+/* Secondary button */
 .btn-secondary {
-  background-color: transparent;
-  color: #1f2937;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+.navbar-wrapper.scrolled .btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+
+/* Primary button */
 .btn-primary {
-  background-color: #07569b;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  background: white;
+  color: #111;
+  padding: 0.2rem 1rem;
+  border-radius: 9999px;
   border: none;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Add this to the end of your Navbar.css file */
-
-.logo-img {
-  width: 28px; /* Sets the width of the logo */
-  height: 28px; /* Sets the height of the logo */
+.navbar-wrapper.scrolled .btn-primary {
+  background: #111;
+  color: white;
 }
