@@ -22,10 +22,15 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   };
 
   // Style for the image column (uses the delayed image progress)
-  const imageRevealStyle = {
-    transform: `translateY(${(1 - imageProgress) * 100}px)`,
-  };
+  // const imageRevealStyle = {
+  //   transform: `translateY(${(1 - imageProgress) * 100}px) scale(${0.8 + 0.2 * imageProgress})`,
+  // };
+  /*above one is for simple zoom out */
 
+  const imageRevealStyle = {
+    transform: `translateY(${(1 - imageProgress) * 100}px) scale(${0.8 + 0.2 * imageProgress})`,
+    opacity: imageProgress, // fades in from 0 → 1
+  };
   // Calculation for the text highlighting effect
   const highlightedChars = Math.floor(scrollProgress * mainText.length);
 

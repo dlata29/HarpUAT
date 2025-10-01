@@ -1,17 +1,14 @@
+/* ==================== About Section Base ==================== */
 .about-section {
   background-color: white;
   position: relative;
   z-index: 4;
-  /* REMOVE the line below to stop the section from taking up the full screen height */
-  /* min-height: 100vh; */
   display: flex;
-  align-items: flex-start; /* ADD this to align content to the top */
-  margin-top: -11vh;
+  align-items: flex-start;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
-  /* USE padding for precise spacing */
-  padding-top: 8rem; /* Adjust this value to get the desired gap */
-  padding-bottom: 8rem; /* Keeps the section balanced */
+  padding: 8rem 5% 8rem 5%;
+  margin-top: -11vh; /* keeps overlap with hero */
 }
 
 .about-container {
@@ -20,30 +17,14 @@
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: transparent;
   align-items: center;
+  background-color: transparent;
 }
 
+/* --- Text Column --- */
 .about-text-column {
   flex: 2;
   min-width: 600px;
-}
-
-.about-image-column {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.about-image-column img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-  transform: scale(0.8); /* start smaller */
 }
 
 .about-tag {
@@ -65,44 +46,149 @@
 }
 
 .about-description p {
-  font-size: 1.5rem; /* readable size for most screens */
-  color: #4b5563; /* soft dark gray */
-  line-height: 1.6; /* more vertical breathing space */
-  margin-bottom: 1.5rem; /* separates paragraph from button */
-  font-weight: 500; /* medium weight, not too bold */
-  text-align: left; /* keeps left alignment */
-  word-spacing: normal; /* natural spacing */
-  letter-spacing: 0.01rem; /* subtle letter spacing for clarity */
+  font-size: 1.5rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  word-spacing: normal;
+  letter-spacing: 0.01rem;
 }
 
 .about-contact-button {
-  /* Reset button styles */
   background-color: transparent;
   border: none;
   padding: 0;
-
-  /* Add new link styles */
-  color: #1f2937; /* Dark text */
+  color: #1f2937;
   font-weight: 600;
   cursor: pointer;
   margin-top: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em; /* Adds space between letters */
-
-  /* Custom Underline */
-  padding-bottom: 5px; /* Space between text and underline */
-  border-bottom: 1px solid #1f2937; /* The underline itself */
+  letter-spacing: 0.05em;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #1f2937;
   transition: color 0.2s, border-color 0.2s;
 }
 
 .about-contact-button:hover {
-  color: #4b5563; /* Text color slightly fades on hover */
-  border-color: #d35400; /* Underline also fades */
+  color: #4b5563;
+  border-color: #d35400;
 }
 
-@media (max-width: 768px) {
+/* --- Image Column --- */
+.about-image-column {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .about-image-column img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  transition: transform 0.3s ease-out;
+} */
+/*above one is for simple zoom out */
+.about-image-column img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  /* Remove static transform */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+/* ==================== Tablet: 769px – 1024px ==================== */
+@media (min-width: 769px) and (max-width: 1024px) {
   .about-container {
-    flex-direction: column-reverse; /* Stack image on top on mobile */
-    padding: 2rem;
+    flex-direction: column-reverse; /* stack image above text if needed */
+    align-items: center;
+    padding: 2rem 4%;
+    gap: 2.5rem;
+  }
+
+  .about-text-column {
+    min-width: auto;
+    text-align: center;
+  }
+
+  .about-headline {
+    font-size: 2rem;
+  }
+
+  .about-description p {
+    font-size: 1.2rem;
+  }
+
+  .about-image-column img {
+    max-width: 300px;
+  }
+
+  .about-contact-button {
+    font-size: 0.9rem;
+  }
+}
+
+/* ==================== Mobile: ≤768px ==================== */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 6rem 2rem 6rem 2rem;
+    margin-top: -8vh;
+  }
+
+  .about-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .about-text-column {
+    min-width: auto;
+    text-align: center;
+  }
+
+  .about-headline {
+    font-size: 1.8rem;
+  }
+
+  .about-description p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .about-image-column img {
+    max-width: 250px;
+  }
+
+  .about-contact-button {
+    font-size: 0.85rem;
+  }
+}
+
+/* ==================== Extra Small Mobile: ≤480px ==================== */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 5rem 1.5rem 5rem 1.5rem;
+  }
+
+  .about-headline {
+    font-size: 1.5rem;
+  }
+
+  .about-description p {
+    font-size: 0.95rem;
+  }
+
+  .about-image-column img {
+    max-width: 200px;
+  }
+
+  .about-contact-button {
+    font-size: 0.8rem;
   }
 }
