@@ -1,4 +1,4 @@
-/* Wrapper */
+/* ==================== Desktop Navbar ==================== */
 .navbar-wrapper {
   position: fixed;
   top: 0;
@@ -10,16 +10,11 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* When scrolled */
 .navbar-wrapper.scrolled {
-  /* background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
 }
 
-/* Navbar container */
 .navbar {
   display: flex;
   align-items: center;
@@ -28,19 +23,17 @@
   margin: 0 auto;
 }
 
-/* Logo */
 .logo {
   font-size: 1.25rem;
   font-weight: 700;
-  color: white; /* default for transparent navbar */
+  color: white;
   transition: color 0.3s ease;
 }
 
 .navbar-wrapper.scrolled .logo {
-  color: #111; /* dark when scrolled */
+  color: #111;
 }
 
-/* Nav links */
 .nav-links {
   display: flex;
   list-style: none;
@@ -57,7 +50,6 @@
 .nav-links a:hover,
 .nav-links a.active {
   opacity: 0.8;
-
   font-weight: 600;
 }
 
@@ -65,13 +57,11 @@
   color: #111;
 }
 
-/* Right side buttons */
 .navbar-right {
   display: flex;
   gap: 1rem;
 }
 
-/* Secondary button */
 .btn-secondary {
   background: rgba(255, 255, 255, 0.15);
   color: white;
@@ -88,7 +78,6 @@
   color: #111;
 }
 
-/* Primary button */
 .btn-primary {
   background: white;
   color: #111;
@@ -103,4 +92,93 @@
 .navbar-wrapper.scrolled .btn-primary {
   background: #111;
   color: white;
+}
+
+/* ==================== Tablet Navbar ==================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    padding: 0.4rem 1.5rem; /* less horizontal padding */
+  }
+
+  .nav-links {
+    gap: 1.2rem; /* tighter spacing */
+  }
+
+  .nav-links a {
+    font-size: 0.95rem; /* slightly smaller */
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.2rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    font-size: 1.15rem; /* smaller logo */
+  }
+
+  .hamburger {
+    display: none; /* hide hamburger */
+  }
+
+  .navbar-right {
+    gap: 0.8rem;
+  }
+}
+
+/* ==================== Mobile Navbar ==================== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 40;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .navbar-wrapper.scrolled .hamburger {
+    color: #111;
+  }
+
+  .navbar-right {
+    display: none; /* hide desktop buttons */
+  }
+
+  .navbar-right-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ==================== Extra Small Mobile ==================== */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.85rem;
+  }
 }
