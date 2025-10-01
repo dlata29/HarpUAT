@@ -1,13 +1,14 @@
+/* ==================== Hero Section Base ==================== */
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5rem;
-  height: 100vh;
   width: 100%;
+  height: calc(100vh - 60px); /* offset for fixed navbar */
+  padding: 60px 5% 0 5%; /* top padding = navbar height */
   background-color: #000000;
   color: #ffffff;
-  padding: 0 5%;
   overflow: hidden;
 }
 
@@ -38,9 +39,9 @@
 }
 
 .cta-button {
-  display: inline-flex; /* Use flexbox for alignment */
-  align-items: center; /* Vertically center text and icon */
-  gap: 0.5rem; /* Space between text and icon */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.75rem 1.75rem;
   border-radius: 9999px;
   font-size: 0.9rem;
@@ -49,16 +50,6 @@
   transition: all 0.2s ease;
   border: 1px solid transparent;
   white-space: nowrap;
-}
-
-/* Primary button style is no longer used but kept for future use */
-.cta-button.primary {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.cta-button.primary:hover {
-  background-color: #d1d5db;
 }
 
 .cta-button.secondary {
@@ -78,7 +69,7 @@
 }
 
 .cta-button.secondary:hover .cta-icon {
-  transform: translate(3px, -3px); /* Animate icon on hover */
+  transform: translate(3px, -3px);
 }
 
 /* --- Right Side: Visual Element --- */
@@ -114,22 +105,47 @@
   transition: opacity 0.4s ease-in-out;
 }
 
-.hero-visual-container .hero-video {
+.hero-video {
   opacity: 0;
 }
-
 .hero-visual-container:hover .hero-video {
   opacity: 1;
 }
 
-/* --- Responsive styles for smaller screens --- */
-@media (max-width: 900px) {
+/* ==================== Tablet (769px – 1024px) ==================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-section {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 3rem;
+    padding: 70px 4% 0 4%; /* slightly larger offset for tablet */
+    height: calc(100vh - 70px);
+  }
+
+  .hero-headline {
+    font-size: 2.8rem;
+    line-height: 1.2;
+  }
+
+  .hero-visual-container {
+    width: 320px;
+  }
+
+  .cta-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ==================== Mobile (≤768px) ==================== */
+@media (max-width: 768px) {
   .hero-section {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    gap: 3.5rem;
-    padding: 0 2rem;
+    gap: 3rem;
+    padding: 70px 2rem 2rem 2rem;
+    height: auto;
   }
 
   .hero-text-container {
@@ -140,10 +156,33 @@
   }
 
   .hero-headline {
-    font-size: 3.5rem;
+    font-size: 2.2rem;
+    line-height: 1.2;
   }
 
   .hero-visual-container {
-    width: 280px;
+    width: 240px;
+    aspect-ratio: 9 / 16;
+  }
+
+  .cta-button {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* ==================== Extra Small Mobile (≤480px) ==================== */
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 1.8rem;
+  }
+
+  .hero-visual-container {
+    width: 200px;
+  }
+
+  .cta-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
   }
 }

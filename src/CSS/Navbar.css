@@ -97,33 +97,55 @@
 /* ==================== Tablet Navbar ==================== */
 @media (min-width: 769px) and (max-width: 1024px) {
   .navbar {
-    padding: 0.4rem 1.5rem; /* less horizontal padding */
+    padding: 0.4rem 1.5rem;
   }
 
+  /* Hide nav links by default */
   .nav-links {
-    gap: 1.2rem; /* tighter spacing */
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 40;
   }
 
-  .nav-links a {
-    font-size: 0.95rem; /* slightly smaller */
+  /* Show nav when active */
+  .nav-links.show {
+    display: flex;
   }
 
-  .btn-primary,
-  .btn-secondary {
-    padding: 0.2rem 0.8rem;
-    font-size: 0.9rem;
+  /* Show hamburger button */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .navbar-wrapper.scrolled .hamburger {
+    color: #111;
+  }
+
+  /* Hide desktop right buttons */
+  .navbar-right {
+    display: none;
+  }
+
+  .navbar-right-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .logo {
-    font-size: 1.15rem; /* smaller logo */
-  }
-
-  .hamburger {
-    display: none; /* hide hamburger */
-  }
-
-  .navbar-right {
-    gap: 0.8rem;
+    font-size: 1.15rem;
   }
 }
 

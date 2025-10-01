@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../CSS/Navbar.css";
 
@@ -7,7 +7,9 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -17,10 +19,6 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="navbar-left">
           <div className="logo">harpandcode.io</div>
-        </div>
-
-        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
         </div>
 
         <ul className={`nav-links ${menuOpen ? "show" : ""}`}>
@@ -36,12 +34,17 @@ export default function Navbar() {
           <li>
             <NavLink to="/blog">Blogs</NavLink>
           </li>
-          {/* Mobile buttons */}
-          <li className="navbar-right-mobile">
-            <button className="btn-secondary">Contact us</button>
-            <button className="btn-primary">Book a call</button>
-          </li>
         </ul>
+
+        <div className="navbar-right">
+          <button className="btn-secondary">Contact us</button>
+          <button className="btn-primary">Book a call</button>
+        </div>
+
+        {/* Hamburger for mobile/tablet */}
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </div>
       </nav>
     </div>
   );
