@@ -8,7 +8,7 @@
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   padding: 8rem 5% 8rem 5%;
-  margin-top: -11vh; /* keeps overlap with hero */
+  margin-top: -11vh;
 }
 
 .about-container {
@@ -18,7 +18,7 @@
   max-width: 1200px;
   margin: 0 auto;
   align-items: center;
-  background-color: transparent;
+  justify-content: space-between;
 }
 
 /* --- Text Column --- */
@@ -53,8 +53,6 @@
   margin-bottom: 1.5rem;
   font-weight: 500;
   text-align: left;
-  word-spacing: normal;
-  letter-spacing: 0.01rem;
 }
 
 .about-contact-button {
@@ -86,28 +84,19 @@
   align-items: center;
 }
 
-/* .about-image-column img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-  transition: transform 0.3s ease-out;
-} */
-/*above one is for simple zoom out */
 .about-image-column img {
   width: 100%;
   max-width: 400px;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
-  /* Remove static transform */
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
+
 /* ==================== Tablet: 769px – 1024px ==================== */
 @media (min-width: 769px) and (max-width: 1024px) {
   .about-container {
-    flex-direction: column-reverse; /* stack image above text if needed */
+    flex-direction: column-reverse;
     align-items: center;
     padding: 2rem 4%;
     gap: 2.5rem;
@@ -192,4 +181,10 @@
   .about-contact-button {
     font-size: 0.8rem;
   }
+}
+
+/* ==================== Optional: Smooth Scroll Fade for Image & Text ==================== */
+.about-text-column,
+.about-image-column {
+  will-change: transform, opacity;
 }
