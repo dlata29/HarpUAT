@@ -25,6 +25,7 @@
 .about-text-column {
   flex: 2;
   min-width: 600px;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .about-tag {
