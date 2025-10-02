@@ -121,3 +121,19 @@
   object-fit: cover; /* CHANGED back to 'cover' */
   transition: transform 0.3s ease-out;
 }
+/* Responsive grid adjustments */
+@media (max-width: 767px) {
+  .services-container {
+    grid-template-columns: 1fr; /* Single column for phones */
+    gap: 1.5rem; /* Slightly tighter spacing */
+    padding: 0 2rem; /* Some breathing room on small screens */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .services-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns for tablets */
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+}
