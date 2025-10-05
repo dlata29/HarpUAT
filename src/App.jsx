@@ -34,7 +34,10 @@ export default function App() {
           path="/"
           element={
             <>
-              <Hero />
+              <GridBackground>
+                <Hero />
+              </GridBackground>
+
               <About ref={contentSectionRef} onOpenModal={openModal} />
               <GridBackground>
                 <Products />

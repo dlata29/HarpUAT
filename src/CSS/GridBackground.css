@@ -13,13 +13,16 @@
   z-index: -1;
   background-size: 30px 30px;
   /* background-image: linear-gradient(to right, #f1f1f17a 1px, transparent 1px), linear-gradient(to bottom, #f1f1f191 1px, transparent 1px); */
-  background-image: linear-gradient(to right, #ebe9e97a 1px, #00000000 1px), linear-gradient(to bottom, #dfdddd91 1px, transparent 1px);
+  background-image: linear-gradient(to right, #ebe9e97a 1px, #00000000 1px),
+    linear-gradient(to bottom, #dfdddd91 1px, transparent 1px);
 }
 
 .trail-box {
   pointer-events: none;
   position: absolute;
-  border: 1px solid #d35400;
+  /* border: 1px solid #d35400; */
+  border: 0.7px solid #62c1cc;
+
   animation: fade-out 1500ms forwards;
 }
 
