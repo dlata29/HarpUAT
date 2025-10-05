@@ -1,3 +1,5 @@
+// src/App.jsx
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState, useRef } from "react";
 import Navbar from "./components/Navbar";
@@ -13,7 +15,6 @@ import GridBackground from "./components/GridBackground";
 import BlogSection from "./components/BlogSection";
 
 export default function App() {
-  // The navbar is now visible by default
   const [isNavbarVisible, setNavbarVisible] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
   const contentSectionRef = useRef(null);
@@ -23,20 +24,18 @@ export default function App() {
 
   return (
     <Router>
-      {/* Navbar & Modal are outside Routes so they show on every page */}
-      <Navbar isVisible={isNavbarVisible} />
-      <Navbar onOpenModal={openModal} />
+      <Navbar isVisible={isNavbarVisible} onOpenModal={openModal} />
       <CallbackFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       <Routes>
-        {/* Homepage */}
         <Route
           path="/"
           element={
             <>
-              <GridBackground>
+              {/* Step 1: Wrap Hero in a new div and remove GridBackground */}
+              <div className="hero-container">
                 <Hero />
-              </GridBackground>
+              </div>
 
               <About ref={contentSectionRef} onOpenModal={openModal} />
               <GridBackground>

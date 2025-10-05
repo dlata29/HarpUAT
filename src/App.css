@@ -25,3 +25,20 @@
 .read-the-docs {
   color: #888;
 }
+
+div.grid-background-container:has(section.hero-section) {
+  background-color: transparent;
+  z-index: 1; /* Ensure it stays in the background */
+  position: relative; /* Needed for z-index to work correctly */
+}
+
+/* src/App.css */
+
+/* Add this new rule for the hero's sticky container */
+.hero-container {
+  position: relative;
+  z-index: 1; /* Keeps it in the background */
+  height: 105vh; /* Matches the hero section height */
+}
+
+/* ... keep the rest of your existing App.css styles */

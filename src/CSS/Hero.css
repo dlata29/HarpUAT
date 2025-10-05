@@ -1,18 +1,20 @@
 .hero-section {
   display: flex;
   align-items: center;
-  /* This pushes the text to the left and the image to the right */
   justify-content: space-between;
   gap: 5rem;
   width: 100%;
   height: 105vh;
   padding: 0 24% 0 10%;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 50%),
-    url("/bg4.jpg");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 50%), url("/bg4.jpg");
   background-size: cover;
   background-position: center;
   color: #ffffff;
   overflow: hidden;
+
+  /* --- Add/modify these properties --- */
+  position: sticky;
+  top: 0;
 }
 
 /* --- Left Side: Text --- */

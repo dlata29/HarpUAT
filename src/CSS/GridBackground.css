@@ -1,9 +1,10 @@
 .grid-background-container {
   position: relative;
   width: 100%;
-  isolation: isolate; /* Creates a new stacking context */
-  z-index: 2; /* Lifts this container above the sticky hero (z-index: 1) */
-  background-color: #ffffff; /* Ensures a solid background for content to scroll over the hero */
+  isolation: isolate;
+  /* This z-index ensures it also scrolls over the hero */
+  z-index: 2;
+  background-color: #ffffff;
 }
 
 .static-grid {
