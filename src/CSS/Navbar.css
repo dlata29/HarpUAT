@@ -6,164 +6,85 @@
   width: 100%;
   z-index: 50;
   background: transparent;
-  padding: 0.4rem 2rem;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.5rem 6%;
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
 .navbar-wrapper.scrolled {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(10, 25, 47, 0.85);
   backdrop-filter: blur(10px);
+  padding: 1rem 6%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .logo {
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 500;
   color: white;
   transition: color 0.3s ease;
 }
 
 .navbar-wrapper.scrolled .logo {
-  color: #111;
+  color: #fff;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .nav-links a {
-  color: white;
+  color: #a8b2d1;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease, opacity 0.2s;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  opacity: 0.8;
-  font-weight: 600;
+  color: #fff;
 }
 
 .navbar-wrapper.scrolled .nav-links a {
-  color: #111;
+  color: #a8b2d1;
 }
 
-.navbar-right {
-  display: flex;
-  gap: 1rem;
+.navbar-wrapper.scrolled .nav-links a:hover {
+  color: #fff;
 }
 
+/* Hide unused button styles */
+.navbar-right,
+.btn-primary,
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  padding: 0.2rem 1rem;
-  border-radius: 9999px;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  display: none;
 }
 
-.navbar-wrapper.scrolled .btn-secondary {
-  background: rgba(0, 0, 0, 0.05);
-  color: #111;
-}
-
-.btn-primary {
-  background: white;
-  color: #111;
-  padding: 0.2rem 1rem;
-  border-radius: 9999px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.navbar-wrapper.scrolled .btn-primary {
-  background: #111;
-  color: white;
-}
-
-/* ==================== Tablet Navbar ==================== */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .navbar {
-    padding: 0.4rem 1.5rem;
-  }
-
-  /* Hide nav links by default */
+/* ==================== Tablet & Mobile Hamburger Menu ==================== */
+@media (max-width: 1024px) {
   .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
-    gap: 1rem;
-    background: rgba(255, 255, 255, 0.95);
+    gap: 1.5rem;
+    background: rgba(10, 25, 47, 0.95);
     position: absolute;
     top: 100%;
     left: 0;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 8px 8px;
-    z-index: 40;
-  }
-
-  /* Show nav when active */
-  .nav-links.show {
-    display: flex;
-  }
-
-  /* Show hamburger button */
-  .hamburger {
-    display: block;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: white;
-  }
-
-  .navbar-wrapper.scrolled .hamburger {
-    color: #111;
-  }
-
-  /* Hide desktop right buttons */
-  .navbar-right {
-    display: none;
-  }
-
-  .navbar-right-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .logo {
-    font-size: 1.15rem;
-  }
-}
-
-/* ==================== Mobile Navbar ==================== */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 1rem;
-    background: rgba(255, 255, 255, 0.95);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 8px 8px;
-    z-index: 40;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-links.show {
@@ -173,34 +94,11 @@
   .hamburger {
     display: block;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: white;
   }
 
   .navbar-wrapper.scrolled .hamburger {
-    color: #111;
-  }
-
-  .navbar-right {
-    display: none; /* hide desktop buttons */
-  }
-
-  .navbar-right-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-/* ==================== Extra Small Mobile ==================== */
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1rem;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    padding: 0.2rem 0.6rem;
-    font-size: 0.85rem;
+    color: #fff;
   }
 }

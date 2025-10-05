@@ -1,171 +1,206 @@
-/* General Footer Section Styling */
-.footer-section {
-  background-color: #f0f0f0; /* Light grey background from image */
-  padding: 4rem 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #111;
-}
-
-.footer-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr; /* Left column is slightly larger */
-  gap: 4rem;
-  align-items: start;
-}
-
-/* --- Left Side: Featured Work Card --- */
-.featured-work-card {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  background-color: #a3b18a; /* Muted green from image */
-  text-decoration: none;
-  color: white;
-}
-
-.base-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.4s ease;
-}
-
-.featured-work-card:hover .base-image {
-  opacity: 0.1; /* Fade out the image on hover */
-}
-
-/* Static "Featured Work" text */
-.static-text {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Hover Overlay Styles */
-.hover-overlay {
-  position: absolute;
+/* ==================== Desktop Navbar ==================== */
+.navbar-wrapper {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end; /* Aligns content to the bottom */
-  padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  z-index: 50;
+  background: transparent;
+  padding: 0.4rem 2rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.featured-work-card:hover .hover-overlay {
-  opacity: 1;
+.navbar-wrapper.scrolled {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
 }
 
-.hover-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hover-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-.hover-cta {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-/* --- Right Side: Contact Info --- */
-.contact-info-column {
-  padding-top: 1rem;
-}
-
-.footer-headline {
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0 0 1rem 0;
-}
-
-.footer-tagline {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.footer-actions {
+.navbar {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.footer-contact-button {
-  background-color: #111;
+.logo {
+  font-size: 1.25rem;
+  font-weight: 400;
   color: white;
+  transition: color 0.3s ease;
+}
+
+.navbar-wrapper.scrolled .logo {
+  color: #111;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, opacity 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+.navbar-wrapper.scrolled .nav-links a {
+  color: #111;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 9999px;
   border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-wrapper.scrolled .btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+
+.btn-primary {
+  background: white;
+  color: #111;
+  padding: 0.2rem 1rem;
+  border-radius: 9999px;
+  border: none;
   font-weight: 600;
   cursor: pointer;
-  text-transform: uppercase;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
 }
 
-.footer-contact-button:hover {
-  background-color: #444;
+.navbar-wrapper.scrolled .btn-primary {
+  background: #111;
+  color: white;
 }
 
-.footer-link {
-  color: #111;
-  font-weight: 500;
-  text-decoration: underline;
-  font-size: 0.9rem;
-}
-
-/* Details Section (Address, Contact, etc.) */
-.footer-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  border-top: 1px solid #ddd;
-  padding: 2rem 0 4rem 0;
-}
-
-.details-heading {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  color: #555;
-}
-
-.details-text,
-.details-link {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #111;
-  text-decoration: none;
-  display: block; /* Makes links stack */
-}
-
-.details-link:hover {
-  text-decoration: underline;
-}
-
-/* --- Responsive Design for Mobile --- */
-@media (max-width: 900px) {
-  .footer-container {
-    grid-template-columns: 1fr; /* Stack columns */
+/* ==================== Tablet Navbar ==================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    padding: 0.4rem 1.5rem;
   }
 
-  .footer-headline {
-    font-size: 2rem;
+  /* Hide nav links by default */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 40;
+  }
+
+  /* Show nav when active */
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* Show hamburger button */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .navbar-wrapper.scrolled .hamburger {
+    color: #111;
+  }
+
+  /* Hide desktop right buttons */
+  .navbar-right {
+    display: none;
+  }
+
+  .navbar-right-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+}
+
+/* ==================== Mobile Navbar ==================== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 40;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .navbar-wrapper.scrolled .hamburger {
+    color: #111;
+  }
+
+  .navbar-right {
+    display: none; /* hide desktop buttons */
+  }
+
+  .navbar-right-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ==================== Extra Small Mobile ==================== */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.85rem;
   }
 }
