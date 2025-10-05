@@ -1,13 +1,15 @@
-/* ==================== Hero Section Base ==================== */
 .hero-section {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* This pushes the text to the left and the image to the right */
+  justify-content: space-between;
   gap: 5rem;
   width: 100%;
-  height: calc(100vh - 60px); /* offset for fixed navbar */
-  padding: 60px 5% 0 5%; /* top padding = navbar height */
-  background-color: #000000;
+  height: 105vh;
+  padding: 0 15% 0 10%;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 50%), url("/bg2.png");
+  background-size: cover;
+  background-position: center;
   color: #ffffff;
   overflow: hidden;
 }
@@ -16,22 +18,19 @@
 .hero-text-container {
   flex: 0 1 600px;
 }
-
 .hero-headline {
-  font-size: 3.8rem;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
   margin-bottom: 2.5rem;
   letter-spacing: -0.02em;
+  color: white; /* Default color */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.hero-headline .highlight-text {
-  background-image: linear-gradient(90deg, #3b82f6, #60a5fa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.hero-headline .highlight-text1 {
+  color: #8bd3dd; /* Makes only this part blue */
 }
-
 /* --- CTA Button Styles --- */
 .hero-cta-container {
   display: flex;
@@ -45,7 +44,7 @@
   padding: 0.75rem 1.75rem;
   border-radius: 9999px;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 1px solid transparent;
@@ -55,12 +54,12 @@
 .cta-button.secondary {
   background-color: transparent;
   color: #ffffff;
-  border-color: #4b5563;
+  border-color: #ffffff;
 }
 
 .cta-button.secondary:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   border-color: #ffffff;
 }
 
@@ -81,17 +80,6 @@
   border-radius: 1.5rem;
   overflow: hidden;
   cursor: pointer;
-  animation: float-animation 6s ease-in-out infinite;
-}
-
-@keyframes float-animation {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
 }
 
 .hero-image,
@@ -118,7 +106,7 @@
     flex-direction: row;
     justify-content: space-around;
     gap: 3rem;
-    padding: 70px 4% 0 4%; /* slightly larger offset for tablet */
+    padding: 70px 4% 0 4%;
     height: calc(100vh - 70px);
   }
 

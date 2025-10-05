@@ -95,12 +95,6 @@
   margin: 0 0 1rem 0;
 }
 
-.highlight-text {
-  background-color: #07569b; /* Red highlight */
-  color: white;
-  padding: 0 0.5rem;
-}
-
 .footer-tagline {
   font-size: 1.25rem;
   margin-bottom: 2rem;

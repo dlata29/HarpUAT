@@ -71,7 +71,7 @@ const Products = React.forwardRef((props, ref) => {
   }, [servicesData.length]);
 
   return (
-    <section className="services-section" ref={ref}>
+    <section id="products" className="services-section" ref={ref}>
       <div className="services-container">
         <span className="services-tag">What we offer</span>
         {/* Left side: Scrolling Text Content */}
