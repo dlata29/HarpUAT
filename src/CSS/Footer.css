@@ -1,6 +1,6 @@
 /* General Footer Section Styling */
 .footer-section {
-  background-color: #f0f0f0; /* Light grey background from image */
+  background-color: #ffffff; /* Light grey background from image */
   padding: 4rem 2rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #111;
@@ -97,7 +97,7 @@
 }
 
 .highlight-text {
-  background-color: #07569b; /* Red highlight */
+  background-color: #55c0a9; /* Red highlight */
   color: white;
   padding: 0 0.5rem;
 }
@@ -126,6 +126,7 @@
   cursor: pointer;
   text-transform: uppercase;
   transition: background-color 0.2s;
+  text-decoration: none;
 }
 
 .footer-contact-button:hover {

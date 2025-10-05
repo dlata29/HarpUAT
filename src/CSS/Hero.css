@@ -12,9 +12,10 @@
   color: #ffffff;
   overflow: hidden;
 
-  /* --- Add/modify these properties --- */
-  position: sticky;
-  top: 0;
+  /* --- REMOVE these three lines --- */
+  /* position: sticky; */
+  /* top: 0; */
+  /* z-index: 1; */
 }
 
 /* --- Left Side: Text --- */

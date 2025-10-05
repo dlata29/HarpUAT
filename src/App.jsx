@@ -32,17 +32,20 @@ export default function App() {
           path="/"
           element={
             <>
-              {/* Step 1: Wrap Hero in a new div and remove GridBackground */}
-              <div className="hero-container">
-                <Hero />
-              </div>
-
-              <About ref={contentSectionRef} onOpenModal={openModal} />
+              {/* The Hero component remains on its own */}
               <GridBackground>
-                <Products />
+                <Hero />
               </GridBackground>
-              <BlogSection />
-              <Footer onOpenModal={openModal} />
+
+              {/* All other sections are now wrapped in a <main> tag */}
+              <main className="scrolling-content">
+                <About ref={contentSectionRef} onOpenModal={openModal} />
+                <GridBackground>
+                  <Products />
+                </GridBackground>
+                <BlogSection />
+                <Footer onOpenModal={openModal} />
+              </main>
             </>
           }
         />

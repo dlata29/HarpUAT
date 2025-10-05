@@ -14,7 +14,7 @@ const Products = React.forwardRef((props, ref) => {
         "Redesign and relaunch",
         "UI and UX optimization",
       ],
-      imageUrl: "https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2070&auto=format&fit-crop",
+      imageUrl: "/websitedesign.jpg",
     },
     {
       title: "App Development",
@@ -27,7 +27,7 @@ const Products = React.forwardRef((props, ref) => {
         "Push notifications and in-app purchases",
         "Performance monitoring and analytics",
       ],
-      imageUrl: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=2070&auto=format&fit-crop",
+      imageUrl: "/appdesign.jpg",
     },
     {
       title: "AI Solutions",
@@ -40,7 +40,7 @@ const Products = React.forwardRef((props, ref) => {
         "AI-powered chatbot development",
         "Data strategy and infrastructure",
       ],
-      imageUrl: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop",
+      imageUrl: "/aisolution2.jpg",
     },
   ];
 

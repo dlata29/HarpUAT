@@ -22,7 +22,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   // };
   const textRevealStyle = {
     transform: `translateY(${(1 - scrollProgress) * 100}px)`,
-    opacity: scrollProgress, // fades in from 0 → 1
+    opacity: Math.min(1, scrollProgress * 1.5),
   };
 
   // Style for the image column (uses the delayed image progress)
@@ -37,14 +37,14 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   };
 
   // Calculation for the text highlighting effect
-  const highlightedChars = Math.floor(scrollProgress * mainText.length);
+  const highlightedChars = Math.floor(scrollProgress * 1.5 * mainText.length);
 
   return (
     <section id="about" className="about-section" ref={ref}>
       <div className="about-container">
         {/* Apply the textRevealStyle here */}
         <div className="about-text-column" style={textRevealStyle}>
-          <span className="about-tag">About Harp & Code</span>
+          <span className="about-tag">About Us</span>
           <h2 className="about-headline">We partner with visionaries</h2>
           <div className="about-description">
             <p>
@@ -62,7 +62,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
             </p>
           </div>
           <button className="about-contact-button" onClick={onOpenModal}>
-            Let's Talk
+            Let’s craft something lasting — something that sings
           </button>
         </div>
 

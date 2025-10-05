@@ -10,8 +10,12 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      // --- UPDATE THIS LINE ---
+      // Trigger the "scrolled" state when the user has scrolled more than 90% of the viewport's height.
+      const shouldBeScrolled = window.scrollY > window.innerHeight * 0.9;
+      setScrolled(shouldBeScrolled);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

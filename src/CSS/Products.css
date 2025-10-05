@@ -29,13 +29,11 @@
 
 .services-tag {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background-color: #f3f4f6;
+  background-color: transparent;
   border-radius: 9999px;
   font-size: 0.75rem;
-  font-weight: 500;
-  color: #4b5563;
-  margin-bottom: 2rem;
+  font-weight: 100;
+  color: #050505;
   grid-column: 1 / -1;
   justify-self: start; /* Changed back to 'start' */
 }
@@ -105,10 +103,11 @@
 .sticky-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 32rem; /* Reduced by 20% from 45rem */
+  max-width: 32rem;
   aspect-ratio: 1 / 1;
   border-radius: 1rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  /* --- UPDATED FOR A LAYERED, REALISTIC SHADOW --- */
+  box-shadow: 0 50px 100px -20px rgba(27, 24, 24, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(0, 0, 0, 0.3); /* A more focused, darker shadow closer to the element */
   overflow: hidden;
 }
 

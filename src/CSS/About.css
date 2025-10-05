@@ -1,14 +1,16 @@
 /* ==================== About Section Base ==================== */
 .about-section {
-  background-color: white; /* This is needed to hide the hero as you scroll */
+  background-color: transparent; /* Can be transparent since the parent <main> has a background */
   position: relative;
-  z-index: 4; /* This must be higher than the hero's z-index (which is 1) */
+  /* z-index is no longer strictly necessary here but is fine to keep */
+  z-index: 2;
   display: flex;
   align-items: flex-start;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  padding: 8rem 5% 8rem 5%;
+
+  padding: 4rem 5% 8rem 5%;
   margin-top: -11vh;
+  /* --- REMOVE THIS LINE --- */
+  /* margin-top: -11vh; */
 }
 
 .about-container {
@@ -30,49 +32,49 @@
 
 .about-tag {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background-color: #f3f4f6;
+  background-color: transparent;
   border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #4b5563;
+  font-size: 1rem;
+  font-weight: 100;
+  color: #090909;
   margin-bottom: 1rem;
 }
 
 .about-headline {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 500;
   color: #111827;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
 }
 
 .about-description p {
-  font-size: 1.5rem;
-  color: #4b5563;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  color: #000000;
+  line-height: 1.8;
   margin-bottom: 1.5rem;
-  font-weight: 500;
+  font-weight: 100;
   text-align: left;
+  letter-spacing: 0.03em;
 }
 
 .about-contact-button {
   background-color: transparent;
   border: none;
   padding: 0;
-  color: #1f2937;
-  font-weight: 600;
+  color: #000000;
+  font-weight: 100;
   cursor: pointer;
-  margin-top: 1.5rem;
-  text-transform: uppercase;
+  margin-top: 1rem;
   letter-spacing: 0.05em;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #1f2937;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #000000;
   transition: color 0.2s, border-color 0.2s;
 }
 
 .about-contact-button:hover {
   color: #4b5563;
-  border-color: #d35400;
+  border-color: #62c1cc;
 }
 
 /* --- Image Column --- */

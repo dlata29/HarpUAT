@@ -1,3 +1,5 @@
+/* src/CSS/Navbar.css */
+
 /* ==================== Desktop Navbar ==================== */
 .navbar-wrapper {
   position: fixed;
@@ -6,17 +8,34 @@
   width: 100%;
   z-index: 50;
   background: transparent;
-  padding: 1.5rem 10%; /* Use 10% left padding to align with hero text */
+  padding: 1.5rem 10%;
   transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
+/* --- Styles for the SCROLLED state --- */
 .navbar-wrapper.scrolled {
-  background: rgba(10, 25, 47, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 1rem 10%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(230, 252, 255, 0.85); /* Light blueish-white background */
+  backdrop-filter: blur(20px);
+  padding: 0.5rem 10%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.navbar-wrapper.scrolled .logo,
+.navbar-wrapper.scrolled .nav-links a,
+.navbar-wrapper.scrolled .hamburger {
+  color: #111827; /* Dark text for logo, links, and hamburger */
+}
+
+.navbar-wrapper.scrolled .nav-links a:hover {
+  color: #0077ff; /* Optional: A different hover color for the scrolled state */
+}
+
+.navbar-wrapper.scrolled .lets-talk-button {
+  background-color: #111827; /* Black background for the button */
+  color: #ffffff; /* White text for the button */
+}
+
+/* ==================== Default Navbar Styles ==================== */
 .navbar {
   display: flex;
   align-items: center;
@@ -26,7 +45,7 @@
 
 .logo {
   font-size: 1.2rem;
-  font-weight: 00;
+  font-weight: 500; /* Adjusted for better visibility */
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -35,7 +54,7 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 2.5rem; /* Space between Blog link and button */
+  gap: 2.5rem;
 }
 
 .nav-links {
@@ -43,11 +62,11 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 3rem; /* This adds space between ABOUT, SERVICES, and BLOG */
+  gap: 3rem;
 }
 
 .nav-links a {
-  color: #ffffff; /* Default color is now white */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 400;
   transition: color 0.3s ease;
@@ -56,7 +75,7 @@
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #96ffe9; /* Hover color is now the highlight color */
+  color: #96ffe9;
 }
 
 .lets-talk-button {
@@ -64,13 +83,13 @@
   color: #111827;
   border: none;
   padding: 0.5rem 1.2rem;
-  border-radius: 9999px; /* Pill shape */
+  border-radius: 9999px;
   font-weight: 500;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
-  text-decoration: none; /* Add this line to remove the underline */
+  text-decoration: none;
 }
 
 .lets-talk-button:hover {
@@ -79,11 +98,12 @@
 }
 
 .hamburger {
-  display: none; /* Hidden on desktop */
+  display: none;
   cursor: pointer;
   font-size: 1.75rem;
   color: white;
   z-index: 100;
+  transition: color 0.3s ease;
 }
 
 /* ==================== Tablet & Mobile Styles ==================== */
@@ -96,9 +116,9 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: min(75vw, 400px); /* Mobile menu width */
+    width: min(75vw, 400px);
     height: 100vh;
-    background: #0a192f; /* Dark background for the menu */
+    background: #0a192f;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -119,5 +139,6 @@
 
   .nav-links a {
     font-size: 1.2rem;
+    color: #ffffff; /* Ensure mobile menu links are white */
   }
 }

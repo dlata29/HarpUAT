@@ -14,8 +14,14 @@
 }
 
 .blog-subtitle {
-  color: #8a8a8a;
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 9999px;
   font-size: 1rem;
+  font-weight: 100;
+  color: #050505;
+  grid-column: 1 / -1;
+  justify-self: start; /* Changed back to 'start' */
   margin-bottom: 0.5rem;
 }
 
