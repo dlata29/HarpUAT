@@ -87,12 +87,13 @@
 }
 
 .about-image-column img {
-  width: 100%;
+  width: 120%;
   max-width: 400px;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  box-shadow: 0 50px 100px -20px rgba(186, 186, 186, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(190, 190, 190, 0.3); /* A more focused, darker shadow closer to the element */
 }
 
 /* ==================== Tablet: 769px – 1024px ==================== */

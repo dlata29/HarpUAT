@@ -1,27 +1,33 @@
 /* General Footer Section Styling */
 .footer-section {
-  background-color: #ffffff; /* Light grey background from image */
-  padding: 4rem 2rem;
+  background-color: #ffffff;
+  padding: 4rem 9rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #111;
-  overflow: hidden; /* Added to contain animations */
+  overflow: hidden;
 }
 
 .footer-container {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 1fr; /* Left column is slightly larger */
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: start;
 }
 
 /* --- Left Side: Featured Work Card --- */
 .featured-work-card {
-  display: block;
   position: relative;
+  width: 100%;
+  max-width: 32rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  /* --- UPDATED FOR A LAYERED, REALISTIC SHADOW --- */
+  box-shadow: 0 50px 100px -20px rgba(27, 24, 24, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(0, 0, 0, 0.3); /* A more focused, darker shadow closer to the element */
   overflow: hidden;
-  background-color: transparent; /* Muted green from image */
+  display: block;
+  overflow: hidden;
   text-decoration: none;
   color: white;
 }
@@ -30,14 +36,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
 .featured-work-card:hover .base-image {
-  opacity: 1; /* Fade out the image on hover */
+  transform: scale(1.05); /* Added a subtle zoom effect on hover */
 }
 
-/* Static "Featured Work" text */
 .static-text {
   position: absolute;
   top: 1.5rem;
@@ -51,14 +56,12 @@
 /* Hover Overlay Styles */
 .hover-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0; /* Replaces top, left, width, height */
   display: flex;
-  align-items: flex-end; /* Aligns content to the bottom */
+  align-items: flex-end;
   padding: 1.5rem;
   opacity: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Gradient overlay */
   transition: opacity 0.4s ease;
 }
 
@@ -97,7 +100,7 @@
 }
 
 .highlight-text {
-  background-color: #55c0a9; /* Red highlight */
+  background-color: #55c0a9;
   color: white;
   padding: 0 0.5rem;
 }
@@ -107,25 +110,21 @@
   margin-bottom: 2rem;
 }
 
-/* UPDATED: Stack button and link vertically */
 .footer-actions {
-  display: flex;
-  flex-direction: column; /* Stacks items vertically */
-  align-items: flex-start; /* Aligns them to the left */
-  gap: 1rem; /* Adds space between the button and link */
   margin-bottom: 4rem;
 }
 
 .footer-contact-button {
-  background-color: #111;
-  color: white;
+  background-color: #111; /* Changed to black to stand out on the white footer */
+  color: #ffffff; /* White text for contrast */
   border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.75rem 1.5rem; /* Slightly larger padding for a better feel */
+  border-radius: 9999px; /* Pill shape */
+  font-weight: 500;
+  font-size: 0.9rem; /* Slightly larger font */
   cursor: pointer;
-  text-transform: uppercase;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
   text-decoration: none;
 }
 
@@ -133,30 +132,10 @@
   background-color: #444;
 }
 
-/* UPDATED: Made font bolder */
-.footer-link {
-  color: #111;
-  font-weight: 600; /* Bolder font */
-  text-decoration: underline;
-  font-size: 0.9rem;
-}
-
-/* Details Section (Address, Contact, etc.) */
+/* Details Section */
 .footer-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
   border-top: 1px solid #ddd;
-  padding: 1rem 0rem;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  border-bottom: 1px solid #ddd;
-}
-
-/* ADDED: This class will be added by JavaScript to trigger the animation */
-.footer-details.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  padding-top: 2rem;
 }
 
 .details-heading {
@@ -166,28 +145,24 @@
   color: #555;
 }
 
-.details-text,
 .details-link {
   font-size: 0.9rem;
   line-height: 1.6;
   color: #111;
   text-decoration: none;
-  display: block; /* Makes links stack */
 }
 
 .details-link:hover {
   text-decoration: underline;
 }
 
-/* --- Responsive Design for Mobile --- */
+/* --- Responsive Design --- */
 @media (max-width: 900px) {
   .footer-container {
-    grid-template-columns: 1fr; /* Stack columns */
+    grid-template-columns: 1fr;
   }
 
   .footer-headline {
     font-size: 2rem;
   }
 }
-
-/* REMOVED: Keyframes are no longer needed as we use a transition now */

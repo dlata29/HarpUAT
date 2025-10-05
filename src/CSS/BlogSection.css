@@ -62,7 +62,14 @@
 }
 .blog-card-image {
   width: 100%;
-
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  /* --- UPDATED FOR A LAYERED, REALISTIC SHADOW --- */
+  box-shadow: 0 50px 100px -20px rgba(107, 104, 104, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(213, 212, 212, 0.3); /* A more focused, darker shadow closer to the element */
+  overflow: hidden;
   aspect-ratio: 1 / 1; /* (3 / 3 is the same as 1 / 1) */
   object-fit: cover;
 }

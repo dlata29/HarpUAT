@@ -14,7 +14,7 @@
 
 /* --- Styles for the SCROLLED state --- */
 .navbar-wrapper.scrolled {
-  background: rgba(230, 252, 255, 0.85); /* Light blueish-white background */
+  background: rgba(255, 255, 255, 0.85); /* Light blueish-white background */
   backdrop-filter: blur(20px);
   padding: 0.5rem 10%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
