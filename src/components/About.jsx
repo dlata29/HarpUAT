@@ -54,14 +54,15 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
                   style={{
                     color: index < highlightedChars ? darkColor : lightColor,
                     transition: "color 0.15s linear",
-                  }}>
+                  }}
+                >
                   {char}
                 </span>
               ))}
             </p>
           </div>
           <button className="about-contact-button" onClick={onOpenModal}>
-            Contact Us
+            Let's Talk
           </button>
         </div>
 
