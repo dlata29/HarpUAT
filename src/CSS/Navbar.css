@@ -6,14 +6,14 @@
   width: 100%;
   z-index: 50;
   background: transparent;
-  padding: 1.5rem 6%;
+  padding: 1.5rem 10%; /* Use 10% left padding to align with hero text */
   transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
 .navbar-wrapper.scrolled {
   background: rgba(10, 25, 47, 0.85);
   backdrop-filter: blur(10px);
-  padding: 1rem 6%;
+  padding: 1rem 10%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -21,84 +21,103 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 00;
   color: white;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.navbar-wrapper.scrolled .logo {
-  color: #fff;
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem; /* Space between Blog link and button */
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 3rem;
+  padding: 0;
+  margin: 0;
+  gap: 3rem; /* This adds space between ABOUT, SERVICES, and BLOG */
 }
 
 .nav-links a {
-  color: #a8b2d1;
+  color: #ffffff; /* Default color is now white */
   text-decoration: none;
   font-weight: 400;
   transition: color 0.3s ease;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
+  font-size: 0.8rem;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #fff;
+  color: #96ffe9; /* Hover color is now the highlight color */
 }
 
-.navbar-wrapper.scrolled .nav-links a {
-  color: #a8b2d1;
+.lets-talk-button {
+  background-color: #ffffff;
+  color: #111827;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 9999px; /* Pill shape */
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none; /* Add this line to remove the underline */
 }
 
-.navbar-wrapper.scrolled .nav-links a:hover {
-  color: #fff;
+.lets-talk-button:hover {
+  background-color: #e5e7eb;
+  transform: scale(1.05);
 }
 
-/* Hide unused button styles */
-.navbar-right,
-.btn-primary,
-.btn-secondary {
-  display: none;
+.hamburger {
+  display: none; /* Hidden on desktop */
+  cursor: pointer;
+  font-size: 1.75rem;
+  color: white;
+  z-index: 100;
 }
 
-/* ==================== Tablet & Mobile Hamburger Menu ==================== */
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 1.5rem;
-    background: rgba(10, 25, 47, 0.95);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
+/* ==================== Tablet & Mobile Styles ==================== */
+@media (max-width: 768px) {
   .hamburger {
     display: block;
-    cursor: pointer;
-    font-size: 1.75rem;
-    color: white;
   }
 
-  .navbar-wrapper.scrolled .hamburger {
-    color: #fff;
+  .navbar-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(75vw, 400px); /* Mobile menu width */
+    height: 100vh;
+    background: #0a192f; /* Dark background for the menu */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-right.show {
+    transform: translateX(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
   }
 }

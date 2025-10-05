@@ -19,12 +19,12 @@
   flex: 0 1 600px;
 }
 .hero-headline {
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 2.5rem;
   letter-spacing: -0.02em;
-  color: white; /* Default color */
+  color: #ffffff; /* Default color */
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -47,7 +47,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   white-space: nowrap;
 }
 
@@ -55,12 +55,13 @@
   background-color: transparent;
   color: #ffffff;
   border-color: #ffffff;
+  padding: 0.95rem 2.2rem; /* Increased padding by ~25% */
+  font-size: 0.9rem; /* Increased font size by ~25% */
 }
 
 .cta-button.secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  border-color: #ffffff;
+  background-color: #ffffff; /* Solid white background on hover */
+  color: #111827; /* Dark text color for contrast */
 }
 
 .cta-icon {
@@ -75,11 +76,12 @@
 .hero-visual-container {
   position: relative;
   flex-shrink: 0;
-  width: 420px;
+  width: 360px;
   aspect-ratio: 9 / 16;
   border-radius: 1.5rem;
   overflow: hidden;
   cursor: pointer;
+  transform: translateY(-10px); /* Add this line */
 }
 
 .hero-image,

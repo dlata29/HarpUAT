@@ -25,6 +25,7 @@ export default function App() {
     <Router>
       {/* Navbar & Modal are outside Routes so they show on every page */}
       <Navbar isVisible={isNavbarVisible} />
+      <Navbar onOpenModal={openModal} />
       <CallbackFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       <Routes>
