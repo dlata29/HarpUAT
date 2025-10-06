@@ -8,7 +8,7 @@ export default function Footer({ onOpenModal }) {
       <div className="footer-container">
         {/* Left Side: Featured Work */}
         <a href="https://oneretire.com/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
-          <img src="/oneretire.png" alt="OneRetire App" className="base-image" />
+          <img src="/oneretire.jpeg" alt="OneRetire App" className="base-image" />
           <div className="hover-overlay">
             <div className="hover-content">
               <p className="hover-title">OneRetire App</p>

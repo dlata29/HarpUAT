@@ -68,7 +68,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
 
         {/* Apply the imageRevealStyle here */}
         <div className="about-image-column" style={imageRevealStyle}>
-          <img src="/greg-rakozy-oMpAz-DN-9I-unsplash (1).jpg" alt="Harp and Code Team" />
+          <img src="/aboutus.jpeg" alt="Harp and Code Team" />
         </div>
       </div>
     </section>

@@ -14,7 +14,7 @@ const Products = React.forwardRef((props, ref) => {
         "Redesign and relaunch",
         "UI and UX optimization",
       ],
-      imageUrl: "/websitedesign.jpg",
+      imageUrl: "/websitedesign.jpeg",
     },
     {
       title: "App Development",
@@ -27,7 +27,7 @@ const Products = React.forwardRef((props, ref) => {
         "Push notifications and in-app purchases",
         "Performance monitoring and analytics",
       ],
-      imageUrl: "/appdesign.jpg",
+      imageUrl: "/appdesign.jpeg",
     },
     {
       title: "AI Solutions",
@@ -40,7 +40,7 @@ const Products = React.forwardRef((props, ref) => {
         "AI-powered chatbot development",
         "Data strategy and infrastructure",
       ],
-      imageUrl: "/aisolution2.jpg",
+      imageUrl: "/aisolution2.jpeg",
     },
   ];
 

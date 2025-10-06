@@ -46,7 +46,7 @@ export default function Hero() {
 
       {/* Right side: Image/Video Visual Element */}
       <div className="hero-visual-container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <img src="/heroharp.jpg" alt="Futuristic digital harp" className="hero-image" />
+        <img src="/heroharp.jpeg" alt="Futuristic digital harp" className="hero-image" />
         <video ref={videoRef} src="/videos/herovideo.mp4" className="hero-video" loop muted playsInline />
       </div>
     </section>
