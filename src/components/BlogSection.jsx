@@ -7,7 +7,7 @@ const BlogSection = () => {
   const [error, setError] = useState(null);
 
   // IMPORTANT: Replace this with your WordPress site URL
-  const WORDPRESS_URL = "https://harpandcode.io/";
+  const WORDPRESS_URL = "https://beige-echidna-898280.hostingersite.com//";
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -57,7 +57,7 @@ const BlogSection = () => {
       <div className="blog-container">
         <div className="blog-header">
           <p className="blog-subtitle">Blogs</p>
-          <h2 className="blog-title">Scented stories for every mood</h2>
+          <h2 className="blog-title">Thoughtful reads for every curious soul</h2>
         </div>
 
         <div className="blog-grid">
