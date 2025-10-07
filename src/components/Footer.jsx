@@ -37,8 +37,7 @@ export default function Footer({ onOpenModal }) {
           <p className="footer-tagline">{t("footer.tagline")}</p>
           <div className="footer-actions">
             {/* The button now directly triggers the modal, which is more efficient. */}
-            <button className="footer-contact-button" onClick={onOpenModal}>
-              {/* Translate button text */}
+            <button className="footer-contact-button" onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank", "noopener,noreferrer")}>
               {t("footer.lets_talk")}
             </button>
           </div>
