@@ -62,7 +62,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
               ))}
             </p>
           </div>
-          <button className="about-contact-button" onClick={onOpenModal}>
+          <button className="about-contact-button" onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank")}>
             {t("about.contact_button")}
           </button>
         </div>

@@ -103,13 +103,7 @@ export default function Navbar() {
             </li>
             {/* END: Language Switcher */}
           </ul>
-          <a
-            href="https://calendly.com/your-link" // <-- REPLACE WITH YOUR CALENDLY LINK
-            target="_blank"
-            rel="noopener noreferrer"
-            className="lets-talk-button"
-            onClick={closeMenu}
-          >
+          <a href="https://calendly.com/harpandcodeio/letstalk" target="_blank" rel="noopener noreferrer" className="lets-talk-button" onClick={closeMenu}>
             {t("navbar.lets_talk")}
           </a>
         </div>
