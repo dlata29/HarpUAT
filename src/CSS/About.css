@@ -93,7 +93,8 @@
   border-radius: 16px;
   object-fit: cover;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-  box-shadow: 0 50px 100px -20px rgba(186, 186, 186, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(190, 190, 190, 0.3); /* A more focused, darker shadow closer to the element */
+  box-shadow: 0 50px 100px -20px rgba(186, 186, 186, 0.25),
+    /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(190, 190, 190, 0.3); /* A more focused, darker shadow closer to the element */
 }
 
 /* ==================== Tablet: 769px – 1024px ==================== */
@@ -130,7 +131,7 @@
 /* ==================== Mobile: ≤768px ==================== */
 @media (max-width: 768px) {
   .about-section {
-    padding: 6rem 2rem 6rem 2rem;
+    padding: 4rem 2rem 4rem 2rem;
     margin-top: -8vh;
   }
 
@@ -166,7 +167,7 @@
 /* ==================== Extra Small Mobile: ≤480px ==================== */
 @media (max-width: 480px) {
   .about-section {
-    padding: 5rem 1.5rem 5rem 1.5rem;
+    padding: 3rem 1.5rem;
   }
 
   .about-headline {
