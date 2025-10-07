@@ -152,8 +152,8 @@
     justify-content: center;
     text-align: center;
     gap: 3rem;
-    padding: 7rem 2rem 2rem 2rem;
-    /* height: auto; */
+    padding: 70px 2rem 2rem 2rem;
+    height: auto;
   }
 
   .hero-text-container {
