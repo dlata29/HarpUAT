@@ -1,11 +1,12 @@
 import React from "react";
 import "../CSS/About.css";
 import { useScrollAnimation } from "../hooks/useScrollAnimation"; // Import the hook
+import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
 
 const About = React.forwardRef(({ onOpenModal }, ref) => {
-  const mainText =
-    "Founded by a former UN staff member behind OneRetire, we turn complex challenges into simple, practical solutions. From web apps and custom software to AI tools, we help organizations and entrepreneurs make technology work for them. Combining real-world insight with technical expertise, we build tools that are reliable, useful, and impactful.";
+  const { t } = useTranslation(); // <-- NEW HOOK
 
+  const mainText = t("about.main_text");
   // All the complex logic is now handled by the hook!
   const scrollProgress = useScrollAnimation(ref);
 
@@ -44,8 +45,8 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
       <div className="about-container">
         {/* Apply the textRevealStyle here */}
         <div className="about-text-column" style={textRevealStyle}>
-          <span className="about-tag">About Us</span>
-          <h2 className="about-headline">We partner with visionaries</h2>
+          <span className="about-tag">{t("about.tag")}</span>
+          <h2 className="about-headline">{t("about.headline")}</h2>
           <div className="about-description">
             <p>
               {mainText.split("").map((char, index) => (
@@ -62,7 +63,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
             </p>
           </div>
           <button className="about-contact-button" onClick={onOpenModal}>
-            Let’s craft something lasting — something that sings
+            {t("about.contact_button")}
           </button>
         </div>
 

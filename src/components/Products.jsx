@@ -1,55 +1,49 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
+
 import "../CSS/Products.css";
 
 const Products = React.forwardRef((props, ref) => {
-  const servicesData = [
-    {
-      title: "Web Development",
-      description: "Guaranteed to be unique - we create the optimal foundation for your digital presence with a knack for detail and aesthetics.",
-      points: [
-        "Web design and development",
-        "Implementation of designs (e.g. Figma)",
-        "Creation of interactive designs for replication",
-        "Webshop and e-commerce platforms",
-        "Redesign and relaunch",
-        "UI and UX optimization",
-      ],
-      imageUrl: "/websitedesign.jpeg",
-    },
-    {
-      title: "App Development",
-      description: "From concept to launch, we build intuitive and powerful mobile applications for iOS and Android that engage users and drive growth.",
-      points: [
-        "Native iOS & Android development",
-        "Cross-platform solutions (React Native)",
-        "App store deployment and management",
-        "Backend services and API integration",
-        "Push notifications and in-app purchases",
-        "Performance monitoring and analytics",
-      ],
-      imageUrl: "/appdesign.jpeg",
-    },
-    {
-      title: "AI Solutions",
-      description: "Leverage the power of artificial intelligence to automate processes, gain insights, and create innovative products.",
-      points: [
-        "Machine learning model development",
-        "Natural Language Processing (NLP)",
-        "Computer vision and image analysis",
-        "Predictive analytics and forecasting",
-        "AI-powered chatbot development",
-        "Data strategy and infrastructure",
-      ],
-      imageUrl: "/aisolution2.jpeg",
-    },
-  ];
+  const { t } = useTranslation(); // <-- NEW HOOK
+  const serviceKeys = ["web_dev", "app_dev", "ai_solutions"];
+  // Helper function to dynamically pull all translated data for a service
+  const getServiceData = (key) => {
+    const points = [];
+    // Loop to pull up to 6 points (0 to 5)
+    for (let i = 0; i < 6; i++) {
+      const pointKey = `products.${key}.points_${i}`;
+      const point = t(pointKey);
+      // Only include the point if it was successfully translated (i.e., not the key itself)
+      if (point && point !== pointKey) {
+        points.push(point);
+      }
+    }
+    // Determine the correct image URL based on the key
+    let imageUrl;
+    if (key === "web_dev") {
+      imageUrl = "/websitedesign.jpeg";
+    } else if (key === "app_dev") {
+      imageUrl = "/appdesign.jpeg";
+    } else {
+      imageUrl = "/aisolution2.jpeg";
+    }
+    return {
+      title: t(`products.${key}.title`),
+      description: t(`products.${key}.description`),
+      points: points,
+      imageUrl: imageUrl,
+    };
+  };
+  // The new, translated and dynamic servicesData array
+  const finalServicesData = serviceKeys.map((key) => getServiceData(key));
 
-  const [progressValues, setProgressValues] = useState(Array(servicesData.length).fill(0));
+  // NOTE: The rest of the component now references finalServicesData instead of servicesData
+  const [progressValues, setProgressValues] = useState(Array(finalServicesData.length).fill(0));
   const serviceSectionsRef = useRef([]);
 
   useEffect(() => {
     const handleServicesScroll = () => {
-      const newProgressValues = servicesData.map((_, index) => {
+      const newProgressValues = finalServicesData.map((_, index) => {
         const section = serviceSectionsRef.current[index];
         if (!section) return 0;
 
@@ -68,15 +62,17 @@ const Products = React.forwardRef((props, ref) => {
     window.addEventListener("scroll", handleServicesScroll);
     handleServicesScroll();
     return () => window.removeEventListener("scroll", handleServicesScroll);
-  }, [servicesData.length]);
+  }, [finalServicesData.length]); // Dependencies adjusted
 
   return (
     <section id="products" className="services-section" ref={ref}>
       <div className="services-container">
-        <span className="services-tag">What we offer</span>
+        {/* Update tag to use translation */}
+        <span className="services-tag">{t("products.tag")}</span>
         {/* Left side: Scrolling Text Content */}
         <div className="services-text-content">
-          {servicesData.map((service, index) => (
+          {/* Map over the final translated data */}
+          {finalServicesData.map((service, index) => (
             <div key={index} ref={(el) => (serviceSectionsRef.current[index] = el)} className="service-item">
               <h3 className="service-title">
                 <span>{service.title}</span>
@@ -101,7 +97,8 @@ const Products = React.forwardRef((props, ref) => {
         {/* Right side: Sticky Images with Parallax */}
         <div className="services-image-container">
           <div className="sticky-image-wrapper">
-            {servicesData.map((service, index) => {
+            {/* Map over the final translated data */}
+            {finalServicesData.map((service, index) => {
               const progress = progressValues[index] || 0;
               const translateY = index === 0 ? "0%" : `${100 - progress * 100}%`;
 

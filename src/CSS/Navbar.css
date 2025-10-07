@@ -142,3 +142,62 @@
     color: #ffffff; /* Ensure mobile menu links are white */
   }
 }
+
+/* ==================== Language Switcher Styles (New) ==================== */
+
+.lang-switcher {
+  /* Inherit the display style of a standard <li> in the flex container */
+  display: flex;
+  align-items: center;
+  /* Use 0.5rem gap to close the space between EN and ES */
+  gap: 0.5rem;
+  /* Inherit general link font size */
+  font-size: 0.8rem;
+}
+
+.lang-option {
+  cursor: pointer;
+  /* Inherit default color from .nav-links a */
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+/* Inherit the hover state color from the existing links */
+.lang-option:hover {
+  color: #96ffe9;
+}
+
+/* Style for the currently active language (same color as hover) */
+.lang-option.active {
+  color: #96ffe9;
+  font-weight: 500; /* Subtle weight increase for active state */
+}
+
+/* Ensure the separator maintains the default text color and is not clickable */
+.lang-separator {
+  color: #ffffff;
+}
+
+/* SCROLLED State adjustments for the language switcher */
+.navbar-wrapper.scrolled .lang-option,
+.navbar-wrapper.scrolled .lang-separator {
+  color: #111827; /* Dark color for scrolled state */
+}
+
+.navbar-wrapper.scrolled .lang-option.active,
+.navbar-wrapper.scrolled .lang-option:hover {
+  color: #0077ff; /* Darker hover/active color for contrast */
+}
+
+/* Mobile: Ensure the mobile menu links (and language options) are larger and white */
+@media (max-width: 768px) {
+  .lang-switcher {
+    gap: 1.5rem; /* Larger gap for mobile readability */
+    font-size: 1.2rem; /* Matches the larger mobile link size */
+  }
+
+  .lang-option,
+  .lang-separator {
+    color: #ffffff;
+  }
+}

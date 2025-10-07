@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
+
 import "../CSS/BlogSection.css";
 
 const BlogSection = () => {
+  const { t } = useTranslation(); // <-- NEW HOOK
+
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +24,8 @@ const BlogSection = () => {
         const data = await response.json();
         setPosts(data);
       } catch (err) {
-        setError("Failed to fetch posts. Make sure your WordPress URL is correct and the REST API is accessible.");
+        // Use translation key for the error message
+        setError(t("blog.error"));
         console.error("Error fetching posts:", err);
       } finally {
         setLoading(false);
@@ -39,7 +44,8 @@ const BlogSection = () => {
   if (loading) {
     return (
       <section className="blog-section">
-        <p>Loading posts...</p>
+        {/* Use translation key for loading */}
+        <p>{t("blog.loading")}</p>
       </section>
     );
   }
@@ -56,8 +62,8 @@ const BlogSection = () => {
     <section id="blog" className="blog-section">
       <div className="blog-container">
         <div className="blog-header">
-          <p className="blog-subtitle">Blogs</p>
-          <h2 className="blog-title">Thoughtful reads for every curious soul</h2>
+          <p className="blog-subtitle">{t("blog.subtitle")}</p>
+          <h2 className="blog-title">{t("blog.title")}</h2>
         </div>
 
         <div className="blog-grid">
@@ -82,7 +88,8 @@ const BlogSection = () => {
                     dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                   />
                   <a href={post.link} target="_blank" rel="noopener noreferrer" className="blog-card-readmore">
-                    Read more &rarr;
+                    {/* Use translation key for the "Read more" link */}
+                    {t("blog.read_more")}
                   </a>
                 </div>
               </div>
@@ -91,7 +98,10 @@ const BlogSection = () => {
         </div>
 
         <div className="blog-footer">
-          <button className="view-more-button">View more articles &rarr;</button>
+          <button className="view-more-button">
+            {/* Use translation key for the footer button */}
+            {t("blog.view_more_articles")}
+          </button>
         </div>
       </div>
     </section>

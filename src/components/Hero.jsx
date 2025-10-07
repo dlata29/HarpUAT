@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
 import "../CSS/Hero.css";
 
 export default function Hero() {
+  const { t, i18n } = useTranslation();
   const videoRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -17,20 +19,37 @@ export default function Hero() {
     }
   };
 
+  // 1. Determine the highlighted phrase based on the current language
+  const isEnglish = i18n.language.startsWith("en");
+  const highlightedPhrase = isEnglish
+    ? "Intelligent Tools." // English highlight text
+    : "Herramientas Inteligentes."; // Spanish highlight text (from your JSON)
+
+  // 2. The full headline text from the translation file
+  const headlineText = t("hero.headline");
+
+  // 3. Split the headline using the correct phrase
+  const headlineParts = headlineText.split(highlightedPhrase);
+
   return (
     <section className="hero-section">
       {/* Left side: Text Content */}
       <div className="hero-text-container">
         <h1 className="hero-headline">
-          Transforming Ideas
-          <br />
-          into <span className="highlight-text1">Intelligent Tools.</span>
+          {/* Map over the parts created by the split */}
+          {headlineParts.map((part, index) => (
+            <React.Fragment key={index}>
+              {part}
+              {/* If a part exists after the split, re-insert the highlighted phrase in a span */}
+              {index < headlineParts.length - 1 && <span className="highlight-text1">{highlightedPhrase}</span>}
+            </React.Fragment>
+          ))}
         </h1>
         {/* Container for the new single button */}
         <div className="hero-cta-container">
           <a href="https://unjsfpensionc.netlify.app" target="_blank" rel="noopener noreferrer">
             <button className="cta-button secondary">
-              OneRetire app is LIVE
+              {t("hero.cta")}
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="cta-icon" viewBox="0 0 16 16">
                 <path
                   fillRule="evenodd"
