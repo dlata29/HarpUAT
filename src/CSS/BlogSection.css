@@ -29,7 +29,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: #111827;
-  text-transform: uppercase;
+
   letter-spacing: 0.5px;
   margin: 0;
   display: flex;
@@ -85,9 +85,9 @@
   display: none;
 }
 
-.blog-card:nth-child(even) .blog-card-image {
-  aspect-ratio: 3 / 3; /* tall/portrait style */
-}
+/* .blog-card:nth-child(even) .blog-card-image {
+  aspect-ratio: 3 / 3; 
+} */
 @media (max-width: 1024px) {
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
