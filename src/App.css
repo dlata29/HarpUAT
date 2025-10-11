@@ -30,3 +30,5 @@ div.grid-background-container:has(> .hero-section) {
     transform: rotate(360deg);
   }
 }
+
+/* The media query that caused the white strips has been removed. */

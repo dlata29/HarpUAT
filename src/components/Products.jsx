@@ -45,24 +45,31 @@ const Products = React.forwardRef((props, ref) => {
     const handleServicesScroll = () => {
       const newProgressValues = finalServicesData.map((_, index) => {
         const section = serviceSectionsRef.current[index];
+        const nextSection = serviceSectionsRef.current[index + 1];
         if (!section) return 0;
 
-        const { top } = section.getBoundingClientRect();
-        const animationStartPoint = window.innerHeight * 0.75;
-        const animationEndPoint = window.innerHeight * 0.25;
-        const animationZoneHeight = animationStartPoint - animationEndPoint;
-        const distanceFromStart = animationStartPoint - top;
-        const progress = distanceFromStart / animationZoneHeight;
+        const sectionTop = section.getBoundingClientRect().top;
+        const nextTop = nextSection ? nextSection.getBoundingClientRect().top : 0;
+        const windowHeight = window.innerHeight;
 
-        return Math.max(0, Math.min(1, progress));
+        // Dynamic animation zone (distance between sections)
+        const distance = nextSection ? nextTop - sectionTop : windowHeight * 0.8;
+
+        // Calculate scroll progress relative to that distance
+        const anchorPoint = windowHeight * 0.8; // was 0.5, shift timing earlier
+        const progress = Math.min(1, Math.max(0, ((anchorPoint - sectionTop) / distance) * 1.5));
+
+        return progress;
       });
+
       setProgressValues(newProgressValues);
     };
 
-    window.addEventListener("scroll", handleServicesScroll);
+    window.addEventListener("scroll", handleServicesScroll, { passive: true });
     handleServicesScroll();
+
     return () => window.removeEventListener("scroll", handleServicesScroll);
-  }, [finalServicesData.length]); // Dependencies adjusted
+  }, [finalServicesData.length]);
 
   return (
     <section id="products" className="services-section" ref={ref}>

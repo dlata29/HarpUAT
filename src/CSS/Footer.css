@@ -1,7 +1,7 @@
 /* General Footer Section Styling */
 .footer-section {
   background-color: #ffffff;
-  padding: 2rem 9rem;
+  padding: 4rem 2rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #111;
   overflow: hidden;
@@ -10,9 +10,9 @@
 .footer-container {
   max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
   align-items: start;
 }
 
@@ -22,13 +22,13 @@
   width: 100%;
   max-width: 32rem;
   aspect-ratio: 1 / 1;
-  border-radius: 1rem;
-  /* --- UPDATED FOR A LAYERED, REALISTIC SHADOW --- */
-  box-shadow: 0 50px 100px -20px rgba(27, 24, 24, 0.25),
-    /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(0, 0, 0, 0.3); /* A more focused, darker shadow closer to the element */
+  border-radius: 0.5rem;
+
+  /* --- Tighter, Subtle Shadow --- */
+  box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), /* Softer ambient shadow */ 0 10px 20px -10px rgba(0, 0, 0, 0.35); /* Slightly darker edge */
+
   overflow: hidden;
   display: block;
-  overflow: hidden;
   text-decoration: none;
   color: white;
 }
@@ -53,8 +53,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: white;
-  box-shadow: 0 50px 100px -20px rgba(255, 0, 0, 0.25),
-    /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(0, 0, 0, 0.3); /* A more focused, darker shadow closer to the element */
+  box-shadow: 0 50px 100px -20px rgba(255, 0, 0, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(0, 0, 0, 0.3); /* A more focused, darker shadow closer to the element */
 }
 
 /* Hover Overlay Styles */
@@ -163,17 +162,25 @@
 /* --- Responsive Design --- */
 @media (max-width: 900px) {
   .footer-container {
-    grid-template-columns: 1fr;
+    /* FIX: Stack items vertically on mobile */
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center;
   }
 
   .footer-headline {
     font-size: 2rem;
   }
 
-  .footer-section {
-    padding: 2rem 2rem;
-  }
   .footer-actions {
     margin-bottom: 2rem;
+  }
+}
+
+/* ==================== Large Screens (e.g. Studio Display) ==================== */
+@media (min-width: 1800px) {
+  .footer-container {
+    /* FIX: Increase space between items for a balanced look */
+    gap: 6rem;
   }
 }

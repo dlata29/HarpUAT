@@ -1,16 +1,14 @@
 /* ==================== About Section Base ==================== */
 .about-section {
-  background-color: transparent; /* Can be transparent since the parent <main> has a background */
+  background-color: transparent;
   position: relative;
-  /* z-index is no longer strictly necessary here but is fine to keep */
   z-index: 2;
   display: flex;
   align-items: flex-start;
-
-  padding: 4rem 5% 8rem 5%;
-  margin-top: -11vh;
-  /* --- REMOVE THIS LINE --- */
-  /* margin-top: -11vh; */
+  padding: 4rem 2rem 8rem 2rem; /* <-- SUGGESTION: Use fixed units */
+  margin-top: -8vh;
+  width: 100%; /* Ensure the section is full-width */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 .about-container {
@@ -21,12 +19,13 @@
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
+  width: 100%; /* Take up the full width of the parent */
 }
 
 /* --- Text Column --- */
 .about-text-column {
   flex: 2;
-  min-width: 600px;
+  /* min-width: 600px; <-- REMOVE THIS LINE */
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
@@ -41,7 +40,7 @@
 }
 
 .about-headline {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #111827;
   margin-bottom: 1rem;
@@ -78,9 +77,10 @@
 }
 
 /* --- Image Column --- */
+/* --- Image Column --- */
 .about-image-column {
   flex: 1;
-  min-width: 200px;
+  /* min-width: 200px; <-- REMOVE THIS LINE */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,11 +90,10 @@
   width: 120%;
   max-width: 400px;
   height: auto;
-  border-radius: 16px;
+  border-radius: 8px;
   object-fit: cover;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-  box-shadow: 0 50px 100px -20px rgba(186, 186, 186, 0.25),
-    /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(190, 190, 190, 0.3); /* A more focused, darker shadow closer to the element */
+  box-shadow: 0 50px 100px -20px rgba(186, 186, 186, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(190, 190, 190, 0.3); /* A more focused, darker shadow closer to the element */
 }
 
 /* ==================== Tablet: 769px – 1024px ==================== */
@@ -112,7 +111,7 @@
   }
 
   .about-headline {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .about-description p {
