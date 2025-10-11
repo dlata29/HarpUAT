@@ -8,6 +8,8 @@
   background-color: transparent;
   width: 100%; /* Ensure the section is full-width */
   box-sizing: border-box;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .services-container {
@@ -15,8 +17,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem; /* <-- Increased from 2rem */
-  padding: 0 2rem;
+  gap: 3rem 4rem;
 }
 
 @media (min-width: 768px) {
@@ -97,9 +98,9 @@
   position: sticky;
   top: 10vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* <-- This is the only change */
   align-items: flex-start;
-  height: 100vh; /* was calc(100vh - 10vh) */
+  height: 100vh;
 }
 
 .sticky-image-wrapper {
@@ -127,7 +128,7 @@
   .services-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 3rem;
+    padding: 0 1rem;
   }
 
   .services-text-content {
@@ -174,7 +175,6 @@
   .services-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 4rem; /* <-- Increased from 2rem */
-    padding: 0 2rem;
   }
 
   .service-title {
