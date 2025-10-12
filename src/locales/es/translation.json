@@ -44,7 +44,7 @@
     "blog.loading": "Cargando publicaciones...",
     "blog.error": "No se pudieron cargar las publicaciones. Asegúrate de que la URL de WordPress sea correcta y la API REST esté accesible.",
     "footer.featured_work": "Trabajo Destacado",
-    "footer.project_title": "App OneRetire",
+    "footer.project_title": "app OneRetire",
     "footer.view_project": "Ver Proyecto →",
     "footer.headline_prefix": "Creemos algo ",
     "footer.headline_highlight": "especial",

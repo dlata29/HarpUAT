@@ -114,13 +114,13 @@
 /* Subtext (from data-subtext) hidden by default */
 .service-point span::after {
   content: attr(data-subtext);
-  display: block;
+  display: block !important;
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  color: #4b5563;
+  color: #6d7278;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 2;
   transform: translateY(-5px);
   transition: all 0.35s ease;
@@ -208,7 +208,7 @@
 
   .service-description {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .service-point {
@@ -232,6 +232,10 @@
     max-width: 90%;
     margin: 0 auto;
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+  }
+
+  .service-point span {
+    font-size: 0.9rem;
   }
 }
 

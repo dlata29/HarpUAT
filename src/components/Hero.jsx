@@ -48,7 +48,7 @@ export default function Hero() {
           </h1>
           {/* Container for the new single button */}
           <div className="hero-cta-container">
-            <a href="https://unjsfpensionc.netlify.app" target="_blank" rel="noopener noreferrer">
+            <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer">
               <button className="cta-button secondary">
                 {t("hero.cta")}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="cta-icon" viewBox="0 0 16 16">

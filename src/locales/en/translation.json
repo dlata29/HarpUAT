@@ -44,7 +44,7 @@
     "blog.loading": "Loading posts...",
     "blog.error": "Failed to load posts. Please ensure the WordPress URL is correct and the REST API is accessible.",
     "footer.featured_work": "Featured Work",
-    "footer.project_title": "OneRetire App",
+    "footer.project_title": "OneRetire app",
     "footer.view_project": "View Project →",
     "footer.headline_prefix": "Let's create something ",
     "footer.headline_highlight": "special",

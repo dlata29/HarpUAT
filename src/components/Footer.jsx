@@ -10,7 +10,7 @@ export default function Footer({ onOpenModal }) {
     <footer id="contact" className="footer-section">
       <div className="footer-container">
         {/* Left Side: Featured Work */}
-        <a href="https://oneretire.com/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
+        <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
           <img src="/oneretire.jpeg" alt="OneRetire App" className="base-image" />
           <div className="hover-overlay">
             <div className="hover-content">
