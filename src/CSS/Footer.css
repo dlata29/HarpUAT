@@ -56,6 +56,12 @@
   box-shadow: 0 50px 100px -20px rgba(255, 0, 0, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(0, 0, 0, 0.3); /* A more focused, darker shadow closer to the element */
 }
 
+.details-address {
+  margin-top: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
 /* Hover Overlay Styles */
 .hover-overlay {
   position: absolute;
