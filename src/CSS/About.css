@@ -41,20 +41,19 @@
 
 .about-headline {
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #111827;
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
 }
-
 .about-description p {
-  font-size: 1.2rem;
-  color: #000000;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  font-weight: 100;
+  font-size: clamp(1rem, 1.1vw + 0.8rem, 1.25rem);
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-weight: 300;
   text-align: left;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.01em;
 }
 
 .about-contact-button {
@@ -80,13 +79,38 @@
 /* --- Image Column --- */
 .about-image-column {
   flex: 1;
-  /* min-width: 200px; <-- REMOVE THIS LINE */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.about-image-column img {
+/* Create a square container */
+.about-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 
+    0 20px 40px -15px rgba(27, 24, 24, 0.25),  /* Softer ambient shadow */
+    0 10px 20px -10px rgba(0, 0, 0, 0.35);     /* Slightly darker edge shadow */
+}
+
+/* Image inside the square container */
+.about-image-wrapper img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover; /* Ensures no white strips */
+  object-position: center; /* Centers image */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* .about-image-column img {
   width: 120%;
   max-width: 400px;
   height: auto;
@@ -94,7 +118,7 @@
   object-fit: cover;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
   box-shadow: 0 50px 100px -20px rgba(186, 186, 186, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(190, 190, 190, 0.3); /* A more focused, darker shadow closer to the element */
-}
+} */
 
 /* ==================== Tablet: 769px – 1024px ==================== */
 @media (min-width: 769px) and (max-width: 1024px) {
