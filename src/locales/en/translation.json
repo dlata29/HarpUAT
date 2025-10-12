@@ -21,7 +21,6 @@
     "products.web_dev.points_3": "E-commerce & Webshop Development: Implementation and integration for major platforms like Shopify, WooCommerce, and headless commerce solutions.",
     "products.web_dev.points_4": "Redesign, Relaunch, and Performance Audits: Modernizing existing digital presences for better functionality and SEO performance.",
     "products.web_dev.points_5": "",
-
     "products.app_dev.title": "Mobile App Development",
     "products.app_dev.description": "From concept to launch, we engineer intuitive, high-performance mobile applications for iOS and Android that engage users, drive sustained growth, and scale reliably.",
     "products.app_dev.points_0": "Native App Development: Building high-performance iOS and Android apps using Swift and Kotlin for maximum speed and stability.",
@@ -30,16 +29,14 @@
     "products.app_dev.points_3": "App Store Deployment & Lifecycle Management: Handling submission, compliance, and ongoing updates for Apple App Store and Google Play.",
     "products.app_dev.points_4": "Advanced Features & Integrations: Implementing push notifications, secure in-app purchases, and analytics frameworks.",
     "products.app_dev.points_5": "Monitoring & Maintenance: Setting up performance tracking, crash analytics, and long-term app optimization.",
-
     "products.ai_solutions.title": "AI Agents & Intelligent Automation",
     "products.ai_solutions.description": "Unleash the power of AI to transform your business operations. We build autonomous AI Agents and Custom Bots that automate routine tasks, unlock real-time data insights, and reduce costs.",
-    "products.ai_solutions.points_0": "Custom AI Agents & Digital Co-workers: Autonomous automation bots for sales, customer support, and internal operations (e.g., HR, finance).",
-    "products.ai_solutions.points_1": "Generative AI Applications: Building internal tools and public-facing products using Large Language Models (LLMs) for content generation, summarization, and process augmentation.",
+    "products.ai_solutions.points_0": "Custom AI Agents & Digital Co-workers: Autonomous automation bots for sales, customer support, and internal operations (HR, finance).",
+    "products.ai_solutions.points_1": "Generative AI Applications: Building internal tools and public-facing products using Large Language Models for content generation, summarization, and process augmentation.",
     "products.ai_solutions.points_2": "AI-Powered Chatbots & Virtual Assistants: Developing custom, secure conversational bots for 24/7 customer service and seamless employee support.",
     "products.ai_solutions.points_3": "Predictive Analytics & Forecasting: Leveraging Machine Learning to model complex data and provide actionable forecasts for inventory, demand, and risk.",
     "products.ai_solutions.points_4": "Advanced Data Strategy: Designing and implementing modern data infrastructure to support ethical and scalable AI initiatives.",
     "products.ai_solutions.points_5": "",
-
     "blog.subtitle": "Blogs",
     "blog.title": "Thoughtful reads for every curious mind",
     "blog.read_more": "Read more →",
@@ -53,6 +50,7 @@
     "footer.headline_highlight": "special",
     "footer.tagline": "If you have a project in mind, contact us and let’s get started!",
     "footer.lets_talk": "LET’S TALK",
-    "footer.contact_heading": "Contact"
+    "footer.contact_heading": "Email",
+    "footer.address_heading": "Address"
   }
 }

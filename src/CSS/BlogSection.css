@@ -145,16 +145,23 @@
 
 /* Mobile */
 @media (max-width: 768px) {
+  .blog-section {
+    padding-top: 4rem;
+  }
+
   .blog-grid {
     grid-template-columns: 1fr;
   }
 
+  /* START: MODIFIED SECTION */
   .blog-card {
-    background-color: transparent; /* Mobile Override: transparent background */
-    width: 80%;
+    background-color: transparent;
+    width: 100%;
+    max-width: 32rem;
     margin: 0 auto;
-    box-shadow: none; /* Mobile Override: remove shadow */
+    box-shadow: none;
   }
+  /* END: MODIFIED SECTION */
 
   .blog-card-image {
     aspect-ratio: 4 / 3; /* Mobile Override: 4:3 image ratio */

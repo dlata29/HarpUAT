@@ -38,7 +38,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   };
 
   // Calculation for the text highlighting effect
-  const highlightedChars = Math.floor(scrollProgress * 1.5 * mainText.length);
+  const highlightedChars = Math.floor(scrollProgress * 1.4 * mainText.length);
 
   return (
     <section id="about" className="about-section" ref={ref}>

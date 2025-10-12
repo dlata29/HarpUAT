@@ -76,7 +76,6 @@
 }
 
 /* --- Image Column --- */
-/* --- Image Column --- */
 .about-image-column {
   flex: 1;
   display: flex;
@@ -92,9 +91,7 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 
-    0 20px 40px -15px rgba(27, 24, 24, 0.25),  /* Softer ambient shadow */
-    0 10px 20px -10px rgba(0, 0, 0, 0.35);     /* Slightly darker edge shadow */
+  box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), /* Softer ambient shadow */ 0 10px 20px -10px rgba(0, 0, 0, 0.35); /* Slightly darker edge shadow */
 }
 
 /* Image inside the square container */
@@ -109,16 +106,6 @@
   object-position: center; /* Centers image */
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
-
-/* .about-image-column img {
-  width: 120%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-  box-shadow: 0 50px 100px -20px rgba(186, 186, 186, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(190, 190, 190, 0.3); /* A more focused, darker shadow closer to the element */
-} */
 
 /* ==================== Tablet: 769px – 1024px ==================== */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -153,20 +140,45 @@
 
 /* ==================== Mobile: ≤768px ==================== */
 @media (max-width: 768px) {
+  /* START: MODIFIED SECTION */
   .about-section {
-    padding: 4rem 2rem 4rem 2rem;
-    margin-top: -8vh;
+    padding: 0;
+    margin-top: 0;
   }
 
   .about-container {
     flex-direction: column-reverse;
-    align-items: center;
-    gap: 2rem;
+    gap: 0;
+  }
+
+  .about-tag {
+    display: none;
   }
 
   .about-text-column {
-    min-width: auto;
+    padding: 2.5rem 2rem 4rem 2rem;
     text-align: center;
+    min-width: auto;
+  }
+
+  .about-image-column {
+    width: 100%;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .about-image-wrapper {
+    max-width: 100%;
+    height: 350px;
+    aspect-ratio: auto;
+    border-radius: 2rem 2rem 0 0;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+  /* END: MODIFIED SECTION */
+
+  .about-image-wrapper img {
+    object-position: center 35%;
   }
 
   .about-headline {
@@ -178,10 +190,6 @@
     line-height: 1.5;
   }
 
-  .about-image-column img {
-    max-width: 250px;
-  }
-
   .about-contact-button {
     font-size: 0.85rem;
   }
@@ -190,7 +198,11 @@
 /* ==================== Extra Small Mobile: ≤480px ==================== */
 @media (max-width: 480px) {
   .about-section {
-    padding: 3rem 1.5rem;
+    padding: 0 0 3rem 0;
+  }
+
+  .about-text-column {
+    padding: 2rem 1.5rem 3rem 1.5rem;
   }
 
   .about-headline {
@@ -201,8 +213,8 @@
     font-size: 0.95rem;
   }
 
-  .about-image-column img {
-    max-width: 200px;
+  .about-image-wrapper {
+    height: 250px;
   }
 
   .about-contact-button {

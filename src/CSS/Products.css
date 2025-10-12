@@ -178,15 +178,27 @@
 
 /* ==================== Mobile: ≤767px ==================== */
 @media (max-width: 767px) {
+  /* START: MODIFIED SECTION */
+  .services-section {
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .services-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
+  /* END: MODIFIED SECTION */
 
   .services-text-content {
-    gap: 6rem;
+    gap: 4rem;
     padding-bottom: 10vh;
+  }
+
+  .service-item {
+    min-height: auto;
   }
 
   .service-title {

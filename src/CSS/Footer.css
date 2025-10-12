@@ -56,12 +56,6 @@
   box-shadow: 0 50px 100px -20px rgba(255, 0, 0, 0.25), /* A soft, wide ambient shadow */ 0 30px 60px -30px rgba(0, 0, 0, 0.3); /* A more focused, darker shadow closer to the element */
 }
 
-.details-address {
-  margin-top: 0.5rem;
-  color: #555;
-  font-size: 0.9rem;
-}
-
 /* Hover Overlay Styles */
 .hover-overlay {
   position: absolute;
@@ -141,10 +135,13 @@
   background-color: #444;
 }
 
-/* Details Section */
+/* START: UPDATED STYLES */
 .footer-details {
   border-top: 1px solid #ddd;
   padding-top: 2rem;
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
 }
 
 .details-heading {
@@ -154,12 +151,14 @@
   color: #555;
 }
 
-.details-link {
+.details-link,
+.details-address {
   font-size: 0.9rem;
   line-height: 1.6;
   color: #111;
   text-decoration: none;
 }
+/* END: UPDATED STYLES */
 
 .details-link:hover {
   text-decoration: underline;
@@ -173,6 +172,13 @@
     align-items: center; /* Center items horizontally */
     text-align: center;
   }
+
+  /* START: ADDED RESPONSIVE RULE */
+  .footer-details {
+    justify-content: center;
+    gap: 2rem;
+  }
+  /* END: ADDED RESPONSIVE RULE */
 
   .footer-headline {
     font-size: 2rem;

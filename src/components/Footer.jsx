@@ -37,13 +37,18 @@ export default function Footer({ onOpenModal }) {
           </div>
 
           <div className="footer-details">
-            <div>
+            {/* START: UPDATED SECTION */}
+            <div className="details-section">
               <h3 className="details-heading">{t("footer.contact_heading")}</h3>
               <a href="mailto:info@harpandcode.io" className="details-link">
                 info@harpandcode.io
               </a>
+            </div>
+            <div className="details-section">
+              <h3 className="details-heading">{t("footer.address_heading")}</h3>
               <p className="details-address">Panama Pacifico Special Economic Area, Panama City</p>
             </div>
+            {/* END: UPDATED SECTION */}
           </div>
         </div>
       </div>
