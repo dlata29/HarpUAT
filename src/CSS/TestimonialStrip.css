@@ -1,0 +1,85 @@
+/* Animation for the marquee effect */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    /* Moves the track by half its width */
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-strip {
+  width: 100%;
+  padding: 1.5rem 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Fading edges for a smoother appearance */
+.testimonial-strip::before,
+.testimonial-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+}
+
+.testimonial-strip::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.testimonial-strip::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.testimonial-track {
+  display: flex;
+  align-items: center;
+  width: calc(550px * 6); /* MODIFIED: Adjusted width calculation slightly for the larger icon */
+  animation: scroll-left 45s linear infinite;
+  white-space: nowrap;
+}
+
+/* Pause animation on hover for readability */
+.testimonial-strip:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+.testimonial-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  width: 450px;
+  flex-shrink: 0;
+}
+
+.testimonial-quote {
+  font-size: 0.95rem;
+  color: #495057;
+  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  white-space: normal;
+}
+
+.testimonial-author {
+  font-size: 0.9rem;
+  color: #212529;
+}
+
+.testimonial-author strong {
+  font-weight: 600;
+}
+
+.testimonial-separator {
+  /* MODIFIED: Adjusted margin to better space the larger note */
+  margin: 0 2rem;
+  flex-shrink: 0;
+}

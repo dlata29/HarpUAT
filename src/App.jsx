@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import CallbackFormModal from "./components/CallbackFormModal";
 import GridBackground from "./components/GridBackground";
 import BlogSection from "./components/BlogSection";
+import TestimonialStrip from "./components/TestimonialStrip"; // <-- ADDED IMPORT
 
 export default function App() {
   const [isNavbarVisible, setNavbarVisible] = useState(true);
@@ -44,6 +45,7 @@ export default function App() {
                   <Products />
                 </GridBackground>
                 <BlogSection />
+                <TestimonialStrip /> {/* <-- PLACED COMPONENT HERE */}
                 <Footer onOpenModal={openModal} />
               </main>
             </>
