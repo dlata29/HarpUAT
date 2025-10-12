@@ -4,9 +4,8 @@ import { useScrollAnimation } from "../hooks/useScrollAnimation"; // Import the 
 import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
 
 const About = React.forwardRef(({ onOpenModal }, ref) => {
-  const { t } = useTranslation(); // <-- NEW HOOK
+  const { t, i18n } = useTranslation(); // <-- Get i18n instance for language detection
 
-  const mainText = t("about.main_text");
   // All the complex logic is now handled by the hook!
   const scrollProgress = useScrollAnimation(ref);
 
@@ -18,27 +17,50 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.05) / 0.95));
 
   // Style for the text column (uses the direct scroll progress)
-  // const textRevealStyle = {
-  //   transform: `translateY(${(1 - scrollProgress) * 100}px)`,
-  // };
   const textRevealStyle = {
     transform: `translateY(${(1 - scrollProgress) * 100}px)`,
     opacity: Math.min(1, scrollProgress * 1.5),
   };
 
   // Style for the image column (uses the delayed image progress)
-  // const imageRevealStyle = {
-  //   transform: `translateY(${(1 - imageProgress) * 100}px) scale(${0.8 + 0.2 * imageProgress})`,
-  // };
-  /*above one is for simple zoom out */
-
   const imageRevealStyle = {
     transform: `translateY(${(1 - imageProgress) * 100}px) scale(${0.8 + 0.2 * imageProgress})`,
     opacity: imageProgress, // fades in from 0 → 1
   };
 
-  // Calculation for the text highlighting effect
+  // --- Text Highlighting Logic ---
+  const mainText = t("about.main_text");
   const highlightedChars = Math.floor(scrollProgress * 1.4 * mainText.length);
+
+  // Define the phrases to be made bold in both English and Spanish
+  const boldTextEN = "app development, website design, and AI automation";
+  const boldTextES = "desarrollo de aplicaciones, diseño de sitios web y automatización con IA";
+
+  // Determine which phrase to use based on the current language
+  const boldText = i18n.language.startsWith("es") ? boldTextES : boldTextEN;
+
+  // Split the main text into parts based on the phrase to be bolded
+  const textParts = mainText.split(boldText);
+
+  let charCount = 0; // Counter to track character position for the animation
+
+  // Helper function to render text with the scroll animation
+  const renderAnimatedText = (text, isBold = false) => {
+    return text.split("").map((char) => {
+      const style = {
+        color: charCount < highlightedChars ? darkColor : lightColor,
+        transition: "color 0.15s linear",
+        // Apply bold font weight if this part should be bold
+        fontWeight: isBold ? "600" : "300",
+      };
+      charCount++;
+      return (
+        <span key={charCount} style={style}>
+          {char}
+        </span>
+      );
+    });
+  };
 
   return (
     <section id="about" className="about-section" ref={ref}>
@@ -49,17 +71,12 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
           <h2 className="about-headline">{t("about.headline")}</h2>
           <div className="about-description">
             <p>
-              {mainText.split("").map((char, index) => (
-                <span
-                  key={index}
-                  style={{
-                    color: index < highlightedChars ? darkColor : lightColor,
-                    transition: "color 0.15s linear",
-                  }}
-                >
-                  {char}
-                </span>
-              ))}
+              {/* Render the text parts sequentially */}
+              {renderAnimatedText(textParts[0])}
+              {/* The bolded part */}
+              {renderAnimatedText(boldText, true)}
+              {/* The part after the bolded text */}
+              {renderAnimatedText(textParts[1])}
             </p>
           </div>
           <button className="about-contact-button" onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank")}>
@@ -69,8 +86,8 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
 
         {/* Apply the imageRevealStyle here */}
         <div className="about-image-column" style={imageRevealStyle}>
-          <div class="about-image-wrapper">
-            <img src="/aboutus.jpeg" alt="Harp and Code Team" />
+          <div className="about-image-wrapper">
+            <img src="/aboutus.jpeg" alt="A person looking at a starry sky" />
           </div>
         </div>
       </div>
