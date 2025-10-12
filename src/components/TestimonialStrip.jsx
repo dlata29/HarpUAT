@@ -3,7 +3,7 @@ import "../CSS/TestimonialStrip.css";
 
 // --- Updated Musical Note SVG with Darker Gradient ---
 const MusicNote = () => (
-  <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="testimonial-separator" aria-hidden="true">
+  <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="testimonial-separator" aria-hidden="true">
     <defs>
       {/* MODIFIED: Adjusted gradient colors to be darker */}
       <linearGradient id="music-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
