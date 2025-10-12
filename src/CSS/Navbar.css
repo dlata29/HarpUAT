@@ -1,6 +1,4 @@
-/* src/CSS/Navbar.css */
-
-/* ==================== Desktop Navbar ==================== */
+/* ==================== Desktop & Default Navbar ==================== */
 .navbar-wrapper {
   position: fixed;
   top: 0;
@@ -8,75 +6,23 @@
   width: 100%;
   z-index: 50;
   background: transparent;
-  /* UPDATED PADDING */
-  padding: 0.5rem 10%;
+  padding: 0.75rem 10%;
   transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
-/* --- Styles for the SCROLLED state --- */
-.navbar-wrapper.scrolled {
-  background: rgba(255, 255, 255, 0.85); /* Light blueish-white background */
-  backdrop-filter: blur(20px);
-  padding: 0.5rem 10%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.navbar-wrapper.scrolled .logo,
-.navbar-wrapper.scrolled .nav-links a,
-.navbar-wrapper.scrolled .hamburger {
-  color: #111827; /* Dark text for logo, links, and hamburger */
-}
-
-.navbar-wrapper.scrolled .nav-links a:hover {
-  color: #0077ff; /* Optional: A different hover color for the scrolled state */
-}
-
-.navbar-wrapper.scrolled .lets-talk-button {
-  background-color: #111827; /* Black background for the button */
-  color: #ffffff; /* White text for the button */
-}
-
-/* ==================== Default Navbar Styles ==================== */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.logo {
-  font-size: 1.2rem;
-  font-weight: 500; /* Adjusted for better visibility */
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 3rem;
-}
-
-.nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.3s ease;
-  font-size: 0.8rem;
+.logo,
+.nav-links a,
+.hamburger,
+.lang-option,
+.lang-separator {
+  color: #ffffff; /* Default white */
 }
 
 .nav-links a:hover,
-.nav-links a.active {
-  color: #96ffe9;
+.nav-links a.active,
+.lang-option.active,
+.lang-option:hover {
+  color: #96ffe9; /* Hover/active default */
 }
 
 .lets-talk-button {
@@ -98,6 +44,70 @@
   transform: scale(1.05);
 }
 
+/* ==================== Scrolled Navbar ==================== */
+.navbar-wrapper.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  padding: 0.5rem 10%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-wrapper.scrolled .logo,
+.navbar-wrapper.scrolled .nav-links a,
+.navbar-wrapper.scrolled .hamburger,
+.navbar-wrapper.scrolled .lang-option,
+.navbar-wrapper.scrolled .lang-separator {
+  color: #111827; /* Dark text for scrolled state */
+}
+
+.navbar-wrapper.scrolled .nav-links a:hover,
+.navbar-wrapper.scrolled .lang-option.active,
+.navbar-wrapper.scrolled .lang-option:hover {
+  color: #1fc5a1; /* Hover/active for scrolled */
+}
+
+.navbar-wrapper.scrolled .lets-talk-button {
+  background-color: #111827;
+  color: #ffffff;
+}
+
+/* ==================== Navbar Layout ==================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 3rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  font-size: 0.8rem;
+}
+
+/* Hamburger */
 .hamburger {
   display: none;
   cursor: pointer;
@@ -107,7 +117,7 @@
   transition: color 0.3s ease;
 }
 
-/* ==================== Tablet & Mobile Styles ==================== */
+/* ==================== Tablet & Mobile ==================== */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -138,88 +148,64 @@
     text-align: center;
   }
 
-  .nav-links a {
+  .nav-links a,
+  .lang-option,
+  .lang-separator {
+    color: #ffffff; /* Mobile menu links white */
     font-size: 1.2rem;
-    color: #ffffff; /* Ensure mobile menu links are white */
+  }
+
+  .lang-switcher {
+    gap: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
-/* ==================== Language Switcher Styles (New) ==================== */
-
+/* ==================== Language Switcher ==================== */
 .lang-switcher {
-  /* Inherit the display style of a standard <li> in the flex container */
   display: flex;
   align-items: center;
-  /* Use 0.5rem gap to close the space between EN and ES */
   gap: 0.5rem;
-  /* Inherit general link font size */
   font-size: 0.8rem;
 }
 
 .lang-option {
   cursor: pointer;
-  /* Inherit default color from .nav-links a */
-  color: #ffffff;
   transition: color 0.3s ease;
 }
 
-/* Inherit the hover state color from the existing links */
 .lang-option:hover {
   color: #96ffe9;
 }
 
-/* Style for the currently active language (same color as hover) */
 .lang-option.active {
   color: #96ffe9;
-  font-weight: 500; /* Subtle weight increase for active state */
+  font-weight: 500;
 }
 
-/* Ensure the separator maintains the default text color and is not clickable */
 .lang-separator {
   color: #ffffff;
 }
 
-/* SCROLLED State adjustments for the language switcher */
+/* SCROLLED State adjustments for language switcher */
 .navbar-wrapper.scrolled .lang-option,
 .navbar-wrapper.scrolled .lang-separator {
-  color: #111827; /* Dark color for scrolled state */
+  color: #111827;
 }
 
 .navbar-wrapper.scrolled .lang-option.active,
 .navbar-wrapper.scrolled .lang-option:hover {
-  color: #0077ff; /* Darker hover/active color for contrast */
+  color: #1fc5a1;
 }
 
-/* Mobile: Ensure the mobile menu links (and language options) are larger and white */
-@media (max-width: 768px) {
-  .lang-switcher {
-    gap: 1.5rem; /* Larger gap for mobile readability */
-    font-size: 1.2rem; /* Matches the larger mobile link size */
-  }
-
-  .lang-option,
-  .lang-separator {
-    color: #ffffff;
-  }
-}
-
-/* Larger screens */
+/* ==================== Large Screens ==================== */
 @media (min-width: 2560px) {
-  .navbar-wrapper {
-    padding: 2.6rem 15%; /* Increase padding for very large screens */
-  }
-
-  .nav-links {
-    gap: 4rem; /* Increase gap between links */
-  }
-}
-
-@media (min-width: 2560px) {
+  .navbar-wrapper,
   .navbar-wrapper.scrolled {
-    padding: 2.6rem 15%; /* Increase padding for very large screens */
+    padding: 2.6rem 15%;
   }
 
   .nav-links {
-    gap: 4rem; /* Increase gap between links */
+    gap: 4rem;
   }
 }
