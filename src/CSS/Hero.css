@@ -30,7 +30,7 @@
   justify-content: space-between;
   gap: 5rem;
   width: 100%;
-  max-width: 1100px; /* FIXED: Reduced from 1440px to bring content closer */
+  max-width: 1180px; /* FIXED: Reduced from 1440px to bring content closer */
 }
 
 /* --- Left Side: Text --- */

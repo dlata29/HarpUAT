@@ -206,3 +206,49 @@
     gap: 6rem;
   }
 }
+
+/* --- Added Styles for Icons and Map --- */
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* Space between icons */
+  margin-top: 1rem; /* Space below email */
+}
+
+.social-icons a {
+  color: #ffffff; /* White icon color */
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: #96ffe9; /* Hover color to match other links */
+  transform: scale(1.1);
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+}
+
+.map-container {
+  margin-top: 1rem; /* Space below address */
+}
+
+.footer-map {
+  max-width: 150px; /* Adjust size as needed */
+  height: auto;
+  opacity: 0.8; /* Slight transparency like the image */
+}
+
+/* --- Responsive adjustments for icons/map --- */
+@media (max-width: 900px) {
+  .social-icons {
+    justify-content: center; /* Center icons on mobile */
+  }
+
+  .footer-map {
+    margin: 0 auto; /* Center map on mobile */
+  }
+}

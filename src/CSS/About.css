@@ -87,8 +87,8 @@
 .about-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  aspect-ratio: 1 / 1;
+  max-width: 500px;
+  aspect-ratio: 16 / 9; /* Changed from 1/1 to 16/9 */
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), /* Softer ambient shadow */ 0 10px 20px -10px rgba(0, 0, 0, 0.35); /* Slightly darker edge shadow */

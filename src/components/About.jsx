@@ -16,21 +16,26 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   // Create a delayed progress for the image. It starts when main progress is at 5%
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.05) / 0.95));
 
+  // --- Text Highlighting Logic ---
+  const mainText = t("about.main_text");
+  const startReveal = 0; // When scrollProgress starts
+  const endReveal = 1; // When text should be fully revealed
+
+  // Map scrollProgress from [startReveal, endReveal] → [0, 1]
+  const progress = Math.min(Math.max((scrollProgress - startReveal) / (endReveal - startReveal), 0), 1);
+
+  const highlightedChars = Math.floor(progress * mainText.length);
+  // const highlightedChars = Math.floor(scrollProgress * 1.4 * mainText.length);
+
   // Style for the text column (uses the direct scroll progress)
   const textRevealStyle = {
-    transform: `translateY(${(1 - scrollProgress) * 100}px)`,
-    opacity: Math.min(1, scrollProgress * 1.5),
+    transform: `translateY(${(1 - progress) * 100}px)`,
   };
 
   // Style for the image column (uses the delayed image progress)
   const imageRevealStyle = {
     transform: `translateY(${(1 - imageProgress) * 100}px) scale(${0.8 + 0.2 * imageProgress})`,
-    opacity: imageProgress, // fades in from 0 → 1
   };
-
-  // --- Text Highlighting Logic ---
-  const mainText = t("about.main_text");
-  const highlightedChars = Math.floor(scrollProgress * 1.4 * mainText.length);
 
   // Define the phrases to be made bold in both English and Spanish
   const boldTextEN = "app development, website design, and AI automation";
