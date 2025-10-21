@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
+import React, { useRef, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "../CSS/Hero.css";
 
 export default function Hero() {
@@ -7,9 +7,7 @@ export default function Hero() {
   const videoRef = useRef(null);
 
   const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
+    if (videoRef.current) videoRef.current.play();
   };
 
   const handleMouseLeave = () => {
@@ -19,34 +17,51 @@ export default function Hero() {
     }
   };
 
-  // 1. Determine the highlighted phrase based on the current language
   const isEnglish = i18n.language.startsWith("en");
-  const highlightedPhrase = isEnglish
-    ? "Intelligent Tools." // English highlight text
-    : "Herramientas Inteligentes."; // Spanish highlight text (from your JSON)
 
-  // 2. The full headline text from the translation file
-  const headlineText = t("hero.headline");
+  // Rotating phrases (you can translate or adjust colors later)
+  const phrases = isEnglish
+    ? [
+        { text: "Intelligent Tools.", color: "#96FFE9" },
+        { text: "Delightful Experiences.", color: "#96FFE9" },
+        { text: "Purposeful Products.", color: "#96FFE9" },
+        { text: "Digital Poetry.", color: "#96FFE9" },
+      ]
+    : [
+        { text: "Herramientas Inteligentes.", color: "#96FFE9" },
+        { text: "Experiencias Atractivas.", color: "#96FFE9" },
+        { text: "Productos con Propósito.", color: "#96FFE9" },
+        { text: "Poesía Digital.", color: "#96FFE9" },
+      ];
 
-  // 3. Split the headline using the correct phrase
-  const headlineParts = headlineText.split(highlightedPhrase);
+  const [index, setIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(false);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % phrases.length);
+        setIsVisible(true);
+      }, 1000);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [phrases.length]);
+
+  const headlineParts = t("hero.headline").split(isEnglish ? "Intelligent Tools." : "Herramientas Inteligentes.");
 
   return (
     <section className="hero-section">
-      {/* Left side: Text Content */}
       <div className="hero-content-wrapper">
         <div className="hero-text-container">
           <h1 className="hero-headline">
-            {/* Map over the parts created by the split */}
-            {headlineParts.map((part, index) => (
-              <React.Fragment key={index}>
-                {part}
-                {/* If a part exists after the split, re-insert the highlighted phrase in a span */}
-                {index < headlineParts.length - 1 && <span className="highlight-text1">{highlightedPhrase}</span>}
-              </React.Fragment>
-            ))}
+            {headlineParts[0]}
+            <span className={`highlight-text1 fade-slide ${isVisible ? "visible" : "hidden"}`} style={{ color: phrases[index].color }}>
+              {phrases[index].text}
+            </span>
+            {headlineParts[1] || ""}
           </h1>
-          {/* Container for the new single button */}
+
           <div className="hero-cta-container">
             <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer">
               <button className="cta-button secondary">
@@ -64,7 +79,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right side: Image/Video Visual Element */}
         <div className="hero-visual-container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <img src="/heroharp.jpeg" alt="Futuristic digital harp" className="hero-image" />
           <video ref={videoRef} src="/videos/herovideo.mp4" className="hero-video" loop muted playsInline />

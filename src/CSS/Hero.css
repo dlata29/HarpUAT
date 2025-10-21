@@ -41,7 +41,7 @@
 .hero-headline {
   font-size: 2.75rem;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.5;
   margin-bottom: 2.5rem;
   letter-spacing: -0.02em;
   color: #ffffff; /* Default color */
@@ -218,4 +218,20 @@
     height: 100%;
     object-fit: cover;
   }
+}
+
+/* --- Animated Highlight --- */
+.fade-slide {
+  display: inline-block;
+  transition: opacity 1s ease, transform 1s ease, color 1s ease;
+}
+
+.fade-slide.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
