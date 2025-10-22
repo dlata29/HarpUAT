@@ -183,6 +183,7 @@
 
   .about-headline {
     font-size: 1.3rem;
+    text-align: left; /* <-- ADDED THIS LINE */
   }
 
   .about-description p {
