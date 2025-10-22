@@ -34,7 +34,7 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
 
   // Style for the image column (uses the delayed image progress)
   const imageRevealStyle = {
-    transform: `translateY(${(1 - imageProgress) * 100}px) scale(${0.8 + 0.2 * imageProgress})`,
+    transform: `translateY(${(1 - imageProgress) * 100}px) scale(${0.9 + 0.1 * imageProgress})`,
   };
 
   // Define the phrases to be made bold in both English and Spanish
