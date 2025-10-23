@@ -69,13 +69,13 @@ export default function Footer({ onOpenModal }) {
               </a>
               {/* --- ADDED SOCIAL ICONS --- */}
               <div className="social-icons">
-                <a href="httpsPOST_https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <LinkedInIcon />
                 </a>
-                <a href="httpsPOST_https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                   <TwitterIcon />
                 </a>
-                <a href="httpsPOST_https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                   <YouTubeIcon />
                 </a>
               </div>
