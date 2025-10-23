@@ -10,8 +10,7 @@ const BlogSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // IMPORTANT: Replace this with your WordPress site URL
-  const WORDPRESS_URL = "https://beige-echidna-898280.hostingersite.com/";
+  const WORDPRESS_URL = "https://blog.harpandcode.io/";
 
   useEffect(() => {
     const fetchPosts = async () => {
