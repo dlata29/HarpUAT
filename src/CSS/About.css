@@ -40,7 +40,7 @@
 }
 
 .about-headline {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
   font-weight: 600;
   color: #111827;
   margin-bottom: 1rem;
@@ -88,7 +88,7 @@
   position: relative;
   width: 100%;
   max-width: 600px; /* Increased 20% from 500px */
-  aspect-ratio: 16 / 9; /* Changed from 1/1 to 16/9 */
+  aspect-ratio: 4 / 3; /* Changed from 1/1 to 16/9 */
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), /* Softer ambient shadow */ 0 10px 20px -10px rgba(0, 0, 0, 0.35); /* Slightly darker edge shadow */
@@ -157,7 +157,7 @@
 
   .about-text-column {
     padding: 2.5rem 2rem 4rem 2rem;
-    text-align: center;
+    text-align: left;
     min-width: auto;
   }
 
@@ -194,6 +194,9 @@
   .about-contact-button {
     font-size: 0.85rem;
   }
+  .about-contact-button .about-cta-desktop {
+    display: none;
+  }
 }
 
 /* ==================== Extra Small Mobile: ≤480px ==================== */
@@ -206,20 +209,12 @@
     padding: 2rem 1.5rem 3rem 1.5rem;
   }
 
-  .about-headline {
-    font-size: 1.2rem;
-  }
-
   .about-description p {
     font-size: 0.95rem;
   }
 
   .about-image-wrapper {
     height: 250px;
-  }
-
-  .about-contact-button {
-    font-size: 0.65rem;
   }
 }
 

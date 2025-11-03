@@ -29,7 +29,7 @@
 }
 
 .blog-title {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
   font-weight: 600;
   color: #111827;
   letter-spacing: 0.02rem;
@@ -169,7 +169,7 @@
   }
 
   .blog-card-meta {
-    font-size: 0.7rem;
+    font-size: 0.875rem;
   }
 
   .blog-card-image {

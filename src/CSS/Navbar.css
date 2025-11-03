@@ -156,9 +156,26 @@
   }
 
   .lang-switcher {
-    gap: 1.5rem;
+    gap: 0.75rem; /* Reduced gap for a tighter look */
     font-size: 1.2rem;
   }
+  /* --- ADD THIS SECTION --- */
+  /* This ensures that even when the navbar is "scrolled", */
+  /* the links inside the dark mobile menu *always* stay white. */
+
+  .navbar-wrapper.scrolled .navbar-right .nav-links a,
+  .navbar-wrapper.scrolled .navbar-right .lang-option,
+  .navbar-wrapper.scrolled .navbar-right .lang-separator {
+    color: #ffffff;
+  }
+
+  /* This forces the button to keep its white-background style */
+  /* inside the dark mobile menu, even when scrolled. */
+  .navbar-wrapper.scrolled .navbar-right .lets-talk-button {
+    background-color: #ffffff;
+    color: #111827;
+  }
+  /* --- END ADDITION --- */
 }
 
 /* ==================== Language Switcher ==================== */
@@ -172,6 +189,9 @@
 .lang-option {
   cursor: pointer;
   transition: color 0.3s ease;
+  text-align: center;
+  min-width: 2.5em; /* <-- ADD THIS */
+  display: inline-block; /* <-- ADD THIS (to make min-width work on a span) */
 }
 
 .lang-option:hover {

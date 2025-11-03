@@ -84,9 +84,11 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
               {renderAnimatedText(textParts[1])}
             </p>
           </div>
-          <button className="about-contact-button" onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank")}>
-            {t("about.contact_button")}
-          </button>
+          <button
+            className="about-contact-button"
+            onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank")}
+            dangerouslySetInnerHTML={{ __html: t("about.contact_button") }}
+          ></button>
         </div>
 
         {/* Apply the imageRevealStyle here */}

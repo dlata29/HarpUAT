@@ -11,3 +11,24 @@ body {
   color: #333;
   line-height: 1.6;
 }
+/* ==================== Root Font Size Scaling ==================== */
+/* Default: 100% = 16px */
+html {
+  font-size: 100%;
+}
+
+/* On "Studio Display" sizes (e.g., > 1920px) */
+@media (min-width: 1920px) {
+  html {
+    /* 112.5% = 18px base font. Everything in 'rem' will be 12.5% larger */
+    font-size: 112.5%;
+  }
+}
+
+/* On very large 4K+ displays */
+@media (min-width: 2560px) {
+  html {
+    /* 125% = 20px base font. Everything in 'rem' will be 25% larger */
+    font-size: 125%;
+  }
+}
