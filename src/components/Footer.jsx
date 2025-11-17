@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useTranslation } from "react-i18next";
-
 import "../CSS/Footer.css";
 
 // --- SVG Icons ---
@@ -27,6 +26,12 @@ const YouTubeIcon = () => (
 
 // --- End SVG Icons ---
 
+// --- LAZY IMPORT THE GLOBE ---
+// This tells React to load this component (and all its libraries)
+// only when the footer is rendered.
+const InteractiveGlobe = React.lazy(() => import("./InteractiveGlobe"));
+// --- END LAZY IMPORT ---
+
 export default function Footer({ onOpenModal }) {
   const { t } = useTranslation();
 
@@ -34,7 +39,7 @@ export default function Footer({ onOpenModal }) {
     <footer id="contact" className="footer-section">
       <div className="footer-container">
         {/* Left Side: Featured Work */}
-        <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
+        {/* <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
           <img src="/oneretire.jpeg" alt="OneRetire App" className="base-image" />
           <div className="hover-overlay">
             <div className="hover-content">
@@ -45,8 +50,16 @@ export default function Footer({ onOpenModal }) {
           <div className="static-text">
             <p>{t("footer.featured_work")}</p>
           </div>
-        </a>
+        </a> */}
 
+        {/* --- THIS IS THE REPLACEMENT --- */}
+        {/* We keep the wrapper class to reuse the sizing and positioning */}
+        <div className="featured-work-card">
+          <Suspense fallback={<div className="globe-loading-placeholder" />}>
+            <InteractiveGlobe />
+          </Suspense>
+        </div>
+        {/* --- END REPLACEMENT --- */}
         {/* Right Side: Contact Info */}
         <div className="contact-info-column">
           <h2 className="footer-headline">

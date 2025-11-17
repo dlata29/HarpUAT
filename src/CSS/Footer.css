@@ -30,12 +30,15 @@
   aspect-ratio: 1 / 1;
   border-radius: 0.5rem;
   box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), 0 10px 20px -10px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
+  /* overflow: hidden; */
   display: block;
   text-decoration: none;
   color: white;
 }
 
+.featured-work-card canvas {
+  transform: translateX(-36%) translateY(-18%);
+}
 .base-image {
   width: 100%;
   height: 100%;
@@ -96,6 +99,8 @@
 /* --- Right Side: Contact Info --- */
 .contact-info-column {
   padding-top: 1rem;
+  position: relative; /* <-- ADD THIS */
+  z-index: 10; /* <-- ADD THIS */
 }
 
 .footer-headline {
@@ -246,5 +251,46 @@
 
   .footer-map {
     margin: 0 auto; /* Center map on mobile */
+  }
+}
+
+/* --- Globe Styles --- */
+
+/* This makes the globe's canvas fill the card container */
+.featured-work-card canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.featured-work-card canvas:active {
+  cursor: grabbing;
+}
+
+/* This styles the fallback div that shows 
+  while the heavy globe component is loading 
+*/
+.globe-loading-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #a0aec0; /* Matches footer tagline color */
+
+  /* Simple pulse animation */
+  background-color: rgba(255, 255, 255, 0.05);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }
