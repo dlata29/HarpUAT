@@ -1,11 +1,12 @@
 /* src/CSS/Footer.css */
 
-/* General Footer Section Styling */
+/* ==================== General Footer Section ==================== */
 .footer-section {
   background: linear-gradient(to bottom, #06282b, #000000);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #e2e8f0;
   overflow: hidden;
+  padding: 0rem 2rem;
 }
 
 .footer-container {
@@ -14,10 +15,10 @@
   display: flex;
   justify-content: center;
   gap: 3rem;
-  align-items: center; /* <-- This is the change */
+  align-items: center;
 }
 
-/* --- Left Side: Featured Work Card --- */
+/* ==================== Left Side: Featured Work Card ==================== */
 .featured-work-card {
   position: relative;
   width: 100%;
@@ -26,11 +27,21 @@
   display: block;
   text-decoration: none;
   color: white;
+  border-radius: 0.5rem;
 }
 
 .featured-work-card canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
   transform: translateX(-36%);
 }
+
+.featured-work-card canvas:active {
+  cursor: grabbing;
+}
+
 .base-image {
   width: 100%;
   height: 100%;
@@ -51,10 +62,34 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* MODIFIED: Adjusted for dark theme */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
-/* Hover Overlay Styles */
+/* Globe Loading Placeholder */
+.globe-loading-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #a0aec0;
+  background-color: rgba(255, 255, 255, 0.05);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Hover Overlay */
 .hover-overlay {
   position: absolute;
   inset: 0;
@@ -62,7 +97,7 @@
   align-items: flex-end;
   padding: 1.5rem;
   opacity: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent); /* MODIFIED: Darker gradient */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   transition: opacity 0.4s ease;
 }
 
@@ -79,6 +114,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
+  color: white;
 }
 
 .hover-cta {
@@ -86,13 +122,15 @@
   margin-top: 0.5rem;
   font-weight: 500;
   text-transform: uppercase;
+  color: white;
 }
 
-/* --- Right Side: Contact Info --- */
+/* ==================== Right Side: Contact Info ==================== */
 .contact-info-column {
   padding-top: 1rem;
-  position: relative; /* <-- ADD THIS */
-  z-index: 10; /* <-- ADD THIS */
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
 }
 
 .footer-headline {
@@ -100,21 +138,19 @@
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 1rem 0;
-  /* ADDED: Explicitly set color to white */
   color: #ffffff;
 }
 
 .highlight-text {
-  /* background-color: #96ffe9; */
   color: #96ffe9;
-  padding: 0 0rem;
+  padding: 0;
 }
 
 .footer-tagline {
   font-size: 1.05rem;
   margin-bottom: 2rem;
-  /* MODIFIED: Softer color for the tagline */
   color: #a0aec0;
+  line-height: 1.6;
 }
 
 .footer-actions {
@@ -122,28 +158,27 @@
 }
 
 .footer-contact-button {
-  /* MODIFIED: Inverted colors for dark background */
   background-color: #ffffff;
   color: #111827;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
-  font-weight: 600; /* MODIFIED: Bolder text */
-  font-size: 0.8rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
   text-decoration: none;
+  display: inline-block;
 }
 
 .footer-contact-button:hover {
-  /* MODIFIED: Hover effect for the new button style */
   background-color: #e5e7eb;
+  transform: translateY(-2px);
 }
 
-/* START: UPDATED STYLES */
+/* Footer Details Section */
 .footer-details {
-  /* MODIFIED: Darker border for the dark theme */
   border-top: 1px solid #334155;
   padding-top: 2rem;
   display: flex;
@@ -151,72 +186,52 @@
   flex-wrap: wrap;
 }
 
+.details-column {
+  min-width: 150px;
+}
+
 .details-heading {
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
-  /* MODIFIED: Lighter color for headings */
   color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .details-link,
 .details-address {
   font-size: 0.9rem;
   line-height: 1.6;
-  /* MODIFIED: White text for details */
   color: #ffffff;
   text-decoration: none;
+  display: block;
 }
-/* END: UPDATED STYLES */
 
 .details-link:hover {
-  /* MODIFIED: Use site's cyan color for hover */
   color: #96ffe9;
   text-decoration: none;
 }
 
-/* --- Responsive Design --- */
-@media (max-width: 900px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-details {
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .footer-actions {
-    margin-bottom: 2rem;
-  }
-}
-
-/* ==================== Large Screens ==================== */
-@media (min-width: 1800px) {
-  .footer-container {
-    gap: 6rem;
-  }
-}
-
-/* --- Added Styles for Icons and Map --- */
-
+/* Social Icons */
 .social-icons {
   display: flex;
   align-items: center;
-  gap: 1.25rem; /* Space between icons */
-  margin-top: 1rem; /* Space below email */
+  gap: 1.25rem;
+  margin-top: 1rem;
 }
 
 .social-icons a {
-  color: #ffffff; /* White icon color */
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-icons a:hover {
-  color: #96ffe9; /* Hover color to match other links */
+  color: #96ffe9;
   transform: scale(1.1);
 }
 
@@ -225,64 +240,124 @@
   height: 20px;
 }
 
+/* Map */
 .map-container {
-  margin-top: 1rem; /* Space below address */
+  margin-top: 1rem;
 }
 
 .footer-map {
-  max-width: 150px; /* Adjust size as needed */
+  max-width: 150px;
   height: auto;
-  opacity: 0.8; /* Slight transparency like the image */
+  opacity: 0.8;
+  border-radius: 0.25rem;
 }
 
-/* --- Responsive adjustments for icons/map --- */
+/* ==================== Mobile: ≤900px ==================== */
 @media (max-width: 900px) {
+  .footer-section {
+    padding: 3rem 1.5rem;
+  }
+  .featured-work-card canvas {
+    transform: translateX(-6%) translateY(-15%) !important; /* <-- This is the fix */
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain; /* ensures no cropping */
+  }
+  .footer-container {
+    flex-direction: column-reverse; /* <-- This is the change */
+    align-items: center;
+    text-align: center;
+    gap: 0.1rem;
+  }
+
+  .featured-work-card {
+    max-width: 24rem;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1.2; /* <-- shows full globe */
+    height: auto;
+  }
+
+  .contact-info-column {
+    padding-top: 0;
+    max-width: 100%;
+  }
+
+  .footer-headline {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .footer-tagline {
+    font-size: 1rem;
+  }
+
+  .footer-details {
+    justify-content: center;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details-column {
+    text-align: center;
+  }
+
   .social-icons {
-    justify-content: center; /* Center icons on mobile */
+    justify-content: center;
   }
 
   .footer-map {
-    margin: 0 auto; /* Center map on mobile */
+    margin: 0 auto;
+    display: none;
   }
 }
 
-/* --- Globe Styles --- */
-
-/* This makes the globe's canvas fill the card container */
-.featured-work-card canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-  cursor: grab;
-}
-
-.featured-work-card canvas:active {
-  cursor: grabbing;
-}
-
-/* This styles the fallback div that shows 
-  while the heavy globe component is loading 
-*/
-.globe-loading-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  color: #a0aec0; /* Matches footer tagline color */
-
-  /* Simple pulse animation */
-  background-color: rgba(255, 255, 255, 0.05);
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
+/* ==================== Tablet: 901px – 1199px ==================== */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .footer-container {
+    gap: 2rem;
   }
-  50% {
-    opacity: 0.5;
+
+  .featured-work-card {
+    max-width: 28rem;
+  }
+
+  .footer-details {
+    gap: 3rem;
+  }
+}
+
+/* ==================== Desktop: 1200px – 1799px ==================== */
+@media (min-width: 1200px) and (max-width: 1799px) {
+  .footer-section {
+    padding: 0rem 2rem;
+  }
+
+  .footer-container {
+    gap: 4rem;
+  }
+}
+
+/* ==================== Large Screens: ≥1800px ==================== */
+@media (min-width: 1800px) {
+  .footer-section {
+    padding: 6rem 2rem;
+  }
+
+  .footer-container {
+    gap: 6rem;
+    max-width: 1600px;
+  }
+
+  .featured-work-card {
+    max-width: 36rem;
+  }
+
+  .contact-info-column {
+    max-width: 700px;
+  }
+
+  .footer-details {
+    gap: 5rem;
   }
 }

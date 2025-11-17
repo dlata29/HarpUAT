@@ -41,14 +41,14 @@
 .services-text-content {
   display: flex;
   flex-direction: column;
-  gap: 6vh;
+  gap: 50vh; /* Balanced gap for parallax scroll effect */
   padding-bottom: 5vh;
 }
 
 .service-item {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Full viewport height for each item */
 }
 
 .service-title {
@@ -154,7 +154,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  height: 100vh;
+  height: 80vh;
+  align-self: flex-start; /* Prevents container from stretching */
 }
 
 .sticky-image-wrapper {
@@ -174,12 +175,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ==================== Mobile: ≤767px ==================== */
 @media (max-width: 767px) {
-  /* START: MODIFIED SECTION */
   .services-section {
     margin-bottom: 0;
     padding-left: 0;
@@ -189,9 +189,8 @@
   .services-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
   }
-  /* END: MODIFIED SECTION */
 
   .services-text-content {
     gap: 4rem;
@@ -221,18 +220,9 @@
     height: 1rem;
   }
 
+  /* Images hidden on mobile */
   .services-image-container {
     display: none;
-    position: relative;
-    height: auto;
-    top: 0;
-    margin-top: 2rem;
-  }
-
-  .sticky-image-wrapper {
-    max-width: 90%;
-    margin: 0 auto;
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
   }
 
   .service-point span {
@@ -254,26 +244,55 @@
   .service-description {
     font-size: 1.1rem;
   }
+
+  .services-text-content {
+    gap: 40vh; /* Reduced gap for tablet screens */
+  }
+
+  .service-item {
+    min-height: 90vh;
+  }
+
+  .services-image-container {
+    height: 80vh;
+    top: 10vh;
+  }
 }
 
-/* ==================== Fix for Laptops & Normal Resolutions ==================== */
-@media (max-width: 1439px) {
+/* ==================== Desktop: 1200px – 1919px ==================== */
+@media (min-width: 1200px) and (max-width: 1919px) {
+  .services-text-content {
+    gap: 20vh; /* FIXED: Reduced gap to keep images in view */
+  }
+
+  .service-item {
+    min-height: 80vh; /* FIXED: Reduced from 100vh */
+  }
+
   .services-section {
-    padding-bottom: 5vh;
-    overflow: hidden;
+    padding-bottom: 10vh; /* FIXED: Added padding */
+    overflow: visible; /* FIXED: Changed from hidden */
     margin-bottom: 5vh;
   }
 
   .services-image-container {
-    height: 90vh;
-    top: 5vh;
+    height: 80vh;
+    top: 10vh;
   }
 }
 
-/* ==================== Large Screens (e.g. Studio Display) ==================== */
-@media (min-width: 1440px) {
+/* ==================== Large Screens (Studio Display): ≥1920px ==================== */
+@media (min-width: 1920px) {
+  .services-text-content {
+    gap: 5vh; /* FIXED: Much tighter gap for overlapping content */
+  }
+
+  .service-item {
+    min-height: 70vh; /* FIXED: Reduced height */
+  }
+
   .service-item:last-child {
-    min-height: 60vh;
+    min-height: 70vh;
   }
 
   .services-section {
@@ -281,6 +300,7 @@
   }
 
   .services-image-container {
-    height: 60vh;
+    height: 80vh;
+    top: 10vh;
   }
 }
