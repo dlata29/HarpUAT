@@ -41,6 +41,14 @@
   line-height: 0; /* Fixes any small gaps under the image */
 }
 
+.featured-work-image-wrapper a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
 .featured-work-image-wrapper img {
   width: 100%;
   height: auto;

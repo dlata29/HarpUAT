@@ -13,10 +13,9 @@ const FeaturedWork = () => {
           <h2 className="featured-work-title">{t("featured_work.title")}</h2>
         </div>
         <div className="featured-work-image-wrapper">
-          <img
-            src="/featured_work.jpg" // Assumes you've renamed the file in your /public folder
-            alt={t("featured_work.alt_text")}
-          />
+          <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open OneRetire">
+            <img src="/featured_work.jpg" alt={t("featured_work.alt_text")} />
+          </a>
         </div>
       </div>
     </section>
