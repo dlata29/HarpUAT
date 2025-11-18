@@ -10,7 +10,7 @@
 }
 
 .footer-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -219,6 +219,7 @@
   align-items: center;
   gap: 1.25rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .social-icons a {
@@ -316,6 +317,7 @@
 @media (min-width: 901px) and (max-width: 1199px) {
   .footer-container {
     gap: 2rem;
+    padding: 0rem 2rem;
   }
 
   .featured-work-card {
@@ -323,7 +325,7 @@
   }
 
   .footer-details {
-    gap: 3rem;
+    gap: 0rem;
   }
 }
 
@@ -345,19 +347,25 @@
   }
 
   .footer-container {
-    gap: 6rem;
-    max-width: 1600px;
+    gap: 1rem;
+    max-width: 1200px;
   }
 
   .featured-work-card {
-    max-width: 36rem;
+    max-width: 32rem;
   }
 
   .contact-info-column {
-    max-width: 700px;
+    max-width: 1000px;
   }
 
   .footer-details {
-    gap: 5rem;
+    gap: 1rem;
+  }
+  .featured-work-card canvas {
+    transform: translateX(-34%) translateY(+15%) !important; /* <-- This is the fix */
+    width: 65% !important;
+    height: auto !important;
+    object-fit: contain; /* ensures no cropping */
   }
 }

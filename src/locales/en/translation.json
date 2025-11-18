@@ -51,6 +51,9 @@
     "footer.tagline": "If you have a project in mind, contact us and let’s get started!",
     "footer.lets_talk": "LET’S TALK",
     "footer.contact_heading": "Email",
-    "footer.address_heading": "Address"
+    "footer.address_heading": "Address",
+    "featured_work.subtitle": "Featured Work",
+    "featured_work.title": "OneRetire - Unified Retirement Solution",
+    "featured_work.alt_text": "A case study of the OneRetire pension planning application on a tablet at a beach."
   }
 }

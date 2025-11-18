@@ -9,6 +9,7 @@ import Products from "./components/Products";
 import Footer from "./components/Footer";
 import GridBackground from "./components/GridBackground";
 import BlogSection from "./components/BlogSection";
+import FeaturedWork from "./components/FeaturedWork"; // <-- ADDED IMPORT
 import TestimonialStrip from "./components/TestimonialStrip"; // <-- ADDED IMPORT
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
                   <Products />
                 </GridBackground>
                 <BlogSection />
+                <FeaturedWork /> {/* <-- PLACED COMPONENT HERE */}
                 <TestimonialStrip /> {/* <-- PLACED COMPONENT HERE */}
                 <Footer onOpenModal={openModal} />
               </main>

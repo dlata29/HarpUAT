@@ -1,0 +1,66 @@
+/* src/CSS/FeaturedWork.css */
+
+.featured-work-section {
+  padding: 6rem 2rem;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.featured-work-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header styles (similar to BlogSection) */
+.featured-work-header {
+  margin-bottom: 3rem;
+}
+
+.featured-work-subtitle {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 100;
+  color: #1fc5a1;
+  margin-bottom: 1rem;
+}
+
+.featured-work-title {
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: 0.02rem;
+  margin: 0;
+}
+
+/* Image styles */
+.featured-work-image-wrapper {
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), 0 10px 20px -10px rgba(0, 0, 0, 0.35);
+  line-height: 0; /* Fixes any small gaps under the image */
+}
+
+.featured-work-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center center; /* Default: center of the image */
+  aspect-ratio: 1920 / 1080; /* Your image's 16:9 ratio */
+}
+
+/* ==================== Mobile (≤768px) ==================== */
+@media (max-width: 768px) {
+  .featured-work-section {
+    padding: 4rem 2rem;
+  }
+
+  .featured-work-image-wrapper img {
+    /* This shows the left 50% of the image */
+    object-position: 0% 50%;
+
+    /* We can adjust the aspect ratio to be more square-ish on mobile */
+    aspect-ratio: 4 / 3;
+  }
+}
