@@ -34,6 +34,7 @@ const FeaturedWork = () => {
               decoding="async"
               width="1920"
               height="1080"
+              sizes="(max-width: 768px) 100vw, 80vw"
             />
           </a>
         </div>

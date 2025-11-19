@@ -91,6 +91,7 @@ export default function Hero() {
             height="640"
             loading="eager" // Hero image should be eager
             fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 360px"
           />
           <video ref={videoRef} src="/videos/herovideo.mp4" className={styles.heroVideo} loop muted playsInline poster="/heroharp.jpeg" />
         </div>

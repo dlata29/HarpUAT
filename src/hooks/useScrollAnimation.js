@@ -27,35 +27,44 @@ export const useScrollAnimation = (ref) => {
     }
 
     let animationFrameId = null;
+    let observer = null;
 
     const handleScroll = () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
+      if (animationFrameId) return;
 
       animationFrameId = requestAnimationFrame(() => {
         if (ref && ref.current) {
           const { top } = ref.current.getBoundingClientRect();
           const windowHeight = window.innerHeight;
-
-          // --- THIS IS THE CHANGED LINE ---
-          // The animation will now only occur in the top 80% of the viewport.
           const scrollProgress = (windowHeight * 0.8 - top) / (windowHeight * 0.95);
-
           const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
           setProgress(clampedProgress);
         }
+        animationFrameId = null;
       });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    // Only listen to scroll when the element is in the viewport (or close to it)
+    if (ref && ref.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry.isIntersecting) {
+            window.addEventListener("scroll", handleScroll, { passive: true });
+            handleScroll(); // Initial check
+          } else {
+            window.removeEventListener("scroll", handleScroll);
+          }
+        },
+        { rootMargin: "100px" } // Start listening slightly before it enters
+      );
+      observer.observe(ref.current);
+    }
 
     return () => {
+      if (observer) observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [ref, prefersReducedMotion]);
 
