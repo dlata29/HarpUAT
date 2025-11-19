@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Globe from "react-globe.gl";
 
-const COUNTRIES_URL = "https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson";
+const COUNTRIES_URL = "/datasets/ne_110m_admin_0_countries.geojson";
 
 // Ripple data for Panama
 const panamaRipple = [{ lat: 9.5, lng: -79.5 }];

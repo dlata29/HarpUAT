@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import styles from "../CSS/Footer.module.css";
@@ -35,9 +35,29 @@ const InteractiveGlobe = React.lazy(() => import("./InteractiveGlobe"));
 
 export default function Footer({ onOpenModal }) {
   const { t } = useTranslation();
+  const [shouldLoadGlobe, setShouldLoadGlobe] = useState(false);
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShouldLoadGlobe(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" } // Load 200px before it comes into view
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <footer id="contact" className={styles.footerSection}>
+    <footer id="contact" className={styles.footerSection} ref={footerRef}>
       <div className={styles.footerContainer}>
         {/* Left Side: Featured Work */}
         {/* <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
@@ -56,9 +76,13 @@ export default function Footer({ onOpenModal }) {
         {/* --- THIS IS THE REPLACEMENT --- */}
         {/* We keep the wrapper class to reuse the sizing and positioning */}
         <div className={styles.featuredWorkCard}>
-          <Suspense fallback={<div className={styles.globeLoadingPlaceholder} />}>
-            <InteractiveGlobe />
-          </Suspense>
+          {shouldLoadGlobe ? (
+            <Suspense fallback={<div className={styles.globeLoadingPlaceholder} />}>
+              <InteractiveGlobe />
+            </Suspense>
+          ) : (
+            <div className={styles.globeLoadingPlaceholder} />
+          )}
         </div>
         {/* --- END REPLACEMENT --- */}
         {/* Right Side: Contact Info */}

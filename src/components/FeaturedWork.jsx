@@ -27,7 +27,14 @@ const FeaturedWork = () => {
         </div>
         <div className={styles.featuredWorkImageWrapper} style={imageRevealStyle}>
           <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open OneRetire">
-            <img src="/featured_work.jpg" alt={t("featured_work.alt_text")} />
+            <img
+              src="/featured_work.jpg"
+              alt={t("featured_work.alt_text")}
+              loading="lazy"
+              decoding="async"
+              width="1920"
+              height="1080"
+            />
           </a>
         </div>
       </div>
