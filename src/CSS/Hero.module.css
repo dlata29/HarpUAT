@@ -1,63 +1,94 @@
-@keyframes slow-float {
+@keyframes slowFloat {
   0% {
     transform: translateY(-5px);
   }
+
   50% {
     transform: translateY(5px);
   }
+
   100% {
     transform: translateY(-5px);
   }
 }
 
-.hero-section {
+.heroSection {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Or use 100vw for explicit viewport width */
-  min-height: 100vh; /* Use min-height for flexibility */
-  padding: 0 2rem; /* FIXED: Use small, fixed padding for screen edges */
+  width: 100%;
+  /* Or use 100vw for explicit viewport width */
+  min-height: 100vh;
+  /* Use min-height for flexibility */
+  padding: 0 10%;
+  /* FIXED: Match Navbar padding for alignment */
   box-sizing: border-box;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 50%), url("/bg4.jpeg");
   background-size: cover;
   background-position: center;
   color: #ffffff;
   overflow: hidden;
+  /* Restore Parallax/Sticky Effect */
 }
-.hero-content-wrapper {
+
+.heroContentWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5rem;
+  gap: 4rem;
   width: 100%;
-  max-width: 1180px; /* FIXED: Reduced from 1440px to bring content closer */
+  /* max-width: 1280px; <-- Removed to allow padding to dictate width */
 }
 
 /* --- Left Side: Text --- */
-.hero-text-container {
-  flex: 0 1 600px;
+.heroTextContainer {
+  flex: 1;
+  /* Allow text to take available space */
+  opacity: 0;
+  /* Start hidden */
+  animation: slideUpFade 1s ease-out forwards;
+  /* Animate in */
+  animation-delay: 0.2s;
+  /* Slight delay for smoother feel */
 }
 
-.hero-headline {
-  font-size: clamp(2.2rem, 1.8rem + 1.5vw, 3.5rem);
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroHeadline {
+  font-size: clamp(2rem, 1.5rem + 1.2vw, 3rem);
+  /* Reduced font size */
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.3;
+  /* Tighter line height */
   margin-bottom: 2.5rem;
   letter-spacing: -0.02em;
-  color: #ffffff; /* Default color */
+  color: #ffffff;
+  /* Default color */
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.hero-headline .highlight-text1 {
-  color: #96ffe9; /* Makes only this part blue */
+.heroHeadline .highlightText1 {
+  color: #1fc5a1;
+  /* Makes only this part blue */
 }
+
 /* --- CTA Button Styles --- */
-.hero-cta-container {
+.heroCtaContainer {
   display: flex;
   gap: 1rem;
 }
 
-.cta-button {
+.ctaButton {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -69,31 +100,36 @@
   transition: all 0.2s ease;
   border: 2px solid transparent;
   white-space: nowrap;
+  text-decoration: none;
 }
 
-.cta-button.secondary {
+.ctaButton.secondary {
   background-color: transparent;
   color: #ffffff;
   border-color: #ffffff;
-  padding: 0.95rem 2.2rem; /* Increased padding by ~25% */
-  font-size: 0.9rem; /* Increased font size by ~25% */
+  padding: 0.95rem 2.2rem;
+  /* Increased padding by ~25% */
+  font-size: 0.9rem;
+  /* Increased font size by ~25% */
 }
 
-.cta-button.secondary:hover {
-  background-color: #ffffff; /* Solid white background on hover */
-  color: #111827; /* Dark text color for contrast */
+.ctaButton.secondary:hover {
+  background-color: #ffffff;
+  /* Solid white background on hover */
+  color: #111827;
+  /* Dark text color for contrast */
 }
 
-.cta-icon {
+.ctaIcon {
   transition: transform 0.2s ease;
 }
 
-.cta-button.secondary:hover .cta-icon {
+.ctaButton.secondary:hover .ctaIcon {
   transform: translate(3px, -3px);
 }
 
 /* --- Right Side: Visual Element --- */
-.hero-visual-container {
+.heroVisualContainer {
   position: relative;
   flex-shrink: 0;
   width: 360px;
@@ -102,11 +138,11 @@
   overflow: hidden;
   cursor: pointer;
   /* transform: translateY(-10px); Add this line */
-  animation: slow-float 6s ease-in-out infinite;
+  animation: slowFloat 6s ease-in-out infinite;
 }
 
-.hero-image,
-.hero-video {
+.heroImage,
+.heroVideo {
   position: absolute;
   top: 0;
   left: 0;
@@ -116,16 +152,17 @@
   transition: opacity 0.8s ease-in-out;
 }
 
-.hero-video {
+.heroVideo {
   opacity: 0;
 }
-.hero-visual-container:hover .hero-video {
+
+.heroVisualContainer:hover .heroVideo {
   opacity: 1;
 }
 
 /* ==================== Tablet (769px – 1024px) ==================== */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .hero-section {
+  .heroSection {
     flex-direction: row;
     justify-content: space-around;
     gap: 3rem;
@@ -133,16 +170,16 @@
     height: calc(100vh - 70px);
   }
 
-  .hero-headline {
+  .heroHeadline {
     font-size: 2.8rem;
     line-height: 1.2;
   }
 
-  .hero-visual-container {
+  .heroVisualContainer {
     width: 320px;
   }
 
-  .cta-button {
+  .ctaButton {
     padding: 0.6rem 1.5rem;
     font-size: 0.85rem;
   }
@@ -150,37 +187,39 @@
 
 /* ==================== Mobile (≤768px) ==================== */
 @media (max-width: 768px) {
-  .hero-section {
+  .heroSection {
     flex-direction: column;
     justify-content: center;
     text-align: center;
     gap: 3rem;
     padding: 110px 2rem 2rem 2rem;
-    min-height: 100vh; /* FIXED: Changed from height: auto */
+    min-height: 100vh;
+    /* FIXED: Changed from height: auto */
   }
-  .hero-content-wrapper {
+
+  .heroContentWrapper {
     flex-direction: column;
     justify-content: center;
   }
 
-  .hero-text-container {
+  .heroTextContainer {
     flex-basis: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .hero-headline {
+  .heroHeadline {
     font-size: 2.2rem;
     line-height: 1.2;
   }
 
-  .hero-visual-container {
+  .heroVisualContainer {
     width: 240px;
     aspect-ratio: 9 / 16;
   }
 
-  .cta-button {
+  .ctaButton {
     padding: 0.5rem 1.2rem;
     font-size: 0.8rem;
   }
@@ -188,15 +227,15 @@
 
 /* ==================== Extra Small Mobile (≤480px) ==================== */
 @media (max-width: 480px) {
-  .hero-headline {
+  .heroHeadline {
     font-size: 1.8rem;
   }
 
-  .hero-visual-container {
+  .heroVisualContainer {
     width: 200px;
   }
 
-  .cta-button {
+  .ctaButton {
     padding: 0.4rem 1rem;
     font-size: 0.75rem;
   }
@@ -204,13 +243,18 @@
 
 /* Larger screens */
 @media (min-width: 2560px) {
-  .hero-visual-container {
-    width: 450px; /* 25% bigger than 360px */
+  .heroSection {
+    padding: 0 15%;
+  }
+
+  .heroVisualContainer {
+    width: 450px;
+    /* 25% bigger than 360px */
     aspect-ratio: 9 / 16;
   }
 
-  .hero-image,
-  .hero-video {
+  .heroImage,
+  .heroVideo {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -218,17 +262,17 @@
 }
 
 /* --- Animated Highlight --- */
-.fade-slide {
+.fadeSlide {
   display: inline-block;
   transition: opacity 1s ease, transform 1s ease, color 1s ease;
 }
 
-.fade-slide.hidden {
+.fadeSlide.hidden {
   opacity: 0;
   transform: translateY(10px);
 }
 
-.fade-slide.visible {
+.fadeSlide.visible {
   opacity: 1;
   transform: translateY(0);
 }

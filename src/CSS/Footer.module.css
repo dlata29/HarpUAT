@@ -1,7 +1,7 @@
-/* src/CSS/Footer.css */
+/* src/CSS/Footer.module.css */
 
 /* ==================== General Footer Section ==================== */
-.footer-section {
+.footerSection {
   background: linear-gradient(to bottom, #06282b, #000000);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #e2e8f0;
@@ -9,7 +9,7 @@
   padding: 0rem 2rem;
 }
 
-.footer-container {
+.footerContainer {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 /* ==================== Left Side: Featured Work Card ==================== */
-.featured-work-card {
+.featuredWorkCard {
   position: relative;
   width: 100%;
   max-width: 32rem;
@@ -30,7 +30,7 @@
   border-radius: 0.5rem;
 }
 
-.featured-work-card canvas {
+.featuredWorkCard canvas {
   display: block;
   width: 100%;
   height: 100%;
@@ -38,22 +38,22 @@
   transform: translateX(-36%);
 }
 
-.featured-work-card canvas:active {
+.featuredWorkCard canvas:active {
   cursor: grabbing;
 }
 
-.base-image {
+.baseImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
 
-.featured-work-card:hover .base-image {
+.featuredWorkCard:hover .baseImage {
   transform: scale(1.05);
 }
 
-.static-text {
+.staticText {
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
@@ -67,7 +67,7 @@
 }
 
 /* Globe Loading Placeholder */
-.globe-loading-placeholder {
+.globeLoadingPlaceholder {
   width: 100%;
   height: 100%;
   display: flex;
@@ -80,17 +80,19 @@
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
 }
 
 /* Hover Overlay */
-.hover-overlay {
+.hoverOverlay {
   position: absolute;
   inset: 0;
   display: flex;
@@ -101,23 +103,23 @@
   transition: opacity 0.4s ease;
 }
 
-.featured-work-card:hover .hover-overlay {
+.featuredWorkCard:hover .hoverOverlay {
   opacity: 1;
 }
 
-.hover-content {
+.hoverContent {
   position: relative;
   z-index: 2;
 }
 
-.hover-title {
+.hoverTitle {
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
   color: white;
 }
 
-.hover-cta {
+.hoverCta {
   font-size: 0.9rem;
   margin-top: 0.5rem;
   font-weight: 500;
@@ -126,14 +128,14 @@
 }
 
 /* ==================== Right Side: Contact Info ==================== */
-.contact-info-column {
+.contactInfoColumn {
   padding-top: 1rem;
   position: relative;
   z-index: 10;
   max-width: 600px;
 }
 
-.footer-headline {
+.footerHeadline {
   font-size: clamp(2rem, 1.5rem + 1.2vw, 3rem);
   font-weight: 600;
   line-height: 1.2;
@@ -141,23 +143,23 @@
   color: #ffffff;
 }
 
-.highlight-text {
-  color: #96ffe9;
+.highlightText {
+  color: #1fc5a1;
   padding: 0;
 }
 
-.footer-tagline {
+.footerTagline {
   font-size: 1.05rem;
   margin-bottom: 2rem;
   color: #a0aec0;
   line-height: 1.6;
 }
 
-.footer-actions {
+.footerActions {
   margin-bottom: 2rem;
 }
 
-.footer-contact-button {
+.footerContactButton {
   background-color: #ffffff;
   color: #111827;
   border: none;
@@ -172,13 +174,13 @@
   display: inline-block;
 }
 
-.footer-contact-button:hover {
+.footerContactButton:hover {
   background-color: #e5e7eb;
   transform: translateY(-2px);
 }
 
 /* Footer Details Section */
-.footer-details {
+.footerDetails {
   border-top: 1px solid #334155;
   padding-top: 2rem;
   display: flex;
@@ -186,11 +188,11 @@
   flex-wrap: wrap;
 }
 
-.details-column {
+.detailsColumn {
   min-width: 150px;
 }
 
-.details-heading {
+.detailsHeading {
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
@@ -199,8 +201,8 @@
   letter-spacing: 0.5px;
 }
 
-.details-link,
-.details-address {
+.detailsLink,
+.detailsAddress {
   font-size: 0.9rem;
   line-height: 1.6;
   color: #ffffff;
@@ -208,13 +210,13 @@
   display: block;
 }
 
-.details-link:hover {
+.detailsLink:hover {
   color: #96ffe9;
   text-decoration: none;
 }
 
 /* Social Icons */
-.social-icons {
+.socialIcons {
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -222,7 +224,7 @@
   margin-bottom: 2rem;
 }
 
-.social-icons a {
+.socialIcons a {
   color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -231,22 +233,22 @@
   justify-content: center;
 }
 
-.social-icons a:hover {
+.socialIcons a:hover {
   color: #96ffe9;
   transform: scale(1.1);
 }
 
-.social-icons svg {
+.socialIcons svg {
   width: 20px;
   height: 20px;
 }
 
 /* Map */
-.map-container {
+.mapContainer {
   margin-top: 1rem;
 }
 
-.footer-map {
+.footerMap {
   max-width: 150px;
   height: auto;
   opacity: 0.8;
@@ -255,59 +257,65 @@
 
 /* ==================== Mobile: ≤900px ==================== */
 @media (max-width: 900px) {
-  .footer-section {
+  .footerSection {
     padding: 3rem 1.5rem;
   }
-  .featured-work-card canvas {
-    transform: translateX(-6%) translateY(-15%) !important; /* <-- This is the fix */
+
+  .featuredWorkCard canvas {
+    transform: translateX(-6%) translateY(-15%) !important;
+    /* <-- This is the fix */
     width: 100% !important;
     height: auto !important;
-    object-fit: contain; /* ensures no cropping */
+    object-fit: contain;
+    /* ensures no cropping */
   }
-  .footer-container {
-    flex-direction: column-reverse; /* <-- This is the change */
+
+  .footerContainer {
+    flex-direction: column-reverse;
+    /* <-- This is the change */
     align-items: center;
     text-align: center;
     gap: 0.1rem;
   }
 
-  .featured-work-card {
+  .featuredWorkCard {
     max-width: 24rem;
     width: 100%;
     margin: 0 auto;
-    aspect-ratio: 1 / 1.2; /* <-- shows full globe */
+    aspect-ratio: 1 / 1.2;
+    /* <-- shows full globe */
     height: auto;
   }
 
-  .contact-info-column {
+  .contactInfoColumn {
     padding-top: 0;
     max-width: 100%;
   }
 
-  .footer-headline {
+  .footerHeadline {
     font-size: clamp(1.75rem, 5vw, 2.5rem);
   }
 
-  .footer-tagline {
+  .footerTagline {
     font-size: 1rem;
   }
 
-  .footer-details {
+  .footerDetails {
     justify-content: center;
     gap: 2rem;
     flex-direction: column;
     align-items: center;
   }
 
-  .details-column {
+  .detailsColumn {
     text-align: center;
   }
 
-  .social-icons {
+  .socialIcons {
     justify-content: center;
   }
 
-  .footer-map {
+  .footerMap {
     margin: 0 auto;
     display: none;
   }
@@ -315,57 +323,97 @@
 
 /* ==================== Tablet: 901px – 1199px ==================== */
 @media (min-width: 901px) and (max-width: 1199px) {
-  .footer-container {
+  .footerContainer {
     gap: 2rem;
     padding: 0rem 2rem;
   }
 
-  .featured-work-card {
+  .featuredWorkCard {
     max-width: 28rem;
   }
 
-  .footer-details {
+  .footerDetails {
     gap: 0rem;
   }
 }
 
 /* ==================== Desktop: 1200px – 1799px ==================== */
 @media (min-width: 1200px) and (max-width: 1799px) {
-  .footer-section {
+  .footerSection {
     padding: 0rem 2rem;
   }
 
-  .footer-container {
+  .footerContainer {
     gap: 4rem;
   }
 }
 
 /* ==================== Large Screens: ≥1800px ==================== */
 @media (min-width: 1800px) {
-  .footer-section {
-    padding: 6rem 2rem;
+  .footerSection {
+    padding: 4rem 2rem;
   }
 
-  .footer-container {
-    gap: 1rem;
-    max-width: 1200px;
+  .footerContainer {
+    gap: 6rem;
+    max-width: 1600px;
   }
 
-  .featured-work-card {
+  .featuredWorkCard {
     max-width: 32rem;
   }
 
-  .contact-info-column {
+  .contactInfoColumn {
     max-width: 1000px;
   }
 
-  .footer-details {
+  .footerDetails {
     gap: 1rem;
   }
-  .featured-work-card canvas {
-    transform: translateX(-34%) translateY(+15%) !important; /* <-- This is the fix */
+
+  .featuredWorkCard canvas {
+    transform: translateX(-34%) translateY(+15%) !important;
+    /* <-- This is the fix */
     width: 65% !important;
     height: auto !important;
-    object-fit: contain; /* ensures no cropping */
+    object-fit: contain;
+    /* ensures no cropping */
+  }
+}
+
+/* ==================== Extra Large Screens: ≥2560px ==================== */
+@media (min-width: 2560px) {
+  .footerSection {
+    padding: 1rem 15% 2rem 15%;
+  }
+
+  .footerContainer {
+    gap: 0;
+    /* Remove gap to allow overlap */
+    max-width: none;
+    align-items: flex-start;
+    /* Top align as requested */
+  }
+
+  .featuredWorkCard {
+    max-width: 55rem;
+    aspect-ratio: 1 / 0.5;
+    /* Reduced height to remove bottom space */
+  }
+
+  .featuredWorkCard canvas {
+    transform: translateX(-30%) translateY(-10%) !important;
+    /* Adjusted for shorter container */
+    width: 75% !important;
+  }
+
+  .contactInfoColumn {
+    margin-left: -10rem;
+    /* Pull text left to overlap globe empty space */
+    position: relative;
+    z-index: 20;
+    /* Ensure text is above globe */
+    margin-top: 4rem;
+    /* Visual top alignment with globe sphere */
   }
 }

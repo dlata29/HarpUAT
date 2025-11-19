@@ -1,37 +1,40 @@
 /* src/CSS/Final-Blog.css */
 
-.blog-section {
+/* src/CSS/Final-Blog.css */
+
+.blogSection {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: #ffffff;
-  padding: 8rem 8rem;
-  padding-top: 8rem; /* Increased top padding */
+  padding: 8rem 10%;
+  padding-top: 8rem;
+  /* Increased top padding */
   width: 100%;
   box-sizing: border-box;
 }
 
-.blog-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.blogContainer {
+  /* max-width: 1200px; <-- Removed for alignment */
+  margin: 0;
 }
 
-.blog-header {
+.blogHeader {
   margin-bottom: 4rem;
 }
 
-.blog-subtitle {
+.blogSubtitle {
   display: inline-block;
   background-color: transparent;
   border-radius: 9999px;
   font-size: 1rem;
   font-weight: 100;
-  color: #1fc5a1;
+  color: #111827;
   margin-bottom: 1rem;
 }
 
-.blog-title {
+.blogTitle {
   font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
   font-weight: 600;
-  color: #111827;
+  color: #1fc5a1;
   letter-spacing: 0.02rem;
   margin: 0;
   display: flex;
@@ -39,7 +42,7 @@
   gap: 0.5rem;
 }
 
-/* .blog-title::before {
+/* .blogTitle::before {
   content: "";
   width: 0;
   height: 0;
@@ -48,7 +51,7 @@
   border-top: 5px solid #000;
 } */
 
-.blog-grid {
+.blogGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
@@ -58,19 +61,21 @@
 /* === Default Blog Card Styles (Desktop) === */
 /* =================================== */
 
-.blog-card {
+.blogCard {
   display: flex;
   flex-direction: column;
-  background-color: #fff; /* Default: white background */
+  background-color: #fff;
+  /* Default: white background */
   color: #111827;
   transition: transform 0.2s ease-in-out;
   height: 100%;
 }
 
-.blog-card-image {
+.blogCardImage {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1; /* Default: square image */
+  aspect-ratio: 1 / 1;
+  /* Default: square image */
   border-radius: 0.5rem;
   box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), 0 10px 20px -10px rgba(0, 0, 0, 0.35);
   overflow: hidden;
@@ -78,20 +83,20 @@
   margin-bottom: 0.8rem;
 }
 
-.blog-card-content {
+.blogCardContent {
   padding: 0 0 1rem 0;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.blog-card-meta {
+.blogCardMeta {
   font-size: 0.7rem;
   color: #777;
   margin-bottom: 0.5rem;
 }
 
-.blog-card-title {
+.blogCardTitle {
   font-size: 1rem;
   font-weight: 500;
   color: #222;
@@ -99,19 +104,20 @@
   line-height: 1.3;
 }
 
-.blog-card-excerpt {
-  display: none; /* Default: excerpt is hidden */
+.blogCardExcerpt {
+  display: none;
+  /* Default: excerpt is hidden */
   font-size: 1rem;
   color: #555;
   margin-bottom: 1rem;
   flex-grow: 1;
 }
 
-.blog-card-excerpt p {
+.blogCardExcerpt p {
   margin: 0;
 }
 
-.blog-card-readmore {
+.blogCardReadmore {
   /* font-weight: 600; */
   color: #333;
   text-decoration: none;
@@ -119,12 +125,12 @@
   font-size: 0.7rem !important;
 }
 
-.blog-card-readmore:hover {
+.blogCardReadmore:hover {
   color: #000;
 }
 
 /* Highlighted card style */
-.blog-card.highlighted {
+.blogCard.highlighted {
   background-color: #ffffff;
   padding: 1.5rem;
   border: 1px solid #e0e0e0;
@@ -139,40 +145,47 @@
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .blog-grid {
+  .blogGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .blog-section {
-    padding: 0.2rem 2rem; /* Add horizontal padding here */
+  .blogSection {
+    padding: 0.2rem 2rem;
+    /* Add horizontal padding here */
   }
 
-  .blog-grid {
-    display: flex; /* CHANGE: Use Flexbox for simple centering */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 2rem; /* Keep the space between cards */
+  .blogGrid {
+    display: flex;
+    /* CHANGE: Use Flexbox for simple centering */
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Center items horizontally */
+    gap: 2rem;
+    /* Keep the space between cards */
   }
 
-  .blog-card {
-    width: 100%; /* Make the card take full width of the container */
-    max-width: 32rem; /* But not more than 32rem */
+  .blogCard {
+    width: 100%;
+    /* Make the card take full width of the container */
+    max-width: 32rem;
+    /* But not more than 32rem */
     box-shadow: none;
     background-color: transparent;
   }
 
-  .blog-card-content {
+  .blogCardContent {
     padding: 0 0 1rem 0;
   }
 
-  .blog-card-meta {
+  .blogCardMeta {
     font-size: 0.875rem;
   }
 
-  .blog-card-image {
+  .blogCardImage {
     aspect-ratio: 4 / 3;
   }
 }
@@ -181,12 +194,12 @@
 /* === Footer / View More Button === */
 /* =================================== */
 
-.blog-footer {
+.blogFooter {
   display: none;
   margin-top: 4rem;
 }
 
-.view-more-button {
+.viewMoreButton {
   padding: 0.75rem 1.5rem;
   border: 1px solid #ccc;
   background: transparent;
@@ -196,8 +209,16 @@
   transition: all 0.2s;
 }
 
-.view-more-button:hover {
+.viewMoreButton:hover {
   background: #333;
   color: #fff;
   border-color: #333;
+}
+
+/* ==================== Large Screens: ≥2560px ==================== */
+@media (min-width: 2560px) {
+  .blogSection {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
 }

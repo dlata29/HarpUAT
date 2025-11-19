@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
-
-import "../CSS/BlogSection.css";
+import { useTranslation } from "react-i18next";
+import styles from "../CSS/BlogSection.module.css";
 
 const BlogSection = () => {
-  const { t } = useTranslation(); // <-- NEW HOOK
+  const { t } = useTranslation();
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +41,7 @@ const BlogSection = () => {
 
   if (loading) {
     return (
-      <section className="blog-section">
+      <section id="blog" className={styles.blogSection}>
         {/* Use translation key for loading */}
         <p>{t("blog.loading")}</p>
       </section>
@@ -51,21 +50,21 @@ const BlogSection = () => {
 
   if (error) {
     return (
-      <section className="blog-section">
+      <section id="blog" className={styles.blogSection}>
         <p style={{ color: "red" }}>{error}</p>
       </section>
     );
   }
 
   return (
-    <section id="blog" className="blog-section">
-      <div className="blog-container">
-        <div className="blog-header">
-          <p className="blog-subtitle">{t("blog.subtitle")}</p>
-          <h2 className="blog-title">{t("blog.title")}</h2>
+    <section id="blog" className={styles.blogSection}>
+      <div className={styles.blogContainer}>
+        <div className={styles.blogHeader}>
+          <p className={styles.blogSubtitle}>{t("blog.subtitle")}</p>
+          <h2 className={styles.blogTitle}>{t("blog.title")}</h2>
         </div>
 
-        <div className="blog-grid">
+        <div className={styles.blogGrid}>
           {posts.map((post, index) => {
             // Safely get the featured image URL from the embedded data
             const imageUrl = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "https://placehold.co/600x400/a3b18a/ffffff?text=Blog+Post";
@@ -73,20 +72,20 @@ const BlogSection = () => {
             const authorName = post._embedded?.author?.[0]?.name || "Anonymous";
 
             return (
-              <div key={post.id} className={`blog-card`}>
-                <img src={imageUrl} alt={post.title.rendered} className="blog-card-image" />
-                <div className="blog-card-content">
-                  <p className="blog-card-meta">
+              <div key={post.id} className={styles.blogCard}>
+                <img src={imageUrl} alt={post.title.rendered} className={styles.blogCardImage} />
+                <div className={styles.blogCardContent}>
+                  <p className={styles.blogCardMeta}>
                     {formatDate(post.date)} • {authorName}
                   </p>
-                  <h3 className="blog-card-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <h3 className={styles.blogCardTitle} dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                   <div
-                    className="blog-card-excerpt"
+                    className={styles.blogCardExcerpt}
                     // Note: Using dangerouslySetInnerHTML is safe here because the content
                     // is coming from your own trusted WordPress CMS.
                     dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                   />
-                  <a href={post.link} target="_blank" rel="noopener noreferrer" className="blog-card-readmore">
+                  <a href={post.link} target="_blank" rel="noopener noreferrer" className={styles.blogCardReadmore}>
                     {/* Use translation key for the "Read more" link */}
                     {t("blog.read_more")}
                   </a>
@@ -96,8 +95,8 @@ const BlogSection = () => {
           })}
         </div>
 
-        <div className="blog-footer">
-          <button className="view-more-button">
+        <div className={styles.blogFooter}>
+          <button className={styles.viewMoreButton}>
             {/* Use translation key for the footer button */}
             {t("blog.view_more_articles")}
           </button>

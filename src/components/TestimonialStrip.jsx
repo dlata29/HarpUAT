@@ -1,9 +1,9 @@
 import React from "react";
-import "../CSS/TestimonialStrip.css";
+import styles from "../CSS/TestimonialStrip.module.css";
 
 // --- Updated Musical Note SVG with Darker Gradient ---
 const MusicNote = () => (
-  <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="testimonial-separator" aria-hidden="true">
+  <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={styles.testimonialSeparator} aria-hidden="true">
     <defs>
       {/* MODIFIED: Adjusted gradient colors to be darker */}
       <linearGradient id="music-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -38,13 +38,13 @@ const TestimonialStrip = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <div className="testimonial-strip">
-      <div className="testimonial-track">
+    <div className={styles.testimonialStrip}>
+      <div className={styles.testimonialTrack}>
         {duplicatedTestimonials.map((testimonial, index) => (
           <React.Fragment key={index}>
-            <div className="testimonial-item">
-              <p className="testimonial-quote">"{testimonial.quote}"</p>
-              <p className="testimonial-author">
+            <div className={styles.testimonialItem}>
+              <p className={styles.testimonialQuote}>"{testimonial.quote}"</p>
+              <p className={styles.testimonialAuthor}>
                 <strong>{testimonial.name}</strong>, {testimonial.designation}
               </p>
             </div>

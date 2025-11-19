@@ -1,62 +1,76 @@
 /* ==================== About Section Base ==================== */
-.about-section {
+.aboutSection {
   background-color: transparent;
   position: relative;
   z-index: 2;
   display: flex;
   align-items: flex-start;
-  padding: 4rem 2rem 8rem 2rem; /* <-- SUGGESTION: Use fixed units */
+  padding: 4rem 10% 8rem 10%;
+  /* Match Navbar/Hero padding */
   margin-top: -8vh;
-  width: 100%; /* Ensure the section is full-width */
-  box-sizing: border-box; /* Include padding in the width calculation */
+  width: 100%;
+  /* Ensure the section is full-width */
+  box-sizing: border-box;
+  /* Include padding in the width calculation */
 }
 
-.about-container {
+.aboutContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  /* max-width: 1200px; <-- Removed to allow alignment */
+  margin: 0;
+  /* Left align content */
   align-items: center;
   justify-content: space-between;
-  width: 100%; /* Take up the full width of the parent */
+  width: 100%;
+  /* Take up the full width of the parent */
 }
 
 /* --- Text Column --- */
-.about-text-column {
+.aboutTextColumn {
   flex: 2;
   /* min-width: 600px; <-- REMOVE THIS LINE */
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
-.about-tag {
+.aboutTag {
   display: inline-block;
   background-color: transparent;
   border-radius: 9999px;
   font-size: 1rem;
   font-weight: 100;
-  color: #1fc5a1;
+  color: #111827;
   margin-bottom: 1rem;
 }
 
-.about-headline {
+.aboutHeadline {
   font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
   font-weight: 600;
-  color: #111827;
+  color: #1fc5a1;
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
 }
-.about-description p {
+
+.aboutDescription p {
   font-size: clamp(1rem, 1.1vw + 0.8rem, 1.25rem);
-  color: #4b5563;
+  /* color: #4b5563;  <-- Removed, controlled by inline style now */
   line-height: 1.6;
   margin-bottom: 1.2rem;
   font-weight: 300;
   text-align: left;
   letter-spacing: 0.01em;
+  transition: color 0.1s ease-out;
+  /* Smooth color transition */
 }
 
-.about-contact-button {
+.highlight {
+  font-weight: 700;
+  color: #111827;
+  /* Always black */
+}
+
+.aboutContactButton {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -68,15 +82,21 @@
   padding-bottom: 2px;
   border-bottom: 1px solid #000000;
   transition: color 0.2s, border-color 0.2s;
+  text-align: left;
 }
 
-.about-contact-button:hover {
+.aboutCtaDesktop {
+  /* Class for desktop-only text part */
+  display: inline;
+}
+
+.aboutContactButton:hover {
   color: #4b5563;
   border-color: #62c1cc;
 }
 
 /* --- Image Column --- */
-.about-image-column {
+.aboutImageColumn {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -84,90 +104,98 @@
 }
 
 /* Create a square container */
-.about-image-wrapper {
+.aboutImageWrapper {
   position: relative;
   width: 100%;
-  max-width: 600px; /* Increased 20% from 500px */
-  aspect-ratio: 4 / 3; /* Changed from 1/1 to 16/9 */
+  max-width: 600px;
+  /* Increased 20% from 500px */
+  aspect-ratio: 4 / 3;
+  /* Changed from 1/1 to 16/9 */
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), /* Softer ambient shadow */ 0 10px 20px -10px rgba(0, 0, 0, 0.35); /* Slightly darker edge shadow */
+  box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25),
+    /* Softer ambient shadow */
+    0 10px 20px -10px rgba(0, 0, 0, 0.35);
+  /* Slightly darker edge shadow */
 }
 
 /* Image inside the square container */
-.about-image-wrapper img {
+.aboutImageWrapper img {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%);
-  object-fit: cover; /* Ensures no white strips */
-  object-position: center; /* Centers image */
+  object-fit: cover;
+  /* Ensures no white strips */
+  object-position: center;
+  /* Centers image */
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 /* ==================== Tablet: 769px – 1024px ==================== */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .about-container {
+  .aboutContainer {
     flex-direction: column-reverse;
     align-items: center;
     padding: 2rem 4%;
     gap: 2.5rem;
   }
 
-  .about-text-column {
+  .aboutTextColumn {
     min-width: auto;
     text-align: center;
   }
 
-  .about-headline {
+  .aboutHeadline {
     font-size: 1.4rem;
   }
 
-  .about-description p {
+  .aboutDescription p {
     font-size: 1.2rem;
   }
 
-  .about-image-column img {
+  .aboutImageColumn img {
     max-width: 300px;
   }
 
-  .about-contact-button {
+  .aboutContactButton {
     font-size: 0.9rem;
   }
 }
 
 /* ==================== Mobile: ≤768px ==================== */
 @media (max-width: 768px) {
+
   /* START: MODIFIED SECTION */
-  .about-section {
+  .aboutSection {
     padding: 0;
     margin-top: 0;
   }
 
-  .about-container {
+  .aboutContainer {
     flex-direction: column-reverse;
     gap: 0;
   }
 
-  .about-tag {
+  .aboutTag {
     display: none;
   }
 
-  .about-text-column {
+  .aboutTextColumn {
     padding: 2.5rem 2rem 4rem 2rem;
     text-align: left;
     min-width: auto;
   }
 
-  .about-image-column {
+  .aboutImageColumn {
     width: 100%;
     transform: none !important;
     opacity: 1 !important;
   }
 
-  .about-image-wrapper {
+  .aboutImageWrapper {
     max-width: 100%;
     height: 350px;
     aspect-ratio: auto;
@@ -175,51 +203,61 @@
     box-shadow: none;
     margin-bottom: 0;
   }
+
   /* END: MODIFIED SECTION */
 
-  .about-image-wrapper img {
+  .aboutImageWrapper img {
     object-position: center 35%;
   }
 
-  .about-headline {
+  .aboutHeadline {
     font-size: 1.3rem;
-    text-align: left; /* <-- ADDED THIS LINE */
+    text-align: left;
+    /* <-- ADDED THIS LINE */
   }
 
-  .about-description p {
+  .aboutDescription p {
     font-size: 1rem;
     line-height: 1.5;
   }
 
-  .about-contact-button {
+  .aboutContactButton {
     font-size: 0.85rem;
   }
-  .about-contact-button .about-cta-desktop {
+
+  .aboutContactButton .aboutCtaDesktop {
     display: none;
   }
 }
 
 /* ==================== Extra Small Mobile: ≤480px ==================== */
 @media (max-width: 480px) {
-  .about-section {
+  .aboutSection {
     padding: 0 0 3rem 0;
   }
 
-  .about-text-column {
+  .aboutTextColumn {
     padding: 2rem 1.5rem 3rem 1.5rem;
   }
 
-  .about-description p {
+  .aboutDescription p {
     font-size: 0.95rem;
   }
 
-  .about-image-wrapper {
+  .aboutImageWrapper {
     height: 250px;
   }
 }
 
+/* ==================== Large Screens: ≥2560px ==================== */
+@media (min-width: 2560px) {
+  .aboutSection {
+    padding: 4rem 15% 8rem 15%;
+  }
+}
+
 /* ==================== Optional: Smooth Scroll Fade for Image & Text ==================== */
-.about-text-column,
-.about-image-column {
+.aboutTextColumn,
+.aboutImageColumn {
   will-change: transform, opacity;
 }

@@ -1,4 +1,4 @@
-.grid-background-container {
+.gridBackgroundContainer {
   position: relative;
   width: 100%;
   isolation: isolate;
@@ -7,7 +7,7 @@
   background-color: #ffffff;
 }
 
-.static-grid {
+.staticGrid {
   pointer-events: none;
   position: absolute;
   inset: 0;
@@ -17,19 +17,22 @@
   background-image: linear-gradient(to right, #ececec7a 1px, #00000000 1px), linear-gradient(to bottom, #e8e8e891 1px, transparent 1px);
 }
 
-.trail-box {
+.trailBox {
   pointer-events: none;
   position: absolute;
   /* border: 1px solid #d35400; */
   border: 0.7px solid #62c1cc;
+  z-index: 100;
+  /* Ensure trails are on top of content */
 
-  animation: fade-out 1500ms forwards;
+  animation: fadeOut 1500ms forwards;
 }
 
-@keyframes fade-out {
+@keyframes fadeOut {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }

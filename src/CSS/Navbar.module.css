@@ -1,0 +1,253 @@
+/* ==================== Desktop & Default Navbar ==================== */
+.navbarWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background: transparent;
+    padding: 0.75rem 10%;
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.logo,
+.navLinks a,
+.hamburger,
+.langOption,
+.langSeparator {
+    color: #ffffff;
+    /* Default white */
+}
+
+.navLinks a:hover,
+.navLinks a.active,
+.langOption.active,
+.langOption:hover {
+    color: #96ffe9;
+    /* Hover/active default */
+}
+
+.letsTalkButton {
+    background-color: #ffffff;
+    color: #111827;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.letsTalkButton:hover {
+    background-color: #e5e7eb;
+    transform: scale(1.05);
+}
+
+/* ==================== Scrolled Navbar ==================== */
+.navbarWrapper.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    padding: 0.5rem 10%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbarWrapper.scrolled .logo,
+.navbarWrapper.scrolled .navLinks a,
+.navbarWrapper.scrolled .hamburger,
+.navbarWrapper.scrolled .langOption,
+.navbarWrapper.scrolled .langSeparator {
+    color: #111827;
+    /* Dark text for scrolled state */
+}
+
+.navbarWrapper.scrolled .navLinks a:hover,
+.navbarWrapper.scrolled .langOption.active,
+.navbarWrapper.scrolled .langOption:hover {
+    color: #1fc5a1;
+    /* Hover/active for scrolled */
+}
+
+.navbarWrapper.scrolled .letsTalkButton {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+/* ==================== Navbar Layout ==================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbarRight {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 3rem;
+}
+
+.navLinks a {
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    font-size: 0.8rem;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.75rem;
+    color: white;
+    z-index: 100;
+    transition: color 0.3s ease;
+}
+
+/* ==================== Tablet & Mobile ==================== */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .navbarRight {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(75vw, 400px);
+        height: 100vh;
+        background: #0a192f;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navbarRight.show {
+        transform: translateX(0);
+    }
+
+    .navLinks {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .navLinks a,
+    .langOption,
+    .langSeparator {
+        color: #ffffff;
+        /* Mobile menu links white */
+        font-size: 1.2rem;
+    }
+
+    .langSwitcher {
+        gap: 1rem;
+        /* Increased gap */
+        font-size: 1.2rem;
+        justify-content: center;
+        /* Center align */
+        width: 100%;
+        /* Take full width to center properly */
+    }
+
+    .langOption {
+        min-width: auto;
+        /* Reset min-width to prevent shifting */
+        font-size: 1.2rem;
+        /* Ensure font size matches */
+    }
+
+    /* --- ADD THIS SECTION --- */
+    /* This ensures that even when the navbar is "scrolled", */
+    /* the links inside the dark mobile menu *always* stay white. */
+
+    .navbarWrapper.scrolled .navbarRight .navLinks a,
+    .navbarWrapper.scrolled .navbarRight .langOption,
+    .navbarWrapper.scrolled .navbarRight .langSeparator {
+        color: #ffffff;
+    }
+
+    /* This forces the button to keep its white-background style */
+    /* inside the dark mobile menu, even when scrolled. */
+    .navbarWrapper.scrolled .navbarRight .letsTalkButton {
+        background-color: #ffffff;
+        color: #111827;
+    }
+
+    /* --- END ADDITION --- */
+}
+
+/* ==================== Language Switcher ==================== */
+.langSwitcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.langOption {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-align: center;
+    min-width: 2.5em;
+    /* <-- ADD THIS */
+    display: inline-block;
+    /* <-- ADD THIS (to make min-width work on a span) */
+}
+
+.langOption:hover {
+    color: #96ffe9;
+}
+
+.langOption.active {
+    color: #96ffe9;
+    font-weight: 500;
+}
+
+.langSeparator {
+    color: #ffffff;
+}
+
+/* SCROLLED State adjustments for language switcher */
+.navbarWrapper.scrolled .langOption,
+.navbarWrapper.scrolled .langSeparator {
+    color: #111827;
+}
+
+.navbarWrapper.scrolled .langOption.active,
+.navbarWrapper.scrolled .langOption:hover {
+    color: #1fc5a1;
+}
+
+/* ==================== Large Screens ==================== */
+@media (min-width: 2560px) {
+
+    .navbarWrapper,
+    .navbarWrapper.scrolled {
+        padding: 1.2rem 15%;
+    }
+
+    .navLinks {
+        gap: 4rem;
+    }
+}

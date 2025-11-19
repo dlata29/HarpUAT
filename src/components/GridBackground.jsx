@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
-import "../CSS/GridBackground.css";
+import PropTypes from "prop-types";
+import styles from "../CSS/GridBackground.module.css";
 
 // This component creates the static grid and the interactive mouse trail effect.
 const GridBackground = ({ children }) => {
@@ -36,13 +37,13 @@ const GridBackground = ({ children }) => {
   }, []);
 
   return (
-    <div ref={gridRef} className="grid-background-container" onMouseMove={handleMouseMove}>
+    <div ref={gridRef} className={styles.gridBackgroundContainer} onMouseMove={handleMouseMove}>
       {/* Static grid pattern */}
-      <div className="static-grid"></div>
+      <div className={styles.staticGrid}></div>
 
       {/* Render trail elements */}
       {trails.map((trail) => (
-        <div key={trail.id} className="trail-box" style={{ left: trail.x, top: trail.y, width: GRID_SIZE, height: GRID_SIZE }} />
+        <div key={trail.id} className={styles.trailBox} style={{ left: trail.x, top: trail.y, width: GRID_SIZE, height: GRID_SIZE }} />
       ))}
 
       {/* Section Label (above first heading) */}
@@ -51,6 +52,10 @@ const GridBackground = ({ children }) => {
       {children}
     </div>
   );
+};
+
+GridBackground.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default GridBackground;

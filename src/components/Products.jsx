@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
-
-import "../CSS/Products.css";
+import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
+import styles from "../CSS/Products.module.css";
 
 const Products = React.forwardRef((props, ref) => {
-  const { t } = useTranslation(); // <-- NEW HOOK
+  const { t } = useTranslation();
   const serviceKeys = ["web_dev", "app_dev", "ai_solutions"];
   // Helper function to dynamically pull all translated data for a service
   const getServiceData = (key) => {
@@ -72,27 +72,22 @@ const Products = React.forwardRef((props, ref) => {
   }, [finalServicesData.length]);
 
   return (
-    <section id="products" className="services-section" ref={ref}>
-      <div className="services-container">
+    <section id="products" className={styles.servicesSection} ref={ref}>
+      <div className={styles.servicesContainer}>
         {/* Update tag to use translation */}
-        <span className="services-tag">{t("products.tag")}</span>
+        <span className={styles.servicesTag}>{t("products.tag")}</span>
         {/* Left side: Scrolling Text Content */}
-        <div className="services-text-content">
+        <div className={styles.servicesTextContent}>
           {/* Map over the final translated data */}
           {finalServicesData.map((service, index) => (
-            <div key={index} ref={(el) => (serviceSectionsRef.current[index] = el)} className="service-item">
-              <h3 className="service-title">
+            <div key={index} ref={(el) => (serviceSectionsRef.current[index] = el)} className={styles.serviceItem}>
+              <h3 className={styles.serviceTitle}>
                 <span>{service.title}</span>
               </h3>
-              <p className="service-description">{service.description}</p>
-              <ul className="service-points">
+              <p className={styles.serviceDescription}>{service.description}</p>
+              <ul className={styles.servicePoints}>
                 {service.points.map((point, pIndex) => (
-                  <li key={pIndex} className="service-point">
-                    {/* START: Updated SVG Icon
-                    <svg className="point-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M10 20H8V4h2v2h2v3h2v2h2v2h-2v2h-2v3h-2v2z" fill="#000000"></path>
-                    </svg> */}
-                    {/* END: Updated SVG Icon */}
+                  <li key={pIndex} className={styles.servicePoint}>
                     {(() => {
                       const [main, sub] = point.split(":");
                       return <span data-subtext={sub ? sub.trim() : ""}>{main.trim()}</span>;
@@ -105,8 +100,8 @@ const Products = React.forwardRef((props, ref) => {
         </div>
 
         {/* Right side: Sticky Images with Parallax */}
-        <div className="services-image-container">
-          <div className="sticky-image-wrapper">
+        <div className={styles.servicesImageContainer}>
+          <div className={styles.stickyImageWrapper}>
             {/* Map over the final translated data */}
             {finalServicesData.map((service, index) => {
               const progress = progressValues[index] || 0;
@@ -117,7 +112,10 @@ const Products = React.forwardRef((props, ref) => {
                   key={service.imageUrl}
                   src={service.imageUrl}
                   alt={service.title}
-                  className="service-image"
+                  className={styles.serviceImage}
+                  width="600"
+                  height="600"
+                  loading="lazy"
                   style={{
                     transform: `translateY(${translateY})`,
                     zIndex: index,
@@ -135,5 +133,9 @@ const Products = React.forwardRef((props, ref) => {
     </section>
   );
 });
+
+Products.propTypes = {};
+
+Products.displayName = "Products";
 
 export default Products;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // <-- NEW IMPORT
+import { useTranslation } from "react-i18next";
+import styles from "../CSS/Navbar.module.css";
 
-import "../CSS/Navbar.css";
-
-export default function Navbar() {
+export default function Navbar({ isVisible, onOpenModal }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -57,18 +57,23 @@ export default function Navbar() {
   const isEnglish = i18n.language.startsWith("en");
 
   return (
-    <div className={`navbar-wrapper ${scrolled ? "scrolled" : ""}`}>
-      <nav className="navbar">
-        <a href="/" className="logo">
+    <div className={`${styles.navbarWrapper} ${scrolled ? styles.scrolled : ""}`}>
+      <nav className={styles.navbar}>
+        <a href="/" className={styles.logo}>
           harpandcode.io
         </a>
 
-        <div className="hamburger" onClick={toggleMenu}>
+        <button
+          className={styles.hamburger}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+          style={{ background: "none", border: "none", padding: 0 }}
+        >
           ☰
-        </div>
+        </button>
 
-        <div className={`navbar-right ${menuOpen ? "show" : ""}`}>
-          <ul className="nav-links">
+        <div className={`${styles.navbarRight} ${menuOpen ? styles.show : ""}`}>
+          <ul className={styles.navLinks}>
             <li>
               <a href="#about" onClick={(e) => handleLinkClick(e, "about")}>
                 {t("navbar.about")} {/* <-- UPDATED */}
@@ -84,26 +89,28 @@ export default function Navbar() {
                 {t("navbar.blog")} {/* <-- UPDATED */}
               </a>
             </li>
-            <li className="lang-switcher">
-              <span
+            <li className={styles.langSwitcher}>
+              <button
                 onClick={() => switchLanguage("en")}
                 // Use a dedicated class for styling active/hover state
-                className={`lang-option ${isEnglish ? "active" : ""}`}
+                className={`${styles.langOption} ${isEnglish ? styles.active : ""}`}
+                style={{ background: "none", border: "none", padding: 0, font: "inherit" }}
               >
                 EN
-              </span>
-              <span className="lang-separator">/</span>
-              <span
+              </button>
+              <span className={styles.langSeparator}>/</span>
+              <button
                 onClick={() => switchLanguage("es")}
                 // Use a dedicated class for styling active/hover state
-                className={`lang-option ${!isEnglish ? "active" : ""}`}
+                className={`${styles.langOption} ${!isEnglish ? styles.active : ""}`}
+                style={{ background: "none", border: "none", padding: 0, font: "inherit" }}
               >
                 ES
-              </span>
+              </button>
             </li>
             {/* END: Language Switcher */}
           </ul>
-          <a href="https://calendly.com/harpandcodeio/letstalk" target="_blank" rel="noopener noreferrer" className="lets-talk-button" onClick={closeMenu}>
+          <a href="https://calendly.com/harpandcodeio/letstalk" target="_blank" rel="noopener noreferrer" className={styles.letsTalkButton} onClick={closeMenu}>
             {t("navbar.lets_talk")}
           </a>
         </div>
@@ -111,3 +118,8 @@ export default function Navbar() {
     </div>
   );
 }
+
+Navbar.propTypes = {
+  isVisible: PropTypes.bool,
+  onOpenModal: PropTypes.func,
+};

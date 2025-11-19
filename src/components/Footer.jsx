@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
-import "../CSS/Footer.css";
+import styles from "../CSS/Footer.module.css";
 
 // --- SVG Icons ---
 // I've added these SVG components for the icons.
@@ -36,8 +37,8 @@ export default function Footer({ onOpenModal }) {
   const { t } = useTranslation();
 
   return (
-    <footer id="contact" className="footer-section">
-      <div className="footer-container">
+    <footer id="contact" className={styles.footerSection}>
+      <div className={styles.footerContainer}>
         {/* Left Side: Featured Work */}
         {/* <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
           <img src="/oneretire.jpeg" alt="OneRetire App" className="base-image" />
@@ -54,34 +55,34 @@ export default function Footer({ onOpenModal }) {
 
         {/* --- THIS IS THE REPLACEMENT --- */}
         {/* We keep the wrapper class to reuse the sizing and positioning */}
-        <div className="featured-work-card">
-          <Suspense fallback={<div className="globe-loading-placeholder" />}>
+        <div className={styles.featuredWorkCard}>
+          <Suspense fallback={<div className={styles.globeLoadingPlaceholder} />}>
             <InteractiveGlobe />
           </Suspense>
         </div>
         {/* --- END REPLACEMENT --- */}
         {/* Right Side: Contact Info */}
-        <div className="contact-info-column">
-          <h2 className="footer-headline">
+        <div className={styles.contactInfoColumn}>
+          <h2 className={styles.footerHeadline}>
             {t("footer.headline_prefix")}
-            <span className="highlight-text">special</span>
+            <span className={styles.highlightText}>special</span>
           </h2>
-          <p className="footer-tagline">{t("footer.tagline")}</p>
-          <div className="footer-actions">
-            <button className="footer-contact-button" onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank", "noopener,noreferrer")}>
+          <p className={styles.footerTagline}>{t("footer.tagline")}</p>
+          <div className={styles.footerActions}>
+            <button className={styles.footerContactButton} onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank", "noopener,noreferrer")}>
               {t("footer.lets_talk")}
             </button>
           </div>
 
-          <div className="footer-details">
+          <div className={styles.footerDetails}>
             {/* START: UPDATED SECTION */}
-            <div className="details-section">
-              <h3 className="details-heading">{t("footer.contact_heading")}</h3>
-              <a href="mailto:info@harpandcode.io" className="details-link">
+            <div className={styles.detailsSection}>
+              <h3 className={styles.detailsHeading}>{t("footer.contact_heading")}</h3>
+              <a href="mailto:info@harpandcode.io" className={styles.detailsLink}>
                 info@harpandcode.io
               </a>
               {/* --- ADDED SOCIAL ICONS --- */}
-              <div className="social-icons">
+              <div className={styles.socialIcons}>
                 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <LinkedInIcon />
                 </a>
@@ -94,12 +95,12 @@ export default function Footer({ onOpenModal }) {
               </div>
               {/* --- END SOCIAL ICONS --- */}
             </div>
-            <div className="details-section">
-              <h3 className="details-heading">{t("footer.address_heading")}</h3>
-              <p className="details-address">Panama Pacifico Special Economic Area, Panama City</p>
+            <div className={styles.detailsSection}>
+              <h3 className={styles.detailsHeading}>{t("footer.address_heading")}</h3>
+              <p className={styles.detailsAddress}>Panama Pacifico Special Economic Area, Panama City</p>
               {/* --- ADDED MAP --- */}
-              <div className="map-container">
-                <img src="/panama-map.png" alt="Map of Panama" className="footer-map" />
+              <div className={styles.mapContainer}>
+                <img src="/panama-map.png" alt="Map of Panama" className={styles.footerMap} width="150" height="100" loading="lazy" />
               </div>
               {/* --- END MAP --- */}
             </div>
@@ -110,3 +111,7 @@ export default function Footer({ onOpenModal }) {
     </footer>
   );
 }
+
+Footer.propTypes = {
+  onOpenModal: PropTypes.func,
+};
