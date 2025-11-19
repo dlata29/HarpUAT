@@ -27,14 +27,15 @@
   border-radius: 9999px;
   font-size: 1rem;
   font-weight: 100;
-  color: #111827;
+  color: #1fc5a1;
   margin-bottom: 1rem;
 }
 
 .blogTitle {
   font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
   font-weight: 600;
-  color: #1fc5a1;
+
+  color: #111827;
   letter-spacing: 0.02rem;
   margin: 0;
   display: flex;
