@@ -9,7 +9,7 @@ const BlogSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const WORDPRESS_URL = "https://blog.harpandcode.io/";
+  const WORDPRESS_URL = "https://blog.harpandcode.io";
 
   useEffect(() => {
     const fetchPosts = async () => {
