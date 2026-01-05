@@ -59,8 +59,8 @@ src/
 ├── CSS/              # Modular CSS styles
 ├── App.jsx           # Main application layout and routing logic
 └── main.jsx          # Entry point
-
-**## 🌟 Core Services**
+```
+## 🌟 Core Services
 
 ### 1. Web Development
 Custom, SEO-friendly websites and e-commerce platforms engineered for speed and scale.
@@ -71,7 +71,7 @@ Native and cross-platform mobile applications (iOS & Android) that engage users 
 ### 3. AI Solutions
 Intelligent digital assistants ("AI Agents") and process automation tools designed to streamline business workflows.
 
-**## 🏆 Featured Product: OneRetire**
+## 🏆 Featured Product: OneRetire
 The **OneRetire** app is a specialized retirement planning tool designed for UN staff and retirees. It helps users estimate benefits, track pension data, and plan their ideal post-retirement lifestyle.
 
 ---
