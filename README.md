@@ -29,8 +29,8 @@ To run this project locally, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/harp-and-code.git](https://github.com/your-username/harp-and-code.git)
-    cd harp-and-code
+    git clone https://github.com/hnc091-WiPAL/harpandcodeio
+    cd
     ```
 
 2.  **Install dependencies:**
@@ -42,7 +42,7 @@ To run this project locally, follow these steps:
     ```bash
     npm run dev
     ```
-    The application will be available at `http://localhost:5173`.
+    The application will be available at `https://www.harpandcode.io/`.
 
 4.  **Build for production:**
     ```bash
