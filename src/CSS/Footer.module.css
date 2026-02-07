@@ -157,6 +157,9 @@
 
 .footerActions {
   margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .footerContactButton {
@@ -176,6 +179,25 @@
 
 .footerContactButton:hover {
   background-color: #e5e7eb;
+  transform: translateY(-2px);
+}
+
+.footerPartnerButton {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.footerPartnerButton:hover {
+  border-color: #96FFE9;
+  color: #96FFE9;
   transform: translateY(-2px);
 }
 
@@ -219,9 +241,9 @@
 .socialIcons {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
 }
 
 .socialIcons a {
@@ -298,6 +320,10 @@
 
   .footerTagline {
     font-size: 1rem;
+  }
+
+  .footerActions {
+    justify-content: center;
   }
 
   .footerDetails {

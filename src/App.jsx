@@ -13,13 +13,18 @@ import BlogSection from "./components/BlogSection";
 import FeaturedWork from "./components/FeaturedWork"; // <-- ADDED IMPORT
 import TestimonialStrip from "./components/TestimonialStrip"; // <-- ADDED IMPORT
 import SEO from "./components/SEO";
+import ContactModal from "./components/ContactModal"; // <-- ADDED IMPORT
 
 export default function App() {
   const [isNavbarVisible, setNavbarVisible] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("project"); // 'project' or 'partner'
   const contentSectionRef = useRef(null);
 
-  const openModal = () => setModalOpen(true);
+  const openModal = (mode = "project") => {
+    setModalMode(mode);
+    setModalOpen(true);
+  };
   const closeModal = () => setModalOpen(false);
 
   return (
@@ -27,6 +32,7 @@ export default function App() {
       <Router>
         <SEO />
         <Navbar isVisible={isNavbarVisible} onOpenModal={openModal} />
+        <ContactModal isOpen={isModalOpen} onClose={closeModal} initialMode={modalMode} />
         <Routes>
           <Route
             path="/"
@@ -35,7 +41,7 @@ export default function App() {
                 {/* The Hero component remains on its own */}
                 <div id="hero-sticky-wrapper">
                   <GridBackground>
-                    <Hero />
+                    <Hero onOpenModal={openModal} />
                   </GridBackground>
                 </div>
 

@@ -110,9 +110,15 @@ export default function Navbar({ isVisible, onOpenModal }) {
             </li>
             {/* END: Language Switcher */}
           </ul>
-          <a href="https://calendly.com/harpandcodeio/letstalk" target="_blank" rel="noopener noreferrer" className={styles.letsTalkButton} onClick={closeMenu}>
-            {t("navbar.lets_talk")}
-          </a>
+          <button
+            className={styles.letsTalkButton}
+            onClick={() => {
+              onOpenModal("project");
+              closeMenu();
+            }}
+          >
+            {t("modal.start_project")}
+          </button>
         </div>
       </nav>
     </div>

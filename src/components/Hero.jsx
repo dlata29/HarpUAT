@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import styles from "../CSS/Hero.module.css";
 
-export default function Hero() {
+export default function Hero({ onOpenModal }) {
   const { t, i18n } = useTranslation();
   const videoRef = useRef(null);
 
@@ -68,7 +68,14 @@ export default function Hero() {
           </h1>
 
           <div className={styles.heroCtaContainer}>
-            <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" className={`${styles.ctaButton} ${styles.secondary}`}>
+            <a
+              href="#contact"
+              className={`${styles.ctaButton} ${styles.secondary}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenModal("project");
+              }}
+            >
               {t("hero.cta")}
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className={styles.ctaIcon} viewBox="0 0 16 16">
                 <path

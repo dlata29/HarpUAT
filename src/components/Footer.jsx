@@ -93,8 +93,11 @@ export default function Footer({ onOpenModal }) {
           </h2>
           <p className={styles.footerTagline}>{t("footer.tagline")}</p>
           <div className={styles.footerActions}>
-            <button className={styles.footerContactButton} onClick={() => window.open("https://calendly.com/harpandcodeio/letstalk", "_blank", "noopener,noreferrer")}>
-              {t("footer.lets_talk")}
+            <button className={styles.footerContactButton} onClick={() => onOpenModal("project")}>
+              {t("modal.start_project")}
+            </button>
+            <button className={styles.footerPartnerButton} onClick={() => onOpenModal("partner")}>
+              {t("modal.partner_with_us")}
             </button>
           </div>
 
@@ -121,7 +124,7 @@ export default function Footer({ onOpenModal }) {
             </div>
             <div className={styles.detailsSection}>
               <h3 className={styles.detailsHeading}>{t("footer.address_heading")}</h3>
-              <p className={styles.detailsAddress}>Panama Pacifico Special Economic Area, Panama City</p>
+              <p className={styles.detailsAddress}>Panama Pacifico Special Economic Area, Panama City, Panama</p>
               {/* --- ADDED MAP --- */}
               <div className={styles.mapContainer}>
                 <img src="/panama-map.png" alt="Map of Panama" className={styles.footerMap} width="150" height="100" loading="lazy" />
