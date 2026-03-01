@@ -18,19 +18,34 @@ const MusicNote = () => (
 const TestimonialStrip = () => {
   const testimonials = [
     {
-      quote: "Working with them was a game-changer. True professionals who deliver excellence and innovation.",
-      name: "Jane Doe",
-      designation: "CEO, Innovate Inc.",
+      quote:
+        "AI is not about replacing humans — it’s about amplifying human ingenuity and unlocking new business value.",
+      name: "Satya Nadella",
+      designation: "CEO, Microsoft",
     },
     {
-      quote: "Their attention to detail and commitment to our vision was outstanding. Highly recommended.",
-      name: "John Smith",
-      designation: "CTO, Future Solutions",
+      quote:
+        "In the future, every company will be a software company — and AI will be the engine of that transformation.",
+      name: "Satya Nadella",
+      designation: "CEO, Microsoft",
     },
     {
-      quote: "An incredible team that transformed our digital presence. The results speak for themselves.",
-      name: "Emily White",
-      designation: "Marketing Director, Growth Co.",
+      quote:
+        "AI will not replace humans, but those who adopt AI will replace those who don’t.",
+      name: "Ginni Rometty",
+      designation: "Former CEO, IBM",
+    },
+    {
+      quote:
+        "Artificial intelligence and generative AI may be the most important technology of any lifetime.",
+      name: "Marc Benioff",
+      designation: "Chair & CEO, Salesforce",
+    },
+    {
+      quote:
+        "Organizations that embrace AI beyond the hype and integrate it deeply into workflows will unlock real value.",
+      name: "AI Industry Leaders",
+      designation: "Collective Insight",
     },
   ];
 
