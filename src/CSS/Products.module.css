@@ -2,7 +2,7 @@
 
 .servicesSection {
   padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 0;
   position: relative;
   z-index: 10;
   background-color: transparent;
@@ -41,16 +41,18 @@
 .servicesTextContent {
   display: flex;
   flex-direction: column;
-  gap: 50vh;
-  /* Balanced gap for parallax scroll effect */
+  gap: 40vh;
   padding-bottom: 0;
 }
 
 .serviceItem {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  /* Full viewport height for each item */
+  min-height: 80vh;
+}
+
+.serviceItem:last-child {
+  min-height: 40vh;
 }
 
 .serviceTitle {
@@ -164,8 +166,8 @@
 .stickyImageWrapper {
   position: relative;
   width: 100%;
-  max-width: 32rem;
-  aspect-ratio: 1 / 1;
+  max-width: 28rem;
+  aspect-ratio: 4 / 3;
   border-radius: 0.5rem;
   box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), 0 10px 20px -10px rgba(0, 0, 0, 0.35);
   overflow: hidden;
@@ -266,16 +268,20 @@
 /* ==================== Desktop: 1200px – 1919px ==================== */
 @media (min-width: 1200px) and (max-width: 1919px) {
   .servicesTextContent {
-    gap: 15vh;
+    gap: 10vh;
     padding-bottom: 0;
   }
 
   .serviceItem {
-    min-height: 70vh;
+    min-height: 60vh;
+  }
+
+  .serviceItem:last-child {
+    min-height: 30vh;
   }
 
   .servicesSection {
-    padding-bottom: 2vh;
+    padding-bottom: 0;
     overflow: visible;
     margin-bottom: 0;
   }
@@ -289,15 +295,15 @@
 /* ==================== Large Screens (Studio Display): ≥1920px ==================== */
 @media (min-width: 1920px) {
   .servicesTextContent {
-    gap: 5vh;
+    gap: 2vh;
   }
 
   .serviceItem {
-    min-height: 60vh;
+    min-height: 50vh;
   }
 
   .serviceItem:last-child {
-    min-height: 50vh;
+    min-height: 25vh;
   }
 
   .servicesSection {
