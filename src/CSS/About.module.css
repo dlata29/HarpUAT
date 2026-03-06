@@ -97,7 +97,7 @@
 
 /* --- Image Column --- */
 .aboutImageColumn {
-  flex: 1;
+  flex: 1.2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,16 +107,12 @@
 .aboutImageWrapper {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  /* Increased 20% from 500px */
-  aspect-ratio: 4 / 3;
-  /* Changed from 1/1 to 16/9 */
+  max-width: 800px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25),
-    /* Softer ambient shadow */
     0 10px 20px -10px rgba(0, 0, 0, 0.35);
-  /* Slightly darker edge shadow */
 }
 
 /* Image inside the square container */

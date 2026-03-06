@@ -41,8 +41,8 @@ const About = React.forwardRef(({ onOpenModal }, ref) => {
   };
 
   // Define the phrases to be made bold in both English and Spanish
-  const boldTextEN = "AI-powered tools, web applications, and intelligent automation";
-  const boldTextES = "herramientas impulsadas por IA, aplicaciones web y automatización inteligente";
+  const boldTextEN = "intelligent, AI-driven workflows";
+  const boldTextES = "flujos de trabajo inteligentes impulsados por IA";
 
   // Determine which phrase to use based on the current language
   const boldText = i18n.language.startsWith("es") ? boldTextES : boldTextEN;
