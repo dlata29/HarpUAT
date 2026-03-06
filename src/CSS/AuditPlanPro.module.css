@@ -1,0 +1,336 @@
+/* src/CSS/AuditPlanPro.module.css */
+
+.section {
+  padding: 6rem 10%;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+/* ===== Header ===== */
+.header {
+  margin-bottom: 4rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 100;
+  color: #1fc5a1;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(2rem, 1.5rem + 1.5vw, 3.2rem);
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem 0;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.2rem);
+  font-weight: 400;
+  color: #0D9488;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: 0.01em;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #4b5563;
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 0 2rem 0;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  background-color: #0D9488;
+  color: #ffffff;
+  border: 2px solid #0D9488;
+}
+
+.ctaPrimary:hover {
+  background-color: #0f766e;
+  border-color: #0f766e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+
+.ctaPrimary svg {
+  transition: transform 0.2s ease;
+}
+
+.ctaPrimary:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ===== Impact Metrics ===== */
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.metricCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.metricValue {
+  font-size: clamp(1.6rem, 1.2rem + 1vw, 2.4rem);
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* ===== Section Headings ===== */
+.featuresHeader {
+  margin-bottom: 2rem;
+}
+
+.sectionHeading {
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: 0.02em;
+  margin: 0 0 2rem 0;
+}
+
+/* ===== Features Grid ===== */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.featureCard {
+  padding: 1.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.1);
+}
+
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.featureTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.featureDescription {
+  font-size: 0.92rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== Workflow Timeline ===== */
+.workflowSection {
+  margin-bottom: 4rem;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Connecting line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  left: 1.15rem;
+  right: 1.15rem;
+  height: 2px;
+  background: #e2e8f0;
+  z-index: 0;
+}
+
+.timelineItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background-color: #0D9488;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.timelineLabel {
+  font-size: 0.78rem;
+  color: #374151;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 400;
+  max-width: 120px;
+}
+
+.workflowNote {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 680px;
+  margin-top: 1.5rem;
+}
+
+/* ===== Standards Badges ===== */
+.standardsSection {
+  margin-bottom: 0;
+}
+
+.standardsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.standardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: transform 0.15s ease;
+}
+
+.standardBadge.active {
+  background-color: #111827;
+  color: #ffffff;
+}
+
+.standardBadge.coming {
+  background-color: #ffffff;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+.comingSoon {
+  font-size: 0.68rem;
+  font-weight: 400;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* ==================== Mobile (≤768px) ==================== */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 2rem;
+  }
+
+  .metricsRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.5rem;
+    column-gap: 0.5rem;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .standardsRow {
+    gap: 0.5rem;
+  }
+
+  .standardBadge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+/* ==================== Tablet (769px – 1024px) ==================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .metricsRow {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ==================== Large Screens: ≥2560px ==================== */
+@media (min-width: 2560px) {
+  .section {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}

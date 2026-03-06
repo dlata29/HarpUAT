@@ -85,6 +85,11 @@ export default function Navbar({ isVisible, onOpenModal }) {
               </a>
             </li>
             <li>
+              <a href="#auditplan-pro" onClick={(e) => handleLinkClick(e, "auditplan-pro")}>
+                AuditPlan Pro
+              </a>
+            </li>
+            <li>
               <a href="#blog" onClick={(e) => handleLinkClick(e, "blog")}>
                 {t("navbar.blog")} {/* <-- UPDATED */}
               </a>

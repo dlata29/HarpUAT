@@ -7,11 +7,9 @@
 }
 
 .featuredWorkContainer {
-  /* max-width: 1200px; <-- Removed for alignment */
   margin: 0;
 }
 
-/* Header styles (similar to BlogSection) */
 .featuredWorkHeader {
   margin-bottom: 3rem;
 }
@@ -32,33 +30,110 @@
   margin: 0;
 }
 
-/* Image styles */
-.featuredWorkImageWrapper {
-  width: 100%;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25), 0 10px 20px -10px rgba(0, 0, 0, 0.35);
-  line-height: 0;
-  /* Fixes any small gaps under the image */
+/* Two-card grid */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
-.featuredWorkImageWrapper a {
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projectLink {
   display: block;
-  width: 100%;
-  height: 100%;
   text-decoration: none;
   color: inherit;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(27, 24, 24, 0.25),
+    0 10px 20px -10px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.featuredWorkImageWrapper img {
+.projectLink:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+
+.projectImageWrapper {
+  width: 100%;
+  line-height: 0;
+}
+
+.projectImageWrapper img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
   object-position: center center;
-  /* Default: center of the image */
-  aspect-ratio: 1920 / 1080;
-  /* Your image's 16:9 ratio */
+  aspect-ratio: 16 / 9;
+}
+
+/* Fallback card for AuditPlan Pro (no screenshot yet) */
+.projectFallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  aspect-ratio: 16 / 9;
+  padding: 2rem;
+}
+
+.fallbackIcon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+.fallbackTitle {
+  font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2.2rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.fallbackSubtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+.fallbackCta {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 9999px;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.projectLink:hover .fallbackCta {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Project info below card */
+.projectInfo {
+  padding: 0 0.25rem;
+}
+
+.projectTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.25rem 0;
+}
+
+.projectSubtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* ==================== Mobile (≤768px) ==================== */
@@ -67,11 +142,17 @@
     padding: 4rem 2rem;
   }
 
-  .featuredWorkImageWrapper img {
-    /* This shows the left 50% of the image */
-    object-position: 0% 50%;
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 
-    /* We can adjust the aspect ratio to be more square-ish on mobile */
+  .projectImageWrapper img {
+    object-position: 0% 50%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .projectFallback {
     aspect-ratio: 4 / 3;
   }
 }

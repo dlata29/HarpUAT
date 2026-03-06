@@ -12,6 +12,7 @@ import GridBackground from "./components/GridBackground";
 import BlogSection from "./components/BlogSection";
 import FeaturedWork from "./components/FeaturedWork"; // <-- ADDED IMPORT
 import TestimonialStrip from "./components/TestimonialStrip"; // <-- ADDED IMPORT
+import AuditPlanPro from "./components/AuditPlanPro"; // <-- ADDED IMPORT
 import SEO from "./components/SEO";
 import ContactModal from "./components/ContactModal"; // <-- ADDED IMPORT
 import { initGA, trackPageView } from "./utils/analytics";
@@ -70,6 +71,7 @@ export default function App() {
                   <GridBackground>
                     <Products />
                   </GridBackground>
+                  <AuditPlanPro /> {/* <-- ADDED AUDITPLAN PRO SECTION */}
                   <BlogSection />
                   <FeaturedWork /> {/* <-- PLACED COMPONENT HERE */}
                   <TestimonialStrip /> {/* <-- PLACED COMPONENT HERE */}

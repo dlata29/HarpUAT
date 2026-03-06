@@ -69,11 +69,14 @@ export default function Hero({ onOpenModal }) {
 
           <div className={styles.heroCtaContainer}>
             <a
-              href="#contact"
+              href="#auditplan-pro"
               className={`${styles.ctaButton} ${styles.secondary}`}
               onClick={(e) => {
                 e.preventDefault();
-                onOpenModal("project");
+                const target = document.getElementById("auditplan-pro");
+                if (target) {
+                  target.scrollIntoView({ behavior: "smooth" });
+                }
               }}
             >
               {t("hero.cta")}
