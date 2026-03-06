@@ -43,7 +43,7 @@
   flex-direction: column;
   gap: 50vh;
   /* Balanced gap for parallax scroll effect */
-  padding-bottom: 5vh;
+  padding-bottom: 0;
 }
 
 .serviceItem {
@@ -266,21 +266,18 @@
 /* ==================== Desktop: 1200px – 1919px ==================== */
 @media (min-width: 1200px) and (max-width: 1919px) {
   .servicesTextContent {
-    gap: 20vh;
-    /* FIXED: Reduced gap to keep images in view */
+    gap: 15vh;
+    padding-bottom: 0;
   }
 
   .serviceItem {
-    min-height: 80vh;
-    /* FIXED: Reduced from 100vh */
+    min-height: 70vh;
   }
 
   .servicesSection {
-    padding-bottom: 10vh;
-    /* FIXED: Added padding */
+    padding-bottom: 2vh;
     overflow: visible;
-    /* FIXED: Changed from hidden */
-    margin-bottom: 5vh;
+    margin-bottom: 0;
   }
 
   .servicesImageContainer {
@@ -293,16 +290,14 @@
 @media (min-width: 1920px) {
   .servicesTextContent {
     gap: 5vh;
-    /* FIXED: Much tighter gap for overlapping content */
   }
 
   .serviceItem {
-    min-height: 70vh;
-    /* FIXED: Reduced height */
+    min-height: 60vh;
   }
 
   .serviceItem:last-child {
-    min-height: 70vh;
+    min-height: 50vh;
   }
 
   .servicesSection {
