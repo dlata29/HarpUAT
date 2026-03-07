@@ -14,11 +14,11 @@ const FeaturedWork = () => {
     {
       title: "AuditPlan Pro",
       subtitle: t("featured_work.auditplan_subtitle"),
-      image: "/featured_work.jpg",
+      image: "/featured_auditplan.jpeg",
       fallbackBg: "#0D9488",
       url: "https://auditplan-pro-production.up.railway.app",
       alt: t("featured_work.auditplan_alt"),
-      useFallback: true,
+      useFallback: false,
     },
     {
       title: "OneRetire",
