@@ -39,7 +39,7 @@
     "products.ai_solutions.points_5": "",
     "blog.subtitle": "Blogs",
     "blog.title": "Lecturas reflexivas para toda alma curiosa",
-    "blog.read_more": "Leer más →",
+    "blog.read_more": "Leer más",
     "blog.view_more_articles": "Ver más artículos →",
     "blog.loading": "Cargando publicaciones...",
     "blog.error": "No se pudieron cargar las publicaciones. Asegúrate de que la URL de WordPress sea correcta y la API REST esté accesible.",

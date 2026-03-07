@@ -164,7 +164,7 @@ const AuditPlanPro = () => {
       {/* Workflow Timeline */}
       <div className={styles.workflowSection}>
         <h3 className={styles.sectionHeading}>The 10-Step Audit Planning Workflow</h3>
-        <div className={styles.timeline}>
+        <div className={styles.timeline} style={{ "--progress": `${progress * 100}%` }}>
           {steps.map((step, i) => (
             <div key={i} className={styles.timelineItem}>
               <div className={styles.timelineNumber}>{i + 1}</div>

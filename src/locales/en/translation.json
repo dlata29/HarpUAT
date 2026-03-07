@@ -39,7 +39,7 @@
     "products.ai_solutions.points_5": "",
     "blog.subtitle": "Blogs",
     "blog.title": "Thoughtful reads for every curious mind",
-    "blog.read_more": "Read more →",
+    "blog.read_more": "Read more",
     "blog.view_more_articles": "View more articles →",
     "blog.loading": "Loading posts...",
     "blog.error": "Failed to load posts. Please ensure the WordPress URL is correct and the REST API is accessible.",
