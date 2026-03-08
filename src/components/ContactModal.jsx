@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import styles from '../CSS/ContactModal.module.css';
+import { trackEvent } from '../utils/analytics';
 
 // --- Icons ---
 const CloseIcon = () => (
@@ -34,8 +35,6 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
         companyName: '',
         companyWebsite: '',
         projectType: '',
-        budget: '',
-        description: '',
         budget: '',
         description: '',
         partnership_intent: '',
@@ -109,17 +108,15 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
         setStatus('submitting');
         setErrorMessage('');
 
-        const webhookUrl = mode === 'project'
-            ? import.meta.env.VITE_PROJECT_WEBHOOK_URL
-            : import.meta.env.VITE_PARTNER_WEBHOOK_URL;
+        const token = import.meta.env.VITE_AIRTABLE_TOKEN;
+        const baseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
+        const tableId = import.meta.env.VITE_AIRTABLE_TABLE_ID;
 
-        if (!webhookUrl) {
-            console.warn("Webhook URL not defined for mode:", mode);
-            // Simulate success for now if env not set, OR fail. 
-            // Better to fail safe or log error. 
-            // setErrorMessage("Configuration Error: No Webhook URL");
-            // setStatus('error');
-            // return;
+        if (!token || !baseId || !tableId) {
+            console.error("Airtable configuration missing");
+            setErrorMessage("Configuration error. Please try again later.");
+            setStatus('error');
+            return;
         }
 
         try {
@@ -129,31 +126,55 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
                 throw new Error("Invalid phone format");
             }
 
-            // Preparing payload
-            const payload = {
-                formMode: mode,
-                ...formData,
-                submittedAt: new Date().toISOString()
+            // Map form data to exact Airtable column headers
+            const fields = {
+                "Full Name": formData.fullName,
+                "Email": formData.email,
+                "Phone": formData.phone,
+                "Mode": mode === 'project' ? 'Start Project' : 'Partner With Us',
+                "Project Type": formData.projectType,
+                "Company Name": formData.companyName,
+                "Budget": formData.budget,
+                "Description": formData.description,
+                "Company Website": formData.companyWebsite,
+                "Partnership Intent": formData.partnership_intent,
+                "Partner Value Proposition": formData.partner_value_proposition,
+                "Commercial Interest": formData.commercial_interest,
+                "Commercial Model": formData.commercial_model,
+                "Submitted At": new Date().toISOString()
             };
 
-            // Use fetch if URL exists, else simulate (remove simulation in prod)
-            if (webhookUrl) {
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+            // Remove empty/undefined fields
+            Object.keys(fields).forEach(key => {
+                if (fields[key] === undefined || fields[key] === '' || fields[key] === null) {
+                    delete fields[key];
+                }
+            });
 
-                if (!response.ok) throw new Error('Network response was not ok');
-            } else {
-                // Simulate delay for demo if no ENV
-                await new Promise(resolve => setTimeout(resolve, 1000));
+            const response = await fetch(`https://api.airtable.com/v0/${baseId}/${tableId}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    records: [{ fields }]
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                console.error("Airtable error:", errorData);
+                throw new Error(errorData.error?.message || 'Failed to sync with Airtable');
             }
+
+            // Track GA4 event
+            trackEvent('contact_form_submitted', { mode });
 
             setStatus('success');
         } catch (error) {
             console.error("Submission error:", error);
-            setErrorMessage(t('modal.error'));
+            setErrorMessage(error.message || t('modal.error'));
             setStatus('error');
         }
     };
@@ -226,11 +247,11 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
                                 onChange={handleChange}
                             >
                                 <option value="" disabled>-</option>
-                                <option value="mvp">{t('options.mvp')}</option>
-                                <option value="ai-agent">{t('options.ai_agent')}</option>
-                                <option value="web-app">{t('options.web_app')}</option>
-                                <option value="consulting">{t('options.consulting')}</option>
-                                <option value="other">{t('options.other')}</option>
+                                <option value="MVP">{t('options.mvp')}</option>
+                                <option value="AI Agent">{t('options.ai_agent')}</option>
+                                <option value="Web App">{t('options.web_app')}</option>
+                                <option value="Consulting">{t('options.consulting')}</option>
+                                <option value="Other">{t('options.other')}</option>
                             </select>
                         </div>
 
@@ -256,11 +277,10 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
                                 onChange={handleChange}
                             >
                                 <option value="" disabled>-</option>
-                                <option value="under-10k">{t('budget.under_10k')}</option>
-                                <option value="10k-25k">{t('budget.10k_25k')}</option>
-                                <option value="25k-50k">{t('budget.25k_50k')}</option>
-                                <option value="50k-plus">{t('budget.50k_plus')}</option>
-                                <option value="not-sure">{t('budget.not_sure')}</option>
+                                <option value="Under 10k">{t('budget.under_10k')}</option>
+                                <option value="10k–25k">{t('budget.10k_25k')}</option>
+                                <option value="25k–50k">{t('budget.25k_50k')}</option>
+                                <option value="50k+">{t('budget.50k_plus')}</option>
                             </select>
                         </div>
 
@@ -314,12 +334,11 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
                                 onChange={handleChange}
                             >
                                 <option value="" disabled>-</option>
-                                <option value="Strategic collaboration">{t('partner.strategic')}</option>
-                                <option value="Co-building products or solutions">{t('partner.co_build')}</option>
-                                <option value="Go-to-market partnership">{t('partner.gtm')}</option>
-                                <option value="Investment or capital partnership">{t('partner.investment')}</option>
-                                <option value="Hiring / working with us">{t('partner.hiring')}</option>
-                                <option value="Other">{t('partner.other')}</option>
+                                <option value="Strategic">{t('partner.strategic')}</option>
+                                <option value="Co-build">{t('partner.co_build')}</option>
+                                <option value="GTM">{t('partner.gtm')}</option>
+                                <option value="Investment">{t('partner.investment')}</option>
+                                <option value="Hiring">{t('partner.hiring')}</option>
                             </select>
                         </div>
 
@@ -361,11 +380,11 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
                                 onChange={handleChange}
                             >
                                 <option value="" disabled>-</option>
-                                <option value="Revenue sharing">{t('model.revenue_share')}</option>
-                                <option value="Fixed engagement">{t('model.fixed')}</option>
-                                <option value="Equity or investment">{t('model.equity')}</option>
-                                <option value="Open to discussion">{t('model.discussion')}</option>
-                                <option value="Not applicable">{t('model.na')}</option>
+                                <option value="Revenue Share">{t('model.revenue_share')}</option>
+                                <option value="Fixed Fee">{t('model.fixed')}</option>
+                                <option value="Equity">{t('model.equity')}</option>
+                                <option value="Hybrid">{t('model.discussion')}</option>
+                                <option value="Other">{t('model.na')}</option>
                             </select>
                         </div>
                     </>
@@ -374,12 +393,12 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
                 {errorMessage && <div className={styles.error}>{errorMessage}</div>}
 
                 <button type="submit" className={styles.submitButton} disabled={status === 'submitting'}>
-                    {status === 'submitting' ? '...' : (isProject ? t('modal.get_phone_call') : t('modal.discuss_partnership'))}
+                    {status === 'submitting' ? '...' : (isProject ? "Let's Build Something" : 'Explore Partnership')}
                 </button>
 
                 <div className={styles.switchMode}>
                     <button type="button" onClick={toggleMode} className={styles.switchButton}>
-                        {isProject ? t('modal.switch_to_partner') : t('modal.switch_to_project')}
+                        {isProject ? 'Looking to collaborate instead? Partner with us →' : 'Have a project in mind? Start a project →'}
                     </button>
                 </div>
             </form>
@@ -391,11 +410,24 @@ const ContactModal = ({ isOpen, onClose, initialMode = 'project' }) => {
             <div className={styles.successIcon}>
                 <CheckIcon />
             </div>
-            <h3 className={styles.successTitle}>{t('modal.success_title')}</h3>
-            <p className={styles.successMessage}>{t('modal.success_message')}</p>
-            <button onClick={onClose} className={styles.closeSuccessButton}>
-                {t('modal.close')}
-            </button>
+            <h3 className={styles.successTitle}>Thanks! We've received your details.</h3>
+            <p className={styles.successMessage}>
+                Our team will review your information and reach out shortly.<br /><br />
+                If you'd like to move faster, you can schedule a call with us now.
+            </p>
+            <div className={styles.successButtons}>
+                <a
+                    href="https://calendly.com/harpandcodeio/letstalk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.scheduleButton}
+                >
+                    Schedule a Call
+                </a>
+                <button onClick={onClose} className={styles.closeSuccessButton}>
+                    {t('modal.close')}
+                </button>
+            </div>
         </div>
     );
 

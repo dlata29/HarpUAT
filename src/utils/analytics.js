@@ -45,3 +45,18 @@ export const trackPageView = (url) => {
         send_page_view: true, // Manually trigger the page view
     });
 };
+/**
+ * Tracks a custom event
+ * @param {string} eventName - Name of the event
+ * @param {object} params - Event parameters
+ */
+export const trackEvent = (eventName, params = {}) => {
+    if (!import.meta.env.PROD || !window.gtag) {
+        if (!import.meta.env.PROD) {
+            console.log(`[GA4 Debug] Event: ${eventName}`, params);
+        }
+        return;
+    }
+
+    window.gtag('event', eventName, params);
+};
