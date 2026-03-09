@@ -10,12 +10,17 @@ import Products from "./components/Products";
 import Footer from "./components/Footer";
 import GridBackground from "./components/GridBackground";
 import BlogSection from "./components/BlogSection";
-import FeaturedWork from "./components/FeaturedWork"; // <-- ADDED IMPORT
-import TestimonialStrip from "./components/TestimonialStrip"; // <-- ADDED IMPORT
-import AuditPlanPro from "./components/AuditPlanPro"; // <-- ADDED IMPORT
+import FeaturedWork from "./components/FeaturedWork";
+import TestimonialStrip from "./components/TestimonialStrip";
+import AuditPlanPro from "./components/AuditPlanPro";
 import SEO from "./components/SEO";
-import ContactModal from "./components/ContactModal"; // <-- ADDED IMPORT
+import ContactModal from "./components/ContactModal";
 import { initGA, trackPageView } from "./utils/analytics";
+
+// Trust Pages
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
+import SecurityPage from "./pages/SecurityPage";
 
 /**
  * Automatically tracks page views on route change
@@ -71,12 +76,41 @@ export default function App() {
                   <GridBackground>
                     <Products />
                   </GridBackground>
-                  <AuditPlanPro /> {/* <-- ADDED AUDITPLAN PRO SECTION */}
+                  <AuditPlanPro />
                   <BlogSection />
-                  <FeaturedWork /> {/* <-- PLACED COMPONENT HERE */}
-                  <TestimonialStrip /> {/* <-- PLACED COMPONENT HERE */}
+                  <FeaturedWork />
+                  <TestimonialStrip />
                   <Footer onOpenModal={openModal} />
                 </main>
+              </>
+            }
+          />
+
+          {/* Trust / Legal Pages */}
+          <Route
+            path="/privacy-policy"
+            element={
+              <>
+                <PrivacyPolicyPage />
+                <Footer onOpenModal={openModal} />
+              </>
+            }
+          />
+          <Route
+            path="/terms-of-service"
+            element={
+              <>
+                <TermsOfServicePage />
+                <Footer onOpenModal={openModal} />
+              </>
+            }
+          />
+          <Route
+            path="/security"
+            element={
+              <>
+                <SecurityPage />
+                <Footer onOpenModal={openModal} />
               </>
             }
           />

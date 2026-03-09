@@ -1,0 +1,235 @@
+/* src/CSS/TrustPage.module.css */
+
+/* ==================== Full-Page Container ==================== */
+.trustPage {
+  background: linear-gradient(to bottom, #06282b, #000000);
+  min-height: 100vh;
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  padding: 6rem 2rem 4rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ==================== Breadcrumb ==================== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.85rem;
+}
+
+.breadcrumbLink {
+  color: #a0aec0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #1fc5a1;
+}
+
+.breadcrumbSeparator {
+  color: #4a5568;
+  user-select: none;
+}
+
+.breadcrumbCurrent {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+/* ==================== Header ==================== */
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #1fc5a1;
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+}
+
+.dateMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #718096;
+  font-style: italic;
+  flex-wrap: wrap;
+}
+
+.dateSeparator {
+  color: #4a5568;
+}
+
+/* ==================== Divider ==================== */
+.divider {
+  border: none;
+  border-top: 1px solid #334155;
+  margin-bottom: 2.5rem;
+}
+
+/* ==================== Content ==================== */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.section {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionHeading {
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.35rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem;
+  line-height: 1.3;
+}
+
+.sectionBody {
+  color: #cbd5e1;
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
+.sectionBody p {
+  margin: 0 0 1rem;
+}
+
+.sectionBody p:last-child {
+  margin-bottom: 0;
+}
+
+.sectionBody strong {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+/* ==================== Lists ==================== */
+.sectionList {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sectionList li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.sectionList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #1fc5a1;
+}
+
+.sectionList li strong {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+/* ==================== Section Footer ==================== */
+.sectionFooter {
+  margin-top: 1rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ==================== Links inside content ==================== */
+.sectionBody a,
+.sectionFooter a {
+  color: #1fc5a1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sectionBody a:hover,
+.sectionFooter a:hover {
+  color: #96ffe9;
+  text-decoration: underline;
+}
+
+/* ==================== Mobile: ≤900px ==================== */
+@media (max-width: 900px) {
+  .trustPage {
+    padding: 5rem 1.25rem 3rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.8rem;
+  }
+
+  .section {
+    padding: 1.25rem 0;
+  }
+
+  .sectionList li {
+    padding-left: 1.25rem;
+  }
+
+  .dateMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .dateSeparator {
+    display: none;
+  }
+}
+
+/* ==================== Large Screens: ≥1800px ==================== */
+@media (min-width: 1800px) {
+  .container {
+    max-width: 900px;
+  }
+
+  .trustPage {
+    padding: 7rem 2rem 5rem;
+  }
+}
+
+/* ==================== Extra Large Screens: ≥2560px ==================== */
+@media (min-width: 2560px) {
+  .container {
+    max-width: 1000px;
+  }
+}

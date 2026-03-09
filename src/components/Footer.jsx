@@ -1,5 +1,6 @@
 import React, { Suspense, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "../CSS/Footer.module.css";
 
@@ -60,19 +61,6 @@ export default function Footer({ onOpenModal }) {
     <footer id="contact" className={styles.footerSection} ref={footerRef}>
       <div className={styles.footerContainer}>
         {/* Left Side: Featured Work */}
-        {/* <a href="https://oneretire.netlify.app/" target="_blank" rel="noopener noreferrer" className="featured-work-card">
-          <img src="/oneretire.jpeg" alt="OneRetire App" className="base-image" />
-          <div className="hover-overlay">
-            <div className="hover-content">
-              <p className="hover-title">{t("footer.project_title")}</p>
-              <p className="hover-cta">{t("footer.view_project")}</p>
-            </div>
-          </div>
-          <div className="static-text">
-            <p>{t("footer.featured_work")}</p>
-          </div>
-        </a> */}
-
         {/* --- THIS IS THE REPLACEMENT --- */}
         {/* We keep the wrapper class to reuse the sizing and positioning */}
         <div className={styles.featuredWorkCard}>
@@ -129,6 +117,20 @@ export default function Footer({ onOpenModal }) {
           </div>
         </div>
       </div>
+
+      {/* Legal Links & Copyright Bottom Bar */}
+      <div className={styles.footerBottom}>
+        <div className={styles.footerBottomInner}>
+          <nav className={styles.legalLinks} aria-label="Legal">
+            <Link to="/privacy-policy" className={styles.legalLink}>Privacy Policy</Link>
+            <span className={styles.legalSeparator}>·</span>
+            <Link to="/terms-of-service" className={styles.legalLink}>Terms of Service</Link>
+            <span className={styles.legalSeparator}>·</span>
+            <Link to="/security" className={styles.legalLink}>Security</Link>
+          </nav>
+          <p className={styles.copyright}>© 2026 harpandcode.io</p>
+        </div>
+      </div>
     </footer>
   );
 }
@@ -136,3 +138,4 @@ export default function Footer({ onOpenModal }) {
 Footer.propTypes = {
   onOpenModal: PropTypes.func,
 };
+
